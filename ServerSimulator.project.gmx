@@ -12,6 +12,7 @@
     <sprite>sprites\spr_internet</sprite>
     <sprite>sprites\spr_switch</sprite>
     <sprite>sprites\spr_firewall</sprite>
+    <sprite>sprites\spr_hub</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths">
