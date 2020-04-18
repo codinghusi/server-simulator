@@ -9,3 +9,5 @@ var connection = instance_create(0, 0, obj_connection);
 connection.upstream = upstream;
 connection.downstream = downstream;
 connection.bandwidth = bandwidth;
+
+return connection;
