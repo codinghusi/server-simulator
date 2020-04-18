@@ -30,6 +30,12 @@
 var internet = scr_create_device(obj_device_internet, noone, 1);
 internet.x = x;
 internet.y = y;
+
+var connection = internet.downstreams[0];
+
+show_debug_message("connection: " + string(connection));
+
+var firewall = scr_create_device(obj_device_firewall, connection, 1);
 </string>
           </argument>
         </arguments>

@@ -21,6 +21,8 @@
   <scripts name="scripts">
     <scripts name="Device">
       <script>scripts\scr_create_device.gml</script>
+      <script>scripts\scr_device_width.gml</script>
+      <script>scripts\scr_position_devices.gml</script>
     </scripts>
     <scripts name="Paket">
       <script>scripts\scr_create_paket.gml</script>
