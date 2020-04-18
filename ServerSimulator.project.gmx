@@ -7,6 +7,11 @@
   <sounds name="sound"/>
   <sprites name="sprites">
     <sprite>sprites\sprite0</sprite>
+    <sprite>sprites\spr_server</sprite>
+    <sprite>sprites\spr_packet</sprite>
+    <sprite>sprites\spr_internet</sprite>
+    <sprite>sprites\spr_switch</sprite>
+    <sprite>sprites\spr_firewall</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths">
