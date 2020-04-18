@@ -13,3 +13,5 @@ paket.task = task;
 if (outgoing) {
     paket.position = 1; // start at the end
 }
+
+return paket;

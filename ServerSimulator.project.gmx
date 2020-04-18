@@ -24,8 +24,8 @@
       <script>scripts\scr_create_device.gml</script>
     </scripts>
     <scripts name="Paket">
-      <script>scripts\scr_burn_packet.gml</script>
       <script>scripts\scr_create_paket.gml</script>
+      <script>scripts\scr_burn_packet.gml</script>
     </scripts>
     <scripts name="Connection">
       <script>scripts\scr_create_connection.gml</script>
@@ -43,8 +43,13 @@
       <object>objects\obj_device_firewall</object>
       <object>objects\obj_device_hub</object>
       <object>objects\obj_device_switch</object>
+      <object>objects\obj_device_internet</object>
     </objects>
+    <object>objects\obj_controller</object>
   </objects>
+  <rooms name="rooms">
+    <room>rooms\rm_simulator</room>
+  </rooms>
   <help>
     <rtf>help.rtf</rtf>
   </help>

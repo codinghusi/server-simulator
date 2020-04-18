@@ -28,7 +28,7 @@
             <string>/// Structure Variables
 
 upstream = noone;
-downstreams = array();
+downstreams = 0;
 
 // default
 available = true;
