@@ -5,11 +5,30 @@
   </Configs>
   <NewExtensions/>
   <sounds name="sound"/>
-  <sprites name="sprites"/>
+  <sprites name="sprites">
+    <sprite>sprites\sprite0</sprite>
+  </sprites>
   <backgrounds name="background"/>
   <paths name="paths">
     <path>paths\pt_test</path>
+    <path>paths\path1</path>
   </paths>
+  <scripts name="scripts">
+    <scripts name="Device">
+      <script>scripts\scr_create_device.gml</script>
+    </scripts>
+    <scripts name="Paket">
+      <script>scripts\scr_burn_packet.gml</script>
+      <script>scripts\scr_create_paket.gml</script>
+    </scripts>
+    <scripts name="Connection">
+      <script>scripts\scr_create_connection.gml</script>
+      <script>scripts\scr_connection_x.gml</script>
+      <script>scripts\scr_connection_y.gml</script>
+    </scripts>
+    <script>scripts\array.gml</script>
+    <script>scripts\scr_config.gml</script>
+  </scripts>
   <objects name="objects">
     <object>objects\obj_device</object>
     <object>objects\obj_paket</object>
