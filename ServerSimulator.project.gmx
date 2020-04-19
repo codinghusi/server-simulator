@@ -51,6 +51,10 @@
       <script>scripts\scr_news_init.gml</script>
       <script>scripts\scr_news_draw.gml</script>
     </scripts>
+    <scripts name="Shop">
+      <script>scripts\scr_shop_init.gml</script>
+      <script>scripts\scr_shop_draw.gml</script>
+    </scripts>
   </scripts>
   <objects name="objects">
     <object>objects\obj_device</object>
