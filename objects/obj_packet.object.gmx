@@ -55,8 +55,10 @@ position = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Image
-image_speed = 0
+            <string>/// Apperance
+
+image_speed = 0;
+visible = false;
 </string>
           </argument>
         </arguments>
@@ -133,7 +135,9 @@ if (outgoing) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Image
+            <string>/// Apperance
+visible = true;
+
 switch(task){
     case packet_task.webpage:
         image_index = 0;
