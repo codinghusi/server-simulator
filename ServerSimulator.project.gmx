@@ -59,6 +59,7 @@
     <scripts name="Shop">
       <script>scripts\scr_shop_init.gml</script>
       <script>scripts\scr_shop_draw.gml</script>
+      <script>scripts\scr_shop_get_hovered_device.gml</script>
     </scripts>
   </scripts>
   <objects name="objects">

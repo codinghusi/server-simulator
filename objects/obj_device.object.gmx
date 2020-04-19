@@ -87,6 +87,17 @@ if (!available) {
     exit;
 }
 
+if (inbox.outgoing) {
+    if (upstream) {
+        scr_create_paket(true, upstream, inbox.task);
+    } else {
+        scr_burn_packet(x, y);
+    }
+    exit;
+}
+
+event_user(1);
+
 show_message("Yaay neue Nachricht!!");
 </string>
           </argument>

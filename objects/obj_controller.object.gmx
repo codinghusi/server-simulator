@@ -83,6 +83,8 @@ internet.y = y;
 var connection = internet.downstreams[| 0];
 var firewall = scr_create_device(global.devices[0], connection);
 
+scr_create_paket(0, connection, paket_task.ping)
+
 connection = firewall.downstreams[| 0];
 var sw = scr_create_device(global.devices[2], connection);
 

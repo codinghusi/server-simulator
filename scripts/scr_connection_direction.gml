@@ -12,6 +12,9 @@ y1 = upstream.y;
 if (!downstream) {
     x2 = x1;
     y2 = y1 + 20;    
+} else {
+    x2 = downstream.x;
+    y2 = downstream.y;
 }
 
 return point_direction(x1, y1, x2, y2);
