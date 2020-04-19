@@ -35,6 +35,7 @@
       <script>scripts\scr_create_paket.gml</script>
       <script>scripts\scr_burn_packet.gml</script>
       <script>scripts\scr_task.gml</script>
+      <script>scripts\scr_packet.gml</script>
     </scripts>
     <scripts name="Connection">
       <script>scripts\scr_create_connection.gml</script>
