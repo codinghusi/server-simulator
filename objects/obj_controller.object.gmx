@@ -25,6 +25,28 @@
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>///Config
+scr_config()
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>/// Debug
 
 global.debug = ds_map_create();
@@ -48,36 +70,13 @@ global.debug = ds_map_create();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Config
-scr_config();
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
             <string>/// Create internet
-
-
 
 var internet = scr_create_device(
     scr_device("internet", "lösch mich bloß nicht", obj_device_internet, 1),
     noone
 );
+
 internet.x = x;
 internet.y = y;
 
@@ -107,6 +106,53 @@ clear_debug();
 scr_position_devices(internet);
 
 show_debug_message("width: " + string(scr_device_width(sw)));
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///News
+scr_news_init()
+scr_news_post("News", "bla bla bla")
+scr_news_post("&lt;XML 3rr0r&gt;", "Help! Ich stecke in der#Nachrichtenzeile fest!")
+scr_news_post("News2", "blub")
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Shop
+scr_shop_init()
 </string>
           </argument>
         </arguments>
@@ -156,9 +202,29 @@ for (var i = 0; i &lt; instance_count; ++i) {
           <argument>
             <kind>1</kind>
             <string>///Shop
-draw_text(10, 560, "Item Description")
-draw_text(1065, 10, "Money: NAN")
-draw_text(400, 560, "Shop")
+scr_shop_draw()
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///News
+scr_news_draw()
 </string>
           </argument>
         </arguments>

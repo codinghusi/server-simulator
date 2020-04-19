@@ -48,6 +48,15 @@
       <script>scripts\debug_instance.gml</script>
       <script>scripts\clear_debug.gml</script>
     </scripts>
+    <scripts name="News">
+      <script>scripts\scr_news_post.gml</script>
+      <script>scripts\scr_news_init.gml</script>
+      <script>scripts\scr_news_draw.gml</script>
+    </scripts>
+    <scripts name="Shop">
+      <script>scripts\scr_shop_init.gml</script>
+      <script>scripts\scr_shop_draw.gml</script>
+    </scripts>
   </scripts>
   <objects name="objects">
     <object>objects\obj_device</object>
@@ -66,6 +75,9 @@
   <rooms name="rooms">
     <room>rooms\rm_simulator</room>
   </rooms>
+  <constants number="1">
+    <constant name="NEWS_COUNT">10</constant>
+  </constants>
   <help>
     <rtf>help.rtf</rtf>
   </help>
