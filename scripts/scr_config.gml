@@ -1,12 +1,12 @@
 ///scr_config()
 
-enum paket_task {
+enum packet_task {
     delete,
     ping,
     webpage
 }
 
-global.paket_tasks = array(
+global.packet_tasks = array(
     scr_task("delete", 1),
     scr_task("ping", 3),
     scr_task("webpage", 10)

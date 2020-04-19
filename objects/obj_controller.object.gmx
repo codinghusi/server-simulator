@@ -80,28 +80,26 @@ var internet = scr_create_device(
 internet.x = x;
 internet.y = y;
 
-var connection = internet.downstreams[| 0];
+var connection = internet.downlinks[| 0];
 var firewall = scr_create_device(global.devices[0], connection);
 
-scr_create_paket(0, connection, paket_task.ping)
-
-connection = firewall.downstreams[| 0];
+connection = firewall.downlinks[| 0];
 var sw = scr_create_device(global.devices[2], connection);
 
-connection = sw.downstreams[| 0];
+connection = sw.downlinks[| 0];
 var sw2 = scr_create_device(global.devices[2], connection);
 
-connection = sw.downstreams[| 1];
+connection = sw.downlinks[| 1];
 var sw3 = scr_create_device(global.devices[2], connection);
 
-connection = sw2.downstreams[| 0];
+connection = sw2.downlinks[| 0];
 scr_create_device(global.devices[3], connection);
-connection = sw2.downstreams[| 1];
+connection = sw2.downlinks[| 1];
 scr_create_device(global.devices[3], connection);
-connection = sw2.downstreams[| 2];
+connection = sw2.downlinks[| 2];
 scr_create_device(global.devices[3], connection);
 
-connection = sw3.downstreams[| 0];
+connection = sw3.downlinks[| 0];
 scr_create_device(global.devices[3], connection);
 
 clear_debug();
@@ -183,8 +181,67 @@ scr_drag_device(global.devices[2]);
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// View Move
+
+mouse_previous_x = 0;
+mouse_previous_y = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
-    <event eventtype="8" enumb="0">
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// View Move
+
+var mx = display_mouse_get_x();
+var my = display_mouse_get_y();
+
+if (!mouse_check_button_pressed(mb_middle)
+&amp;&amp;  mouse_check_button(mb_middle)) {
+    view_xview[view_current] -= mx - mouse_previous_x;
+    view_yview[view_current] -= my - mouse_previous_y;
+}
+
+mouse_previous_x = mx;
+mouse_previous_y = my;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="64">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -229,6 +286,8 @@ scr_news_draw()
           </argument>
         </arguments>
       </action>
+    </event>
+    <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>

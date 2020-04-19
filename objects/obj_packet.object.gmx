@@ -73,8 +73,6 @@ if (outgoing) {
 } else {
     position += 0.01
     if (position &gt;= 1) {
-        show_debug_message(connection);
-        show_debug_message(connection.downlink);
         connection.downlink.inbox = id;
         with (connection.downlink) {
             event_user(0)

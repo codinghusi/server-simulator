@@ -7,4 +7,4 @@ var length = scr_connection_length(connection);
 var dir = scr_connection_direction(connection);
 var yy = lengthdir_y(length * position, dir);
 
-return connection.upstream.y + yy;
+return connection.uplink.y + yy;

@@ -17,7 +17,7 @@
     <sprite>sprites\spr_packet_burn</sprite>
   </sprites>
   <backgrounds name="background">
-    <background>background\background0</background>
+    <background>background\bgr_hud</background>
   </backgrounds>
   <paths name="paths">
     <path>paths\pt_test</path>
@@ -28,12 +28,12 @@
       <script>scripts\scr_create_device.gml</script>
       <script>scripts\scr_device_width.gml</script>
       <script>scripts\scr_position_devices.gml</script>
-      <script>scripts\scr_device_active_downstream_count.gml</script>
+      <script>scripts\scr_device_active_downlink_count.gml</script>
       <script>scripts\scr_device.gml</script>
       <script>scripts\scr_drag_device.gml</script>
     </scripts>
     <scripts name="Paket">
-      <script>scripts\scr_create_paket.gml</script>
+      <script>scripts\scr_create_packet.gml</script>
       <script>scripts\scr_burn_packet.gml</script>
       <script>scripts\scr_task.gml</script>
       <script>scripts\scr_packet.gml</script>
@@ -66,7 +66,7 @@
   </scripts>
   <objects name="objects">
     <object>objects\obj_device</object>
-    <object>objects\obj_paket</object>
+    <object>objects\obj_packet</object>
     <object>objects\obj_connection</object>
     <objects name="Devices">
       <object>objects\obj_device_firewall</object>

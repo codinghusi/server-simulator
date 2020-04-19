@@ -1,11 +1,11 @@
-///scr_device(name, description, object, subimage, downstream_count, additional_data)
+///scr_device(name, description, object, subimage, downlink_count, additional_data)
 
 enum device_struct {
     name,
     description,
     object,
     subimage,
-    downstream_count,
+    downlink_count,
     additional_data
 }
 
