@@ -6,7 +6,6 @@
   <NewExtensions/>
   <sounds name="sound"/>
   <sprites name="sprites">
-    <sprite>sprites\sprite0</sprite>
     <sprite>sprites\spr_server</sprite>
     <sprite>sprites\spr_packet</sprite>
     <sprite>sprites\spr_internet</sprite>
@@ -31,6 +30,7 @@
       <script>scripts\scr_device_active_downlink_count.gml</script>
       <script>scripts\scr_device.gml</script>
       <script>scripts\scr_drag_device.gml</script>
+      <script>scripts\scr_device_active_downlinks.gml</script>
     </scripts>
     <scripts name="Paket">
       <script>scripts\scr_create_packet.gml</script>

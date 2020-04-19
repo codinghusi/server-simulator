@@ -62,31 +62,25 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var length = ds_list_size(downlinks);
-for (var i = 0; i &lt; length; ++i) {
-    last_out_index++;
-    
-    if last_out_index &gt;= length {
-        last_out_index = 0
-    }
-    
-    var downlink = downlinks[| last_out_index];
-    if (downlink.downlink) {
-        if (downlink.downlink.available) {
-            for (var j = 0; j &lt; length; j++) {
-                if (last_out_index == j) {
-                    scr_create_packet(false, downlink, inbox.task);
-                } else {
-                    scr_create_packet(false, downlinks[| j], packet_task.delete);
-                }
-            }
-            exit;
-        }
-    }
+            <string>/// Inbox
+
+var actives = scr_device_active_downlinks(self);
+var length = ds_list_size(actives);
+
+if (!length) {
+    scr_burn_packet(x,y);
 }
 
-scr_burn_packet(x,y);
-exit;
+var correct = irandom(length - 1);
+
+for (var i = 0; i &lt; length; ++i) {
+    var connection = actives[| i];
+    if (correct == i) {
+        scr_create_packet(inbox, connection);
+    } else {
+        scr_create_packet(inbox, connection);
+    }
+}
 </string>
           </argument>
         </arguments>

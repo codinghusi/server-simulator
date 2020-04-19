@@ -81,7 +81,7 @@ for (var i = 0; i &lt; length; ++i) {
     var downlink = downlinks[| last_out_index];
     if (downlink.downlink) {
         if (downlink.downlink.available) {
-            scr_create_packet(false, downlink, inbox.task);
+            scr_create_packet(inbox, downlink);
             exit;
         }
     }

@@ -1,16 +1,14 @@
-///scr_create_packet(outgoing, connection, task)
+///scr_create_packet(data, connection)
 
-var outgoing = argument0;
+var data = argument0;
 var connection = argument1;
-var task = argument2;
 
 var instance = instance_create(0, 0, obj_packet);
 
-instance.outgoing = outgoing;
+instance.data = data;
 instance.connection = connection;
-instance.task = task;
 
-if (outgoing) {
+if (data[packet.outgoing]) {
     instance.position = 1; // start at the end
 }
 

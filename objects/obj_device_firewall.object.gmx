@@ -25,10 +25,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (inbox.task != packet_task.webpage){
+            <string>/// Inbox
+
+if (inbox[packet.task] != packet_task.webpage){
     scr_burn_packet(x,y)
 } else {
-    scr_create_packet(false, downlinks[| 0], inbox.task)
+    scr_create_packet(inbox, downlinks[| 0])
 }
 </string>
           </argument>

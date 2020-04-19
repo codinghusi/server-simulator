@@ -87,11 +87,11 @@ if (!available) {
     exit;
 }
 
-if (inbox.outgoing) {
+if (inbox[packet.outgoing]) {
     if (uplink) {
-        scr_create_packet(true, uplink, inbox.task);
+        scr_create_packet(inbox, uplink);
     } else {
-        scr_burn_packet(x, y);
+        scr_burn_packet(x, y); // TODO: Don't burn
     }
     exit;
 }

@@ -29,9 +29,8 @@
 
 // source_ip = '';
 // target_ip = '';
-outgoing = false;
+data = noone;
 connection = noone;
-task = noone;
 
 // default
 position = 0;
@@ -86,17 +85,22 @@ visible = false;
 x = scr_connection_x(connection, position);
 y = scr_connection_y(connection, position);
 
-if (outgoing) {
+var dir = scr_connection_direction(connection) + 90;
+var len = 1 - data[packet.outgoing] * 2;
+x += lengthdir_x(20 * len, dir);
+y += lengthdir_y(20 * len, dir);
+
+if (data[packet.outgoing]) {
     position -= 0.01
     if (position) &lt;= 0{
         if connection.uplink != noone {
-            connection.uplink.inbox = id;
+            connection.uplink.inbox = data;
             with (connection.uplink) {
                 event_user(0)
             }
         } else {
             show_debug_message("TODO: hier ist ein Paket aus der Leitung gefallen, das sollte nicht passieren!")
-            scr_burn_packet(x,y)
+            scr_burn_packet(x, y)
         }
         instance_destroy()
     }
@@ -104,13 +108,13 @@ if (outgoing) {
     position += 0.01
     if (position &gt;= 1) {
         if connection.downlink != noone {
-            connection.downlink.inbox = id;
+            connection.downlink.inbox = data;
             with (connection.downlink) {
                 event_user(0)
             }
         } else {
             show_debug_message("TODO: hier ist ein Paket aus der Leitung gefallen, das sollte nicht passieren!")
-            scr_burn_packet(x,y)
+            scr_burn_packet(x, y)
         }
         instance_destroy();
     }
@@ -138,7 +142,7 @@ if (outgoing) {
             <string>/// Apperance
 visible = true;
 
-switch(task){
+switch(data[packet.task]) {
     case packet_task.webpage:
         image_index = 0;
         break;
