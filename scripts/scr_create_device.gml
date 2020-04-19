@@ -1,11 +1,13 @@
-///scr_create_device(device, connection, downstream_count)
+///scr_create_device(device_data, connection)
 
-var device = argument0;
+var data = argument0;
+var device_object = data[device_struct.object];
 var connection = argument1;
-var downstream_count = argument2 + 1;
+var downstream_count = data[device_struct.downstream_count];
+var additional_data = data[device_struct.additional_data];
 var upstream, downstream, downstreams, root;
 
-var device = instance_create(0, 0, device);
+var device = instance_create(0, 0, device_object);
 
 if (!connection) {
     root = device;
@@ -38,6 +40,7 @@ else {
 device.upstream = upstream;
 device.downstreams = downstreams;
 device.connection = connection;
+device.data = data;
 
 // Position all devices underneath and this one
 if (connection) {

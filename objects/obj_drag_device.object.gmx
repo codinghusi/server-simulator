@@ -25,9 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Init
+            <string>/// Structure Variables
 
-dragging = true;
+data = undefined;
 </string>
           </argument>
         </arguments>
@@ -52,14 +52,19 @@ dragging = true;
             <kind>1</kind>
             <string>/// Dragging
 
-if (dragging) {
-    x = mouse_x;
-    y = mouse_y;
-    
-    if (mouse_check_button_released(mb_left)) {
-        dragging = false;
+
+x = mouse_x;
+y = mouse_y;
+
+if (mouse_check_button_released(mb_left)) {
+    var connection = instance_place(x, y, obj_connection);    
+    if (connection) {
+        scr_create_device(data, connection);
     }
+    
+    instance_destroy();
 }
+
 </string>
           </argument>
         </arguments>

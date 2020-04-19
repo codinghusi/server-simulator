@@ -26,10 +26,12 @@
       <script>scripts\scr_device_width.gml</script>
       <script>scripts\scr_position_devices.gml</script>
       <script>scripts\scr_device_active_downstream_count.gml</script>
+      <script>scripts\scr_device.gml</script>
     </scripts>
     <scripts name="Paket">
       <script>scripts\scr_create_paket.gml</script>
       <script>scripts\scr_burn_packet.gml</script>
+      <script>scripts\scr_task.gml</script>
     </scripts>
     <scripts name="Connection">
       <script>scripts\scr_create_connection.gml</script>
@@ -41,6 +43,7 @@
     <script>scripts\debug_instance.gml</script>
     <script>scripts\debug_get.gml</script>
     <script>scripts\clear_debug.gml</script>
+    <script>scripts\scr_buy_device.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\obj_device</object>
