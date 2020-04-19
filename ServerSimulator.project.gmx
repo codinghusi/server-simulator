@@ -15,7 +15,9 @@
     <sprite>sprites\spr_hub</sprite>
     <sprite>sprites\spr_queue</sprite>
   </sprites>
-  <backgrounds name="background"/>
+  <backgrounds name="background">
+    <background>background\background0</background>
+  </backgrounds>
   <paths name="paths">
     <path>paths\pt_test</path>
     <path>paths\path1</path>
