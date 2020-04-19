@@ -61,6 +61,7 @@ position = 0;
 if outgoing {
     position -= 0.01
     if position &lt; 0{
+        connection.uplink.inbox = self
         with (connection.uplink) {
             event_user(0)
         }
@@ -68,6 +69,7 @@ if outgoing {
 } else {
     position += 0.01
     if position &gt; 0{
+        connection.downlink.inbox = self
         with (connection.downlink) {
             event_user(0)
         }
