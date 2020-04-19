@@ -73,7 +73,7 @@ global.debug = ds_map_create();
             <string>/// Create internet
 
 var internet = scr_create_device(
-    scr_device("internet", "lösch mich bloß nicht", obj_device_internet, 1),
+    scr_device("internet", "lösch mich bloß nicht", obj_device_internet, 0, 1),
     noone
 );
 

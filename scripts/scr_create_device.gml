@@ -1,4 +1,4 @@
-///scr_create_dev(dev_data, connection)
+///scr_create_device(dev_data, connection)
 
 var data = argument0;
 var dev_object = data[device_struct.object];
