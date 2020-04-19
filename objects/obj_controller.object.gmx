@@ -80,26 +80,26 @@ var internet = scr_create_device(
 internet.x = x;
 internet.y = y;
 
-var connection = internet.downstreams[| 0];
+var connection = internet.downlinks[| 0];
 var firewall = scr_create_device(global.devices[0], connection);
 
-connection = firewall.downstreams[| 0];
+connection = firewall.downlinks[| 0];
 var sw = scr_create_device(global.devices[2], connection);
 
-connection = sw.downstreams[| 0];
+connection = sw.downlinks[| 0];
 var sw2 = scr_create_device(global.devices[2], connection);
 
-connection = sw.downstreams[| 1];
+connection = sw.downlinks[| 1];
 var sw3 = scr_create_device(global.devices[2], connection);
 
-connection = sw2.downstreams[| 0];
+connection = sw2.downlinks[| 0];
 scr_create_device(global.devices[3], connection);
-connection = sw2.downstreams[| 1];
+connection = sw2.downlinks[| 1];
 scr_create_device(global.devices[3], connection);
-connection = sw2.downstreams[| 2];
+connection = sw2.downlinks[| 2];
 scr_create_device(global.devices[3], connection);
 
-connection = sw3.downstreams[| 0];
+connection = sw3.downlinks[| 0];
 scr_create_device(global.devices[3], connection);
 
 clear_debug();

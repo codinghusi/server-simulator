@@ -27,8 +27,8 @@
             <kind>1</kind>
             <string>/// Structure Variables
 
-upstream = noone;
-downstreams = 0;
+uplink = noone;
+downlinks = 0;
 data = undefined;
 
 // default
@@ -88,8 +88,8 @@ if (!available) {
 }
 
 if (inbox.outgoing) {
-    if (upstream) {
-        scr_create_paket(true, upstream, inbox.task);
+    if (uplink) {
+        scr_create_packet(true, uplink, inbox.task);
     } else {
         scr_burn_packet(x, y);
     }

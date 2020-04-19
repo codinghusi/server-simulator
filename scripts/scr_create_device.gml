@@ -1,56 +1,56 @@
-///scr_create_device(dev_data, connection)
+///scr_create_device(device_data, connection)
 
 var data = argument0;
-var dev_object = data[device_struct.object];
+var device_object = data[device_struct.object];
 var connection = argument1;
-var downstream_count = data[device_struct.downstream_count];
+var downlink_count = data[device_struct.downlink_count];
 var additional_data = data[device_struct.additional_data];
-var upstream, downstream, downstreams, root;
+var uplink, downlink, downlinks, root;
 
-var dev = instance_create(0, 0, dev_object);
+var device = instance_create(0, 0, device_object);
 
 if (!connection) {
-    root = dev;
+    root = device;
 } else {
     root = connection.root;
 }
 
-downstreams = ds_list_create();
-for (var i = downstream_count - 1; i >= 0; --i) {
-    downstreams[| i] = scr_create_connection(root, dev, noone, 1); // TODO: Hardcoded
+downlinks = ds_list_create();
+for (var i = downlink_count - 1; i >= 0; --i) {
+    downlinks[| i] = scr_create_connection(root, device, noone, 1); // TODO: Hardcoded
 }
 
-if (downstream_count) {
-    downstream = downstreams[| 0];
+if (downlink_count) {
+    downlink = downlinks[| 0];
 }
 
 // Beginning (Internet, www, cloud)
 if (!connection) {
-    upstream = noone;
+    uplink = noone;
 }
 // 1. At the end of the connection there is no device so we will be that
 // 2. Or we need to go in the middle
 else {
-    var tmp_downstream = connection.downstream; // could be noone (see 1.)
-    connection.downstream = dev;
+    var tmp_downlink = connection.downlink; // could be noone (see 1.)
+    connection.downlink = device;
     
-    upstream = connection;
+    uplink = connection;
     
-    if (downstream_count) {
-        downstream.downstream = tmp_downstream;
+    if (downlink_count) {
+        downlink.downlink = tmp_downlink;
     }
 }
 
-dev.upstream = upstream;
-dev.downstreams = downstreams;
-dev.connection = connection;
-dev.data = data;
+device.uplink = uplink;
+device.downlinks = downlinks;
+device.connection = connection;
+device.data = data;
 
 
-// Position all devs underneath and this one
+// Position all devices underneath and this one
 if (connection) {
     scr_position_devices(root);
     show_debug_message("updating tree");
 }
 
-return dev;
+return device;

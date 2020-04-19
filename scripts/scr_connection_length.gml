@@ -1,20 +1,20 @@
 ///scr_connection_length(connection)
 
 var connection = argument0;
-var downstream = connection.downstream;
-var upstream = connection.upstream;
+var downlink = connection.downlink;
+var uplink = connection.uplink;
 
 var x1, y1, x2, y2;
 
-x1 = upstream.x;
-y1 = upstream.y;
+x1 = uplink.x;
+y1 = uplink.y;
 
-if (!downstream) {
+if (!downlink) {
     x2 = x1;
     y2 = y1 + 20;    
 } else {
-    x2 = downstream.x;
-    y2 = downstream.y;
+    x2 = downlink.x;
+    y2 = downlink.y;
 }
 
 return point_distance(x1, y1, x2, y2);

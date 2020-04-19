@@ -1,17 +1,17 @@
-///scr_create_paket(outgoing, connection, task)
+///scr_create_packet(outgoing, connection, task)
 
 var outgoing = argument0;
 var connection = argument1;
 var task = argument2;
 
-var paket = instance_create(0, 0, obj_paket);
+var instance = instance_create(0, 0, obj_packet);
 
-paket.outgoing = outgoing;
-paket.connection = connection;
-paket.task = task;
+instance.outgoing = outgoing;
+instance.connection = connection;
+instance.task = task;
 
 if (outgoing) {
-    paket.position = 1; // start at the end
+    instance.position = 1; // start at the end
 }
 
-return paket;
+return instance;

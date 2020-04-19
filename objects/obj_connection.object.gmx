@@ -51,8 +51,8 @@ global.dropable_connection = noone;
             <kind>1</kind>
             <string>/// Structure Variables
 
-upstream = noone;
-downstream = noone;
+uplink = noone;
+downlink = noone;
 bandwidth = 1;
 root = noone;
 </string>
@@ -81,11 +81,11 @@ root = noone;
 
 dropable = false;
 
-if (upstream &amp;&amp; downstream &amp;&amp; (global.dropable_connection == noone || global.dropable_connection == id)) {
-    var device_instance = collision_line(upstream.x, upstream.y, downstream.x, downstream.y, obj_drag_device, false, true);
+if (uplink &amp;&amp; downlink &amp;&amp; (global.dropable_connection == noone || global.dropable_connection == id)) {
+    var device_instance = collision_line(uplink.x, uplink.y, downlink.x, downlink.y, obj_drag_device, false, true);
     if (device_instance) {
         var device = device_instance.device;
-        if (device[device_struct.downstream_count] || !downstream) {
+        if (device[device_struct.downlink_count] || !downlink) {
             dropable = true;
         }
         
@@ -126,10 +126,10 @@ if (upstream &amp;&amp; downstream &amp;&amp; (global.dropable_connection == noo
             <string>/// Draw lines
 
 draw_set_color(c_black);
-if (downstream) {
-    draw_line(upstream.x, upstream.y, downstream.x, downstream.y);
+if (downlink) {
+    draw_line(uplink.x, uplink.y, downlink.x, downlink.y);
 } else {
-    draw_line(upstream.x, upstream.y, upstream.x, upstream.y + 20);
+    draw_line(uplink.x, uplink.y, uplink.x, uplink.y + 20);
 }
 </string>
           </argument>
@@ -155,10 +155,10 @@ if (downstream) {
 
 if (dropable) {
     draw_set_color(c_gray);
-    if (downstream) {
-        draw_line_width(upstream.x, upstream.y, downstream.x, downstream.y, 5);
+    if (downlink) {
+        draw_line_width(uplink.x, uplink.y, downlink.x, downlink.y, 5);
     } else {
-        draw_line_width(upstream.x, upstream.y, upstream.x, upstream.y + 20, 5);
+        draw_line_width(uplink.x, uplink.y, uplink.x, uplink.y + 20, 5);
     }
 }
 </string>

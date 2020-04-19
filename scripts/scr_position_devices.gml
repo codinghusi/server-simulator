@@ -1,12 +1,12 @@
 ///scr_position_devices(root_device)
 
-var dev = argument0;
-var downstreams = dev.downstreams;
-var length = ds_list_size(downstreams);
-var width = scr_device_width(dev);
+var device = argument0;
+var downlinks = device.downlinks;
+var length = ds_list_size(downlinks);
+var width = scr_device_width(device);
 var hor_width = 150;
 var ver_spacing = 100;
-var count = scr_device_active_downstream_count(dev);
+var count = scr_device_active_downlink_count(device);
 
 
 // width missing in calculation
@@ -15,14 +15,14 @@ var count = scr_device_active_downstream_count(dev);
 var xx = -width;
 
 for (var i = 0; i < length; ++i) {
-    var downstream_connection = downstreams[| i];
-    if (!downstream_connection || !downstream_connection.downstream) {
+    var downlink_connection = downlinks[| i];
+    if (!downlink_connection || !downlink_connection.downlink) {
         continue;
     }
-    var downstream_device = downstream_connection.downstream;
-    var device_width = scr_device_width(downstream_device);
-    downstream_device.x = dev.x + (xx + device_width) / 2 * hor_width;
-    downstream_device.y = dev.y + ver_spacing;
-    scr_position_devices(downstream_device);
+    var downlink_device = downlink_connection.downlink;
+    var device_width = scr_device_width(downlink_device);
+    downlink_device.x = device.x + (xx + device_width) / 2 * hor_width;
+    downlink_device.y = device.y + ver_spacing;
+    scr_position_devices(downlink_device);
     xx += device_width * 2;
 }
