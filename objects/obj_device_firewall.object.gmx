@@ -28,7 +28,7 @@
             <string>if (inbox.task != paket_task.webpage){
     scr_burn_packet(x,y)
 } else {
-    scr_create_paket(false, downstream[| 0], inbox.task)
+    scr_create_paket(false, downstreams[| 0], inbox.task)
 }
 </string>
           </argument>
