@@ -23,7 +23,7 @@
     <path>paths\path1</path>
   </paths>
   <scripts name="scripts">
-    <scripts name="component">
+    <scripts name="Component">
       <script>scripts\scr_create_component.gml</script>
       <script>scripts\scr_component_width.gml</script>
       <script>scripts\scr_position_components.gml</script>
@@ -69,7 +69,7 @@
     <object>objects\obj_packet</object>
     <object>objects\obj_connection</object>
     <object>objects\obj_drag_component</object>
-    <objects name="components">
+    <objects name="Components">
       <object>objects\obj_component_firewall</object>
       <object>objects\obj_component_hub</object>
       <object>objects\obj_component_switch</object>

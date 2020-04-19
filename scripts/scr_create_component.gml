@@ -31,14 +31,17 @@ if (!connection) {
 // 1. At the end of the connection there is no component so we will be that
 // 2. Or we need to go in the middle
 else {
-    var tmp_downlink = connection.downlink; // could be noone (see 1.)
+    var bottom_component = connection.downlink; // could be noone (see 1.)
     connection.downlink = component;
     
     uplink = connection;
     
     if (downlink_count) {
-        downlink.downlink = tmp_downlink;
-        tmp_downlink = component;
+        downlink.downlink = bottom_component;
+    }
+    
+    if (bottom_component) {
+        bottom_component.uplink = downlink;
     }
 }
 
