@@ -48,33 +48,60 @@ global.debug = ds_map_create();
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>/// Config
+scr_config();
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>/// Create internet
 
-var internet = scr_create_device(obj_device_internet, noone, 1);
+
+
+var internet = scr_create_device(
+    scr_device("internet", "lösch mich bloß nicht", obj_device_internet, 1),
+    noone
+);
 internet.x = x;
 internet.y = y;
 
-var connection = internet.downstreams[0];
-var firewall = scr_create_device(obj_device_firewall, connection, 1);
+var connection = internet.downstreams[| 0];
+var firewall = scr_create_device(global.devices[0], connection);
 
-connection = firewall.downstreams[0];
-var sw = scr_create_device(obj_device_switch, connection, 5);
+connection = firewall.downstreams[| 0];
+var sw = scr_create_device(global.devices[2], connection);
 
-connection = sw.downstreams[0];
-var sw2 = scr_create_device(obj_device_switch, connection, 5);
+connection = sw.downstreams[| 0];
+var sw2 = scr_create_device(global.devices[2], connection);
 
-connection = sw.downstreams[1];
-var sw3 = scr_create_device(obj_device_switch, connection, 5);
+connection = sw.downstreams[| 1];
+var sw3 = scr_create_device(global.devices[2], connection);
 
-connection = sw2.downstreams[0];
-scr_create_device(obj_device_server, connection, 0);
-connection = sw2.downstreams[1];
-scr_create_device(obj_device_server, connection, 0);
+connection = sw2.downstreams[| 0];
+scr_create_device(global.devices[3], connection);
+connection = sw2.downstreams[| 1];
+scr_create_device(global.devices[3], connection);
+connection = sw2.downstreams[| 2];
+scr_create_device(global.devices[3], connection);
 
-connection = sw3.downstreams[0];
-scr_create_device(obj_device_server, connection, 0);
-connection = sw3.downstreams[1];
-scr_create_device(obj_device_server, connection, 0);
+connection = sw3.downstreams[| 0];
+scr_create_device(global.devices[3], connection);
 
 clear_debug();
 scr_position_devices(internet);

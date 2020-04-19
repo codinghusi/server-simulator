@@ -8,4 +8,9 @@ enum device_struct {
     additional_data
 }
 
-return array(argument[0], argument[1], argument[2], argument[3], argument[4]);
+if (argument_count == 5)  {
+    return array(argument[0], argument[1], argument[2], argument[3], argument[4]);
+}
+else {
+    return array(argument[0], argument[1], argument[2], argument[3], undefined);
+}

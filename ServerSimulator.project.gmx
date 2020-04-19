@@ -42,10 +42,12 @@
     </scripts>
     <script>scripts\array.gml</script>
     <script>scripts\scr_config.gml</script>
-    <script>scripts\debug_instance.gml</script>
-    <script>scripts\debug_get.gml</script>
-    <script>scripts\clear_debug.gml</script>
     <script>scripts\scr_buy_device.gml</script>
+    <scripts name="Debug">
+      <script>scripts\debug_get.gml</script>
+      <script>scripts\debug_instance.gml</script>
+      <script>scripts\clear_debug.gml</script>
+    </scripts>
   </scripts>
   <objects name="objects">
     <object>objects\obj_device</object>
