@@ -3,7 +3,7 @@
 var length = array_length_1d(global.devices);
 var xx = 0;
 for (var i = 0; i < length; i++){
-    if point_in_rectangle(mouse_x, mouse_y, 395+xx, 595, 465+xx, 665) {
+    if point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 395+xx, 595, 465+xx, 665) {
         return global.devices[i];
     }
     xx += 80;

@@ -70,11 +70,25 @@ if ds_list_empty(downlinks) {
     exit;
 }
 
-last_out_index++;
-if last_out_index &gt;= ds_list_size(downlinks){
-    last_out_index = 0
+var length = ds_list_size(downlinks);
+for (var i = 0; i &lt; length; ++i) {
+    last_out_index++;
+    
+    if last_out_index &gt;= length {
+        last_out_index = 0
+    }
+    
+    var downlink = downlinks[| last_out_index];
+    if (downlink.downlink) {
+        if (downlink.downlink.available) {
+            scr_create_packet(false, downlink, inbox.task);
+            exit;
+        }
+    }
 }
-scr_create_packet(false, downlinks[| last_out_index], inbox.task)
+
+scr_burn_packet(x,y);
+exit;
 </string>
           </argument>
         </arguments>

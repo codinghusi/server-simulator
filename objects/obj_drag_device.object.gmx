@@ -84,7 +84,7 @@ if (dev != noone) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Connection selection
+            <string>/// Dropping
 
 nearest_distance = -1;
 nearest_instance = noone;
@@ -101,13 +101,14 @@ with (obj_connection) {
 
 if (nearest_instance &amp;&amp; nearest_distance &lt; 150) {
     with (nearest_instance) {
-        if (uplink &amp;&amp; downlink &amp;&amp; (global.dropable_connection == noone || global.dropable_connection == id)) {
+        if (uplink &amp;&amp; (global.dropable_connection == noone || global.dropable_connection == id)) {
             var device = other.dev;
             if (device[device_struct.downlink_count] || !downlink) {
                 dropable = true;
                 
                 if (mouse_check_button_released(mb_left)) {
                     scr_create_device(device, id);
+                    dropable = false;
                 }
             }
             

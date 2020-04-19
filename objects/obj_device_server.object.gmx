@@ -26,6 +26,8 @@
           <argument>
             <kind>1</kind>
             <string>/// Init
+event_inherited();
+
 image_speed = 0;
 </string>
           </argument>
