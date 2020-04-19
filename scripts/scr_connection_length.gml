@@ -11,7 +11,7 @@ y1 = uplink.y;
 
 if (!downlink) {
     x2 = x1;
-    y2 = y1 + 20;    
+    y2 = y1 + 20;
 } else {
     x2 = downlink.x;
     y2 = downlink.y;
