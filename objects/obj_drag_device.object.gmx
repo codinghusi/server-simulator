@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>/// Structure Variables
 
-device = undefined;
+device = noone;
 </string>
           </argument>
         </arguments>
@@ -50,19 +50,42 @@ device = undefined;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Instance teleportation and Sprite
+            <string>/// Connection selection
 
+var nearest_distance = -1;
+var nearest_instance = noone;
 
-x = mouse_x;
-y = mouse_y;
+with (obj_connection) {
+    dropable = false;
+    var distance = point_distance(mouse_x, mouse_y, scr_connection_x(self, 0.5), scr_connection_y(self, 0.5));
+    if (!other.nearest_instance
+    ||  distance &lt; other.nearest_distance) {
+        other.nearest_instance = id;
+        other.nearest_distance = distance;
+    }
+}
 
-// set sprite
-if (is_array(device)) {
-    var sprite = object_get_sprite(device[device_struct.object]);
-    var index = device[device_struct.subimage];
-    if (sprite) {
-        sprite_index = sprite;
-        image_index = index;
+if (nearest_instance) {
+    with (nearest_instance) {
+        if (uplink &amp;&amp; downlink &amp;&amp; (global.dropable_connection == noone || global.dropable_connection == id)) {
+        if (other) {
+            var device = other.device;
+            if (device[device_struct.downlink_count] || !downlink) {
+                dropable = true;
+            }
+            
+            if (mouse_check_button_released(mb_left)) {
+                if (dropable) {
+                    scr_create_device(device, id);
+                }
+                instance_destroy(other);
+            }
+            
+            global.dropable_connection = id;
+        } else {
+            global.dropable_connection = noone;
+        }
+    }
     }
 }
 </string>
@@ -85,12 +108,19 @@ if (is_array(device)) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Connection selection
+            <string>/// Instance teleportation and Sprite
 
+x = mouse_x;
+y = mouse_y;
 
-
-with (obj_connection) {
-    // TODO: here
+// set sprite
+if (device != noone) {
+    var sprite = object_get_sprite(device[device_struct.object]);
+    var index = device[device_struct.subimage];
+    if (sprite) {
+        sprite_index = sprite;
+        image_index = index;
+    }
 }
 </string>
           </argument>

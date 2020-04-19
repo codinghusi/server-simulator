@@ -13,5 +13,5 @@ if (argument_count == 6)  {
     return array(argument[0], argument[1], argument[2], argument[3], argument[4], argument[5]);
 }
 else {
-    return array(argument[0], argument[1], argument[2], argument[3], argument[4], undefined);
+    return array(argument[0], argument[1], argument[2], argument[3], argument[4], noone);
 }

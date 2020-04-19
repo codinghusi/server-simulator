@@ -79,7 +79,7 @@ root = noone;
             <kind>1</kind>
             <string>/// Drag Drop
 
-dropable = false;
+/*dropable = false;
 
 if (uplink &amp;&amp; downlink &amp;&amp; (global.dropable_connection == noone || global.dropable_connection == id)) {
     var device_instance = collision_line(uplink.x, uplink.y, downlink.x, downlink.y, obj_drag_device, false, true);
@@ -100,7 +100,7 @@ if (uplink &amp;&amp; downlink &amp;&amp; (global.dropable_connection == noone |
     } else {
         global.dropable_connection = noone;
     }
-}
+}*/
 </string>
           </argument>
         </arguments>

@@ -1,4 +1,4 @@
-//scr_connection_y(connection, position)
+///scr_connection_y(connection, position)
 
 var connection = argument0;
 var position = argument1;

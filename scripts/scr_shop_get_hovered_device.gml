@@ -1,3 +1,5 @@
+///scr_shop_get_hovered_device()
+
 var length = array_length_1d(global.devices);
 var xx = 0;
 for (var i = 0; i < length; i++){

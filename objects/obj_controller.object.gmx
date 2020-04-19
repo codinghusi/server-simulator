@@ -173,30 +173,6 @@ scr_shop_init()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Drag Test
-
-
-scr_drag_device(global.devices[2]);
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
             <string>/// View Move
 
 mouse_previous_x = 0;
@@ -236,6 +212,35 @@ if (!mouse_check_button_pressed(mb_middle)
 
 mouse_previous_x = mx;
 mouse_previous_y = my;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Shop Drag Drop
+
+if (mouse_check_button_pressed(mb_left)) {
+    var device = scr_shop_get_hovered_device();
+    
+    if (is_array(device)) {
+        scr_drag_device(device);
+    }
+}
 </string>
           </argument>
         </arguments>
