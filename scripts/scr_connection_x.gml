@@ -1,4 +1,10 @@
 //scr_connection_x(connection, position)
 
-show_debug_message("TODO: scr_connection_x");
-return 0;
+var connection = argument0;
+var position = argument1;
+
+var length = scr_connection_length(connection);
+var dir = scr_connection_direction(connection);
+var xx = lengthdir_x(length * position, dir);
+
+return xx;

@@ -35,6 +35,76 @@ root = noone;
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Variables
+
+dropable = false;
+global.dropable_connection = noone;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Drag Drop
+
+dropable = false;
+
+if (upstream &amp;&amp; downstream &amp;&amp; (global.dropable_connection == noone || global.dropable_connection == id)) {
+    var device_instance = collision_line(upstream.x, upstream.y, downstream.x, downstream.y, obj_drag_device, false, true);
+    if (device_instance) {
+        var device = device_instance.device;
+        if (device[device_struct.downstream_count] || !downstream) {
+            dropable = true;
+        }
+        
+        if (mouse_check_button_released(mb_left)) {
+            if (dropable) {
+                scr_create_device(device, id);
+            }
+            instance_destroy(device_instance);
+        }
+        
+        global.dropable_connection = id;
+    } else {
+        global.dropable_connection = noone;
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="8" enumb="0">
       <action>
@@ -55,10 +125,41 @@ root = noone;
             <kind>1</kind>
             <string>/// Draw lines
 
+draw_set_color(c_black);
 if (downstream) {
     draw_line(upstream.x, upstream.y, downstream.x, downstream.y);
 } else {
     draw_line(upstream.x, upstream.y, upstream.x, upstream.y + 20);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Draw drag drop feedback
+
+if (dropable) {
+    draw_set_color(c_gray);
+    if (downstream) {
+        draw_line_width(upstream.x, upstream.y, downstream.x, downstream.y, 5);
+    } else {
+        draw_line_width(upstream.x, upstream.y, upstream.x, upstream.y + 20, 5);
+    }
 }
 </string>
           </argument>

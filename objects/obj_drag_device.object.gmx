@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>/// Structure Variables
 
-data = undefined;
+device = undefined;
 </string>
           </argument>
         </arguments>
@@ -50,21 +50,48 @@ data = undefined;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Dragging
+            <string>/// Instance teleportation and Sprite
 
 
 x = mouse_x;
 y = mouse_y;
 
-if (mouse_check_button_released(mb_left)) {
-    var connection = instance_place(x, y, obj_connection);    
-    if (connection) {
-        scr_create_device(data, connection);
+// set sprite
+if (is_array(device)) {
+    var sprite = object_get_sprite(device[device_struct.object]);
+    var index = device[device_struct.subimage];
+    if (sprite) {
+        sprite_index = sprite;
+        image_index = index;
     }
-    
-    instance_destroy();
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Connection selection
 
+
+
+with (obj_connection) {
+    // TODO: here
+}
 </string>
           </argument>
         </arguments>
