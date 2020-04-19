@@ -25,10 +25,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Variables
+            <string>/// Structure Variables
 
-dropable = false;
-global.dropable_connection = noone;
+uplink = noone;
+downlink = noone;
+bandwidth = 1;
+root = noone;
 </string>
           </argument>
         </arguments>
@@ -49,12 +51,12 @@ global.dropable_connection = noone;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Structure Variables
+            <string>/// Variables
 
-uplink = noone;
-downlink = noone;
-bandwidth = 1;
-root = noone;
+dropable = false;
+dropping_instance = noone;
+drop_possible = false;
+global.dropable_connection = noone;
 </string>
           </argument>
         </arguments>
@@ -153,13 +155,22 @@ if (downlink) {
             <kind>1</kind>
             <string>/// Draw drag drop feedback
 
-if (dropable) {
+var xx = scr_connection_x(self, 0.5);
+var yy = scr_connection_y(self, 0.5);
+
+if (drop_possible) {
     draw_set_color(c_gray);
-    if (downlink) {
-        draw_line_width(uplink.x, uplink.y, downlink.x, downlink.y, 5);
-    } else {
-        draw_line_width(uplink.x, uplink.y, uplink.x, uplink.y + 20, 5);
+    draw_rectangle(xx - 10, yy - 10, xx + 10, yy + 10, false);
+}
+
+if (dropable) {
+    var sprite = dropping_instance.sprite_index;
+    var index = dropping_instance.image_index;
+    
+    if (!downlink) {
+        yy += sprite_get_height(sprite) / 2;
     }
+    draw_sprite_ext(sprite, index, xx, yy, 1, 1, 0, c_black, 1);
 }
 </string>
           </argument>

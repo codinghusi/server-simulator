@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>/// Structure Variables
 
-dev = noone;
+comp = noone;
 </string>
           </argument>
         </arguments>
@@ -56,10 +56,11 @@ x = mouse_x;
 y = mouse_y;
 
 // set sprite
-if (dev != noone) {
-    var sprite = object_get_sprite(dev[component_struct.object]);
-    var index = dev[component_struct.subimage];
-    if (sprite) {
+if (comp != noone) {
+    var sprite = object_get_sprite(comp[component_struct.object]);
+    var index = comp[component_struct.subimage];
+    
+    if (sprite &gt;= 0) {
         sprite_index = sprite;
         image_index = index;
     }
@@ -90,6 +91,7 @@ nearest_distance = -1;
 nearest_instance = noone;
 
 with (obj_connection) {
+    // search for nearest connection
     dropable = false;
     var distance = point_distance(mouse_x, mouse_y, scr_connection_x(self, 0.5), scr_connection_y(self, 0.5));
     if (!other.nearest_instance
@@ -97,14 +99,22 @@ with (obj_connection) {
         other.nearest_instance = id;
         other.nearest_distance = distance;
     }
+    
+    // check if drop is possible
+    var component = other.comp;
+    if (component[component_struct.downlink_count] || !downlink) {
+        drop_possible = true;
+    } else {
+        drop_possible = false;
+    }
 }
 
 if (nearest_instance &amp;&amp; nearest_distance &lt; 150) {
     with (nearest_instance) {
-        if (uplink &amp;&amp; (global.dropable_connection == noone || global.dropable_connection == id)) {
-            var component = other.dev;
-            if (component[component_struct.downlink_count] || !downlink) {
+        if (global.dropable_connection == noone || global.dropable_connection == id) {
+            if (drop_possible) {
                 dropable = true;
+                dropping_instance = other;
                 
                 if (mouse_check_button_released(mb_left)) {
                     scr_create_component(component, id);
@@ -119,7 +129,10 @@ if (nearest_instance &amp;&amp; nearest_distance &lt; 150) {
     }
 }
 
-if (mouse_check_button_released(mb_left)) { 
+if (mouse_check_button_released(mb_left)) {
+    with (obj_connection) {
+        drop_possible = false;
+    }
     instance_destroy();
 }
 </string>

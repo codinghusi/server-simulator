@@ -65,17 +65,17 @@
     </scripts>
   </scripts>
   <objects name="objects">
-    <object>objects\obj_component</object>
     <object>objects\obj_packet</object>
     <object>objects\obj_connection</object>
-    <object>objects\obj_drag_component</object>
     <objects name="Components">
+      <object>objects\obj_component</object>
       <object>objects\obj_component_firewall</object>
       <object>objects\obj_component_hub</object>
       <object>objects\obj_component_switch</object>
       <object>objects\obj_component_internet</object>
       <object>objects\obj_component_server</object>
       <object>objects\obj_component_queue</object>
+      <object>objects\obj_drag_component</object>
     </objects>
     <object>objects\obj_controller</object>
     <object>objects\obj_packet_burning</object>
