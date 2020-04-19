@@ -25,12 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Structure Variables
+            <string>/// Variables
 
-uplink = noone;
-downlink = noone;
-bandwidth = 1;
-root = noone;
+dropable = false;
+global.dropable_connection = noone;
 </string>
           </argument>
         </arguments>
@@ -51,10 +49,12 @@ root = noone;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Variables
+            <string>/// Structure Variables
 
-dropable = false;
-global.dropable_connection = noone;
+upstream = noone;
+downstream = noone;
+bandwidth = 1;
+root = noone;
 </string>
           </argument>
         </arguments>

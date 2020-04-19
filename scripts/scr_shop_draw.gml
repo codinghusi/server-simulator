@@ -1,4 +1,8 @@
 ///scr_shop_draw()
+
+draw_background(bgr_hud, 0, 0);
+
+
 draw_set_colour(c_white)
 
 draw_text(10, 565, "Item Description")
