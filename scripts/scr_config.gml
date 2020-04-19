@@ -19,5 +19,6 @@ global.devices = array(
     scr_device("3 Port Switch", "Cycles incoming packets to#all of its output connections", obj_device_switch, 0, 3),
     scr_device("Potato Pi", "Trusty credit card sized computer#powered by a diyed-potato battery", obj_device_server, 0, 0),
     scr_device("old Computer", "has seen better days but is still#perfectly able to run a webserver", obj_device_server, 1, 0),
-    scr_device("Serverstation+", "Serverstation Plus Edition#Powerfull consumer grade hardware", obj_device_server, 2, 0)
+    scr_device("Serverstation+", "Serverstation Plus Edition#Powerfull consumer grade hardware", obj_device_server, 2, 0),
+    scr_device("Queue", "Tired of packets overloading#your Server? This device FIFO-queues#Packets if the connected Server#is running at max power and#lets them out if capacity gets available", obj_device_queue, 0, 1)
 );

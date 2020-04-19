@@ -68,13 +68,14 @@
     <object>objects\obj_device</object>
     <object>objects\obj_packet</object>
     <object>objects\obj_connection</object>
+    <object>objects\obj_drag_device</object>
     <objects name="Devices">
       <object>objects\obj_device_firewall</object>
       <object>objects\obj_device_hub</object>
       <object>objects\obj_device_switch</object>
       <object>objects\obj_device_internet</object>
       <object>objects\obj_device_server</object>
-      <object>objects\obj_drag_device</object>
+      <object>objects\obj_device_queue</object>
     </objects>
     <object>objects\obj_controller</object>
     <object>objects\obj_packet_burning</object>
