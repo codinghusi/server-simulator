@@ -30,6 +30,7 @@
 uplink = noone;
 downlink = noone;
 bandwidth = 1;
+root = noone;
 </string>
           </argument>
         </arguments>
