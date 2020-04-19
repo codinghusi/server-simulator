@@ -39,7 +39,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>queue = ds_queue_create()
+            <string>/// Init
+
+queue = ds_queue_create()
+capacity = 10;
 </string>
           </argument>
         </arguments>
@@ -68,7 +71,7 @@ if (!ds_queue_empty(queue)){
     if (downlink != noone) {
         if (downlink.downlink != noone) {
             if (downlink.downlink.available){
-                scr_create_packet(false, downlink, ds_queue_dequeue(queue))
+                scr_create_packet(ds_queue_dequeue(queue), downlink)
             }
         }
     }
@@ -94,7 +97,7 @@ if (!ds_queue_empty(queue)){
           <argument>
             <kind>1</kind>
             <string>///Am I Overloaded?
-if (ds_queue_size(queue) &gt;= 10) {
+if (ds_queue_size(queue) &gt;= capacity) {
     available = false;
 } else {
     available = true;
@@ -122,14 +125,14 @@ if (ds_queue_size(queue) &gt;= 10) {
           <argument>
             <kind>1</kind>
             <string>///Enqueue incoming packet
-if inbox.outgoing{
-    scr_create_packet(true, uplink, inbox.task)
+if (inbox[packet.outgoing]) {
+    scr_create_packet(inbox, uplink)
 } else {
-    if (ds_queue_size(queue) &lt; 10) {
-        ds_queue_enqueue(queue,inbox.task)
+    if (ds_queue_size(queue) &lt; capacity) {
+        ds_queue_enqueue(queue, inbox)
     }
     else {
-        scr_burn_packet(x,y)
+        scr_burn_packet(x, y)
     }
 }
 </string>
