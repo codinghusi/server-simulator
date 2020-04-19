@@ -25,67 +25,15 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Debug
+            <string>/// Init
 
-global.debug = ds_map_create();
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Create internet
-
-var internet = scr_create_device(obj_device_internet, noone, 1);
-internet.x = x;
-internet.y = y;
-
-var connection = internet.downstreams[0];
-var firewall = scr_create_device(obj_device_firewall, connection, 1);
-
-connection = firewall.downstreams[0];
-var sw = scr_create_device(obj_device_switch, connection, 5);
-
-connection = sw.downstreams[0];
-var sw2 = scr_create_device(obj_device_switch, connection, 5);
-
-connection = sw.downstreams[1];
-var sw3 = scr_create_device(obj_device_switch, connection, 5);
-
-connection = sw2.downstreams[0];
-scr_create_device(obj_device_server, connection, 0);
-connection = sw2.downstreams[1];
-scr_create_device(obj_device_server, connection, 0);
-
-connection = sw3.downstreams[0];
-scr_create_device(obj_device_server, connection, 0);
-connection = sw3.downstreams[1];
-scr_create_device(obj_device_server, connection, 0);
-
-clear_debug();
-scr_position_devices(internet);
-
-show_debug_message("width: " + string(scr_device_width(sw)));
+dragging = true;
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="8" enumb="0">
+    <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -102,11 +50,15 @@ show_debug_message("width: " + string(scr_device_width(sw)));
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Debug
+            <string>/// Dragging
 
-for (var i = 0; i &lt; instance_count; ++i) {
-    var instance = instance_id[i];
-    draw_text(instance.x, instance.y, debug_get(instance));
+if (dragging) {
+    x = mouse_x;
+    y = mouse_y;
+    
+    if (mouse_check_button_released(mb_left)) {
+        dragging = false;
+    }
 }
 </string>
           </argument>

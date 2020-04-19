@@ -11,8 +11,8 @@ var count = scr_device_active_downstream_count(device);
 
 // width missing in calculation
 // width / count gives spacing
-show_debug_message(width);
-var xx = -floor(width / count);
+//var xx = -floor(width / count);// - width / 2;
+var xx = -width;
 
 for (var i = 0; i < length; ++i) {
     var downstream_connection = downstreams[i];
@@ -20,10 +20,9 @@ for (var i = 0; i < length; ++i) {
         continue;
     }
     var downstream_device = downstream_connection.downstream;
-    downstream_device.x = device.x + xx * (hor_width);
-    show_debug_message(string(device.y) + "{");
+    var device_width = scr_device_width(downstream_device);
+    downstream_device.x = device.x + (xx + device_width) / 2 * hor_width;
     downstream_device.y = device.y + ver_spacing;
     scr_position_devices(downstream_device);
-    show_debug_message("}" + string(device.y));
-    xx += scr_device_width(downstream_device) ;
+    xx += device_width * 2;
 }

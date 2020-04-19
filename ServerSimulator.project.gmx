@@ -38,6 +38,9 @@
     </scripts>
     <script>scripts\array.gml</script>
     <script>scripts\scr_config.gml</script>
+    <script>scripts\debug_instance.gml</script>
+    <script>scripts\debug_get.gml</script>
+    <script>scripts\clear_debug.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\obj_device</object>
@@ -51,6 +54,7 @@
       <object>objects\obj_device_server</object>
     </objects>
     <object>objects\obj_controller</object>
+    <object>objects\obj_drag_device</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_simulator</room>
