@@ -1,6 +1,6 @@
-///scr_device(name, description, object, subimage, downlink_count, additional_data)
+///scr_component(name, description, object, subimage, downlink_count, additional_data)
 
-enum device_struct {
+enum component_struct {
     name,
     description,
     object,

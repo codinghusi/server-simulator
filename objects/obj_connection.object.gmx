@@ -82,18 +82,18 @@ root = noone;
 /*dropable = false;
 
 if (uplink &amp;&amp; downlink &amp;&amp; (global.dropable_connection == noone || global.dropable_connection == id)) {
-    var device_instance = collision_line(uplink.x, uplink.y, downlink.x, downlink.y, obj_drag_device, false, true);
-    if (device_instance) {
-        var device = device_instance.device;
-        if (device[device_struct.downlink_count] || !downlink) {
+    var component_instance = collision_line(uplink.x, uplink.y, downlink.x, downlink.y, obj_drag_component, false, true);
+    if (component_instance) {
+        var component = component_instance.component;
+        if (component[component_struct.downlink_count] || !downlink) {
             dropable = true;
         }
         
         if (mouse_check_button_released(mb_left)) {
             if (dropable) {
-                scr_create_device(device, id);
+                scr_create_component(component, id);
             }
-            instance_destroy(device_instance);
+            instance_destroy(component_instance);
         }
         
         global.dropable_connection = id;

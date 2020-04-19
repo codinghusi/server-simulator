@@ -121,7 +121,7 @@ event_user(1);
             <kind>1</kind>
             <string>/// Test debug
 
-// var width = scr_device_width(self);
+// var width = scr_component_width(self);
 
 // draw_rectangle(x - 75 * width, y - 30, x + 75 * width, y + 30, true);
 

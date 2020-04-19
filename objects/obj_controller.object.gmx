@@ -72,8 +72,8 @@ global.debug = ds_map_create();
             <kind>1</kind>
             <string>/// Create internet
 
-var internet = scr_create_device(
-    scr_device("internet", "lösch mich bloß nicht", obj_device_internet, 0, 1),
+var internet = scr_create_component(
+    scr_component("internet", "lösch mich bloß nicht", obj_component_internet, 0, 1),
     noone
 );
 
@@ -81,31 +81,31 @@ internet.x = x;
 internet.y = y;
 
 var connection = internet.downlinks[| 0];
-var firewall = scr_create_device(global.devices[0], connection);
+var firewall = scr_create_component(global.components[0], connection);
 
 connection = firewall.downlinks[| 0];
-var sw = scr_create_device(global.devices[2], connection);
+var sw = scr_create_component(global.components[2], connection);
 
 connection = sw.downlinks[| 0];
-var sw2 = scr_create_device(global.devices[2], connection);
+var sw2 = scr_create_component(global.components[2], connection);
 
 connection = sw.downlinks[| 1];
-var sw3 = scr_create_device(global.devices[2], connection);
+var sw3 = scr_create_component(global.components[2], connection);
 
 connection = sw2.downlinks[| 0];
-scr_create_device(global.devices[3], connection);
+scr_create_component(global.components[3], connection);
 connection = sw2.downlinks[| 1];
-scr_create_device(global.devices[3], connection);
+scr_create_component(global.components[3], connection);
 connection = sw2.downlinks[| 2];
-scr_create_device(global.devices[3], connection);
+scr_create_component(global.components[3], connection);
 
 connection = sw3.downlinks[| 0];
-scr_create_device(global.devices[3], connection);
+scr_create_component(global.components[3], connection);
 
 clear_debug();
-scr_position_devices(internet);
+scr_position_components(internet);
 
-show_debug_message("width: " + string(scr_device_width(sw)));
+show_debug_message("width: " + string(scr_component_width(sw)));
 </string>
           </argument>
         </arguments>
@@ -270,10 +270,10 @@ view_hview[0] = room_height * zoom;
             <string>/// Shop Drag Drop
 
 if (mouse_check_button_pressed(mb_left)) {
-    var device = scr_shop_get_hovered_device();
+    var component = scr_shop_get_hovered_component();
     
-    if (is_array(device)) {
-        scr_drag_device(device);
+    if (is_array(component)) {
+        scr_drag_component(component);
     }
 }
 </string>

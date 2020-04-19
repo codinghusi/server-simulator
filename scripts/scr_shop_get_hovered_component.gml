@@ -1,10 +1,10 @@
-///scr_shop_get_hovered_device()
+///scr_shop_get_hovered_component()
 
-var length = array_length_1d(global.devices);
+var length = array_length_1d(global.components);
 var xx = 0;
 for (var i = 0; i < length; i++){
     if point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 395+xx, 595, 465+xx, 665) {
-        return global.devices[i];
+        return global.components[i];
     }
     xx += 80;
 }

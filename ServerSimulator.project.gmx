@@ -23,14 +23,14 @@
     <path>paths\path1</path>
   </paths>
   <scripts name="scripts">
-    <scripts name="Device">
-      <script>scripts\scr_create_device.gml</script>
-      <script>scripts\scr_device_width.gml</script>
-      <script>scripts\scr_position_devices.gml</script>
-      <script>scripts\scr_device_active_downlink_count.gml</script>
-      <script>scripts\scr_device.gml</script>
-      <script>scripts\scr_drag_device.gml</script>
-      <script>scripts\scr_device_active_downlinks.gml</script>
+    <scripts name="component">
+      <script>scripts\scr_create_component.gml</script>
+      <script>scripts\scr_component_width.gml</script>
+      <script>scripts\scr_position_components.gml</script>
+      <script>scripts\scr_component_active_downlink_count.gml</script>
+      <script>scripts\scr_component.gml</script>
+      <script>scripts\scr_drag_component.gml</script>
+      <script>scripts\scr_component_active_downlinks.gml</script>
     </scripts>
     <scripts name="Paket">
       <script>scripts\scr_create_packet.gml</script>
@@ -47,7 +47,7 @@
     </scripts>
     <script>scripts\array.gml</script>
     <script>scripts\scr_config.gml</script>
-    <script>scripts\scr_buy_device.gml</script>
+    <script>scripts\scr_buy_component.gml</script>
     <scripts name="Debug">
       <script>scripts\debug_get.gml</script>
       <script>scripts\debug_instance.gml</script>
@@ -61,21 +61,21 @@
     <scripts name="Shop">
       <script>scripts\scr_shop_init.gml</script>
       <script>scripts\scr_shop_draw.gml</script>
-      <script>scripts\scr_shop_get_hovered_device.gml</script>
+      <script>scripts\scr_shop_get_hovered_component.gml</script>
     </scripts>
   </scripts>
   <objects name="objects">
-    <object>objects\obj_device</object>
+    <object>objects\obj_component</object>
     <object>objects\obj_packet</object>
     <object>objects\obj_connection</object>
-    <object>objects\obj_drag_device</object>
-    <objects name="Devices">
-      <object>objects\obj_device_firewall</object>
-      <object>objects\obj_device_hub</object>
-      <object>objects\obj_device_switch</object>
-      <object>objects\obj_device_internet</object>
-      <object>objects\obj_device_server</object>
-      <object>objects\obj_device_queue</object>
+    <object>objects\obj_drag_component</object>
+    <objects name="components">
+      <object>objects\obj_component_firewall</object>
+      <object>objects\obj_component_hub</object>
+      <object>objects\obj_component_switch</object>
+      <object>objects\obj_component_internet</object>
+      <object>objects\obj_component_server</object>
+      <object>objects\obj_component_queue</object>
     </objects>
     <object>objects\obj_controller</object>
     <object>objects\obj_packet_burning</object>

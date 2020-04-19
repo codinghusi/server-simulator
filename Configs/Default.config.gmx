@@ -2,6 +2,7 @@
 <Config>
   <Options>
     <option_aborterrors>False</option_aborterrors>
+    <option_android_GPU_component>0</option_android_GPU_component>
     <option_android_GPU_device>0</option_android_GPU_device>
     <option_android_adcolony_ads>0</option_android_adcolony_ads>
     <option_android_advertising_enable>false</option_android_advertising_enable>
@@ -64,6 +65,7 @@
     <option_android_push_enable>0</option_android_push_enable>
     <option_android_push_id></option_android_push_id>
     <option_android_scale>-1</option_android_scale>
+    <option_android_set_component_id></option_android_set_component_id>
     <option_android_set_device_id></option_android_set_device_id>
     <option_android_sleep_margin>4</option_android_sleep_margin>
     <option_android_splash_png>Configs\Default\android\splash.png</option_android_splash_png>
@@ -72,6 +74,7 @@
     <option_android_target_sdk_version>23</option_android_target_sdk_version>
     <option_android_texture_page>1024</option_android_texture_page>
     <option_android_use_test_ads>false</option_android_use_test_ads>
+    <option_androidfire_GPU_component>0</option_androidfire_GPU_component>
     <option_androidfire_GPU_device>0</option_androidfire_GPU_device>
     <option_androidfire_adcolony_enable_V4VC>false</option_androidfire_adcolony_enable_V4VC>
     <option_androidfire_advertising_enable>false</option_androidfire_advertising_enable>
@@ -133,6 +136,7 @@
     <option_androidfire_push_enable>0</option_androidfire_push_enable>
     <option_androidfire_push_id></option_androidfire_push_id>
     <option_androidfire_scale>-1</option_androidfire_scale>
+    <option_androidfire_set_component_id></option_androidfire_set_component_id>
     <option_androidfire_set_device_id></option_androidfire_set_device_id>
     <option_androidfire_small_icon_png>Configs\Default\amazonfire\icons\small_icon.png</option_androidfire_small_icon_png>
     <option_androidfire_splash_png>Configs\Default\amazonfire\splash.png</option_androidfire_splash_png>
@@ -141,6 +145,7 @@
     <option_androidfire_target_sdk_version>23</option_androidfire_target_sdk_version>
     <option_androidfire_texture_page>1024</option_androidfire_texture_page>
     <option_androidfire_use_test_ads>false</option_androidfire_use_test_ads>
+    <option_androidtv_GPU_component>0</option_androidtv_GPU_component>
     <option_androidtv_GPU_device>0</option_androidtv_GPU_device>
     <option_androidtv_adcolony_enable_V4VC>false</option_androidtv_adcolony_enable_V4VC>
     <option_androidtv_advertising_enable>false</option_androidtv_advertising_enable>
@@ -196,6 +201,7 @@
     <option_androidtv_push_enable>0</option_androidtv_push_enable>
     <option_androidtv_push_id></option_androidtv_push_id>
     <option_androidtv_scale>-1</option_androidtv_scale>
+    <option_androidtv_set_component_id></option_androidtv_set_component_id>
     <option_androidtv_set_device_id></option_androidtv_set_device_id>
     <option_androidtv_small_icon_png>Configs\Default\androidtv\icons\small_icon.png</option_androidtv_small_icon_png>
     <option_androidtv_splash_png>Configs\Default\androidtv\splash.png</option_androidtv_splash_png>
@@ -270,6 +276,7 @@
     <option_ios_app_id></option_ios_app_id>
     <option_ios_build_version>0</option_ios_build_version>
     <option_ios_certificate>&lt; Press refresh to fetch certificate list from Mac&gt;</option_ios_certificate>
+    <option_ios_component_type>3</option_ios_component_type>
     <option_ios_device_type>3</option_ios_device_type>
     <option_ios_display_name>ServerSimulator</option_ios_display_name>
     <option_ios_facebook_app_display_name></option_ios_facebook_app_display_name>
@@ -335,6 +342,7 @@
     <option_ios_provisioning></option_ios_provisioning>
     <option_ios_push_enable>0</option_ios_push_enable>
     <option_ios_scale>-1</option_ios_scale>
+    <option_ios_set_component_id></option_ios_set_component_id>
     <option_ios_set_device_id></option_ios_set_device_id>
     <option_ios_splash_png>Configs\Default\ios\splash.png</option_ios_splash_png>
     <option_ios_splash_time>0</option_ios_splash_time>
