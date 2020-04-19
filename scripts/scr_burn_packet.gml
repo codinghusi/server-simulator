@@ -1,3 +1,3 @@
 ///scr_burn_packet(x, y)
 
-show_debug_message("TODO: Burn package");
+instance_create(argument0, argument1, obj_packet_burning)

@@ -14,6 +14,7 @@
     <sprite>sprites\spr_firewall</sprite>
     <sprite>sprites\spr_hub</sprite>
     <sprite>sprites\spr_queue</sprite>
+    <sprite>sprites\spr_packet_burn</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
@@ -76,6 +77,7 @@
       <object>objects\obj_drag_device</object>
     </objects>
     <object>objects\obj_controller</object>
+    <object>objects\obj_packet_burning</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_simulator</room>
