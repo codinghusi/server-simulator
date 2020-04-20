@@ -185,29 +185,9 @@ scr_shop_draw(route);
             <string>/// Back button
 
 if (ds_stack_size(routes) &gt; 1) {
-    var text = "Back";
-    
-    var xx = 964;
-    var yy = 555;
-    var padding = 10;
-    var w = string_width(text) + padding * 2;
-    var h = string_height(text) + padding * 2;
-    
-    draw_set_colour(c_white);
-    draw_rectangle(xx, yy, xx + w, yy + h, false);
-    
-    draw_set_colour(c_black);
-    draw_text(xx + padding, yy + padding, text);
-    
-    // Click and Hover Event (should be in Step)
-    var hovering = point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), xx, yy, xx + w, yy + h);
-    if (hovering) {
-        draw_set_colour(c_gray);
-        draw_rectangle(xx, yy, xx + w, yy + h, true);
-        
-        if (mouse_check_button_pressed(mb_left)) {
-            scr_shop_back();
-        }
+    var pressed = scr_draw_button_text(964, 555, "Back", c_white, c_gray);
+    if (pressed) {
+        scr_shop_back();
     }
 }
 </string>

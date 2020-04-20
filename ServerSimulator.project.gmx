@@ -17,6 +17,7 @@
     <sprite>sprites\spr_component_card</sprite>
     <sprite>sprites\spr_tooltip_bottom</sprite>
     <sprite>sprites\spr_tooltip_top</sprite>
+    <sprite>sprites\spr_button_remove</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bgr_hud</background>
@@ -33,9 +34,12 @@
       <script>scripts\scr_component_width.gml</script>
       <script>scripts\scr_position_components.gml</script>
       <script>scripts\scr_component_active_downlink_count.gml</script>
+      <script>scripts\scr_component_used_downlink_count.gml</script>
       <script>scripts\scr_component.gml</script>
       <script>scripts\scr_drag_component.gml</script>
       <script>scripts\scr_component_active_downlinks.gml</script>
+      <script>scripts\scr_component_used_downlinks.gml</script>
+      <script>scripts\scr_remove_component.gml</script>
     </scripts>
     <scripts name="Paket">
       <script>scripts\scr_create_packet.gml</script>
@@ -83,6 +87,9 @@
     <script>scripts\scr_component_occupy.gml</script>
     <script>scripts\scr_thread.gml</script>
     <script>scripts\scr_component_process.gml</script>
+    <script>scripts\scr_draw_button_text.gml</script>
+    <script>scripts\scr_draw_button_sprite.gml</script>
+    <script>scripts\scr_hovering_ui.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\obj_packet</object>

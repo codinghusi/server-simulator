@@ -116,7 +116,7 @@ if (nearest_instance &amp;&amp; nearest_distance &lt; 150) {
                 dropable = true;
                 dropping_instance = other;
                 
-                if (mouse_check_button_released(mb_left)) {
+                if (mouse_check_button_released(mb_left) &amp;&amp; !scr_hovering_ui()) {
                     scr_create_component(component, id);
                     dropable = false;
                 }

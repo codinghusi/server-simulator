@@ -182,7 +182,7 @@ zoom = 1;
             <kind>1</kind>
             <string>/// Unselect components
 
-if (mouse_check_button_pressed(mb_left)) {
+if (mouse_check_button_pressed(mb_left) &amp;&amp; !scr_hovering_ui()) {
     global.selected_component = noone;
 }
 </string>
@@ -347,6 +347,39 @@ if (global.selected_component != noone) {
             <kind>1</kind>
             <string>///News
 scr_news_draw()
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Delete Component
+
+if (global.selected_component) {   
+    var comp = global.selected_component;
+    var removable = scr_component_used_downlink_count(comp) &lt;= 1;
+    var colour, pressed;
+    pressed = scr_draw_button_sprite(288, 672, spr_button_remove, !removable);
+    
+    if (pressed &amp;&amp; removable) {
+        scr_remove_component(comp);
+        global.selected_component = noone;
+    }
+}
 </string>
           </argument>
         </arguments>
