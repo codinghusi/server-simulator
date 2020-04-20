@@ -69,9 +69,11 @@ capacity = 10;
 if (!ds_queue_empty(queue)){
     var downlink = downlinks[| 0];
     if (downlink != noone) {
-        if (downlink.downlink != noone) {
-            if (downlink.downlink.available){
-                scr_create_packet(ds_queue_dequeue(queue), downlink)
+        if (downlink.empty) {
+            if (downlink.downlink != noone) {
+                if (downlink.downlink.available){
+                    scr_create_packet(ds_queue_dequeue(queue), downlink)
+                }
             }
         }
     }

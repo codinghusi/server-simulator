@@ -10,8 +10,8 @@ x1 = uplink.x;
 y1 = uplink.y;
 
 if (!downlink) {
-    x2 = x1;
-    y2 = y1 + 20;    
+    x2 = x1 + 50;
+    y2 = y1;
 } else {
     x2 = downlink.x;
     y2 = downlink.y;

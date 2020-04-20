@@ -7,6 +7,7 @@ enum packet_task {
 }
 
 global.selected_component = noone;
+global.process_time = room_speed * 0.5;
 
 global.packet_tasks = array(
     scr_task("delete", 1),

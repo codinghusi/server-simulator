@@ -66,15 +66,16 @@
     <scripts name="Shop">
       <script>scripts\scr_shop_init.gml</script>
       <script>scripts\scr_shop_draw.gml</script>
+      <script>scripts\scr_shop_draw_items.gml</script>
       <script>scripts\scr_shop_get_hovered_item.gml</script>
       <script>scripts\scr_category.gml</script>
       <script>scripts\scr_shop_item.gml</script>
       <script>scripts\scr_component_to_item.gml</script>
       <script>scripts\scr_category_to_item.gml</script>
-      <script>scripts\scr_shop_draw_items.gml</script>
       <script>scripts\scr_categories_to_items.gml</script>
       <script>scripts\scr_components_to_items.gml</script>
       <script>scripts\scr_shop_route.gml</script>
+      <script>scripts\scr_draw_tooltip.gml</script>
     </scripts>
     <script>scripts\scr_find_category.gml</script>
     <script>scripts\scr_shop_show_category_of_component.gml</script>
