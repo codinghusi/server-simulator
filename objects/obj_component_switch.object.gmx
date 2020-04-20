@@ -48,7 +48,7 @@ processing_packet = noone;
         </arguments>
       </action>
     </event>
-    <event eventtype="2" enumb="0">
+    <event eventtype="7" enumb="13">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -67,8 +67,6 @@ processing_packet = noone;
             <kind>1</kind>
             <string>/// Round robin cycle packets to outputs
 
-slots_used = false;
-
 if (ds_list_empty(downlinks)) {
     scr_burn_packet(x,y);
     exit;
@@ -85,7 +83,7 @@ for (var i = 0; i &lt; length; ++i) {
     var downlink = downlinks[| last_out_index];
     if (downlink.downlink) {
         if (downlink.downlink.available) {
-            scr_create_packet(processing_packet, downlink);
+            scr_create_packet(processed_packet, downlink);
             exit;
         }
     }
@@ -96,6 +94,22 @@ exit;
 </string>
           </argument>
         </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="12">
+      <action>
+        <libid>1</libid>
+        <id>604</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_inherited</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
       </action>
     </event>
     <event eventtype="7" enumb="11">
@@ -117,11 +131,7 @@ exit;
             <kind>1</kind>
             <string>/// Wait for processing
 
-scr_component_occupy(self);
-
-processing_packet = inbox;
-
-alarm[0] = global.process_time;
+scr_component_process(self, scr_thread(inbox, 1 * global.process_time));
 </string>
           </argument>
         </arguments>

@@ -78,7 +78,6 @@ inbox = noone;
           <argument>
             <kind>1</kind>
             <string>/// Init
-
 initialized = false;
 max_process_time = noone;
 </string>
@@ -146,6 +145,44 @@ if (available) {
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Process threads
+
+var length = array_length_1d(threads)
+for(var i = 0; i &lt; length; i++){
+    var thread_tmp = threads[i]
+    if (is_array(thread_tmp)) {
+        thread_tmp[@ thread.remaining_time] -= 1;
+        if (thread_tmp[thread.remaining_time] &lt;= 0) {
+            slots_used--;
+            var packet_tmp = thread_tmp[thread.packet];
+            processed_packet = packet_tmp;
+            threads[i] = noone;
+            event_user(3);
+        }
+    }
+}
+
+
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="6" enumb="4">
       <action>
@@ -166,8 +203,36 @@ if (available) {
             <kind>1</kind>
             <string>/// Shop
 
-scr_shop_show_category_of_component(data);
 global.selected_component = id;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="12">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Init
+
+var size = data[component_struct.slots_available];
+threads = array_create(size);
+for(var i = 0; i &lt; size; i++) {
+    threads[i] = noone;
+}
 </string>
           </argument>
         </arguments>

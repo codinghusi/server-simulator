@@ -274,8 +274,57 @@ view_hview[0] = room_height * zoom;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///News
-scr_news_draw()
+            <string>///Selected Component Information
+draw_text(10, 565, "Item Description")
+
+if (global.selected_component != noone) {
+    var comp = global.selected_component;
+    
+    var h = 20;
+    var yy = 585;
+    
+    // Name
+    draw_set_colour(c_white);
+    draw_text(10, yy, "Name: " + comp.data[component_struct.name]);
+    yy += h;
+    
+    // Specific
+    switch(comp.object_index) {
+        case obj_component_switch:
+        case obj_component_firewall:
+        case obj_component_server:
+            // Threads
+            draw_set_colour(c_white);
+            draw_text(10, yy, "Threads: " + string(comp.slots_used) + "/" + string(comp.data[component_struct.slots_available]))
+            yy += h;
+            
+            draw_set_colour(c_black);
+            for (var i = 0; i &lt; array_length_1d(comp.threads); i++){
+                var tmp = comp.threads[i];
+                var remaining_time;
+                var time;
+                 if (is_array(tmp)) {
+                    remaining_time = tmp[thread.remaining_time];
+                    time = tmp[thread.time]
+                } else {
+                    remaining_time = 0;
+                    time = 1;
+                }
+                
+                draw_rectangle(15+i*16, yy, 20+i*16, yy + remaining_time/time * 20, false)
+            }
+            break;
+        case obj_component_queue:
+            draw_set_colour(c_white);
+            draw_text(10, yy, "Enqueued: " + string(ds_queue_size(comp.queue)) + "/" + string(comp.capacity));
+            yy += h;
+            break;
+    }
+    
+    
+    
+    
+}
 </string>
           </argument>
         </arguments>
@@ -296,26 +345,8 @@ scr_news_draw()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Selected Component Information
-draw_text(10, 565, "Item Description")
-
-if (global.selected_component != noone) {
-    var comp = global.selected_component;
-    draw_text(10,585,"Name: " + comp.data[component_struct.name])
-    //draw_text(10,605,"Threads: " + string(comp.slots_used) + "/" + string(comp.data[component_struct.slots_available]))
-    switch(comp.object_index) {
-        case obj_component_server:
-            draw_text(10,605,"Threads: " + string(comp.slots_used) + "/" + string(comp.data[component_struct.slots_available]))
-            for (var i = 0; i &lt; array_length_1d(comp.threads); i++){
-                var tmp = comp.threads[i];
-                draw_rectangle(15+i*16, 625, 20+i*16, 625 + tmp[thread.remaining_time]/5, false)
-            }
-            break;
-        case obj_component_queue:
-            draw_text(10,605,"Enqueued: " + string(ds_queue_size(comp.queue)) + "/" + string(comp.capacity))
-            break;
-    }
-}
+            <string>///News
+scr_news_draw()
 </string>
           </argument>
         </arguments>

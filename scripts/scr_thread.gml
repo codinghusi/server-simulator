@@ -2,7 +2,8 @@
 
 enum thread {
     packet,
-    remaining_time
+    remaining_time,
+    time
 }
 
-return array(argument0, argument1);
+return array(argument0, argument1, argument1);

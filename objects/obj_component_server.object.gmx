@@ -47,7 +47,33 @@ image_speed = 0;
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="0">
+    <event eventtype="7" enumb="13">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Thread finished
+
+processed_packet[packet.outgoing] = true;
+scr_create_packet(processed_packet, uplink);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="12">
       <action>
         <libid>1</libid>
         <id>604</id>
@@ -78,55 +104,12 @@ image_speed = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Process all packets in paralell
-
-
-
-var length = array_length_1d(threads)
-for(var i = 0; i &lt; length; i++){
-    var thread_tmp = threads[i]
-    if (thread_tmp[thread.remaining_time] &gt; 0) {
-        thread_tmp[@ thread.remaining_time] -= 1;
-        if (thread_tmp[thread.remaining_time]) == 0 {
-            slots_used--;
-            var packet_tmp = thread_tmp[thread.packet];
-            packet_tmp[packet.outgoing] = true;
-            scr_create_packet(packet_tmp, uplink);
-        }
-    }
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="12">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
             <string>/// Init
 
 image_index = data[component_struct.subimage];
 max_process_time = global.packet_tasks[packet_task.webpage];
 
-var size = data[component_struct.slots_available]
-threads = array_create(size)
-for(var i = 0; i &lt; size; i++) {
-    threads[i] = scr_thread(noone, 0)
-}
+
 </string>
           </argument>
         </arguments>
@@ -151,21 +134,15 @@ for(var i = 0; i &lt; size; i++) {
             <kind>1</kind>
             <string>/// Process
 
-slots_used++;
-
 var task = inbox[packet.task];
 var task_info = global.packet_tasks[task];
 
-var time = task_info[task.process_time]*global.process_time;
+var time = task_info[task.process_time] * global.process_time;
 
-var length = array_length_1d(threads);
-for(var i = 0; i &lt; length; i++) {
-    var thread_tmp = threads[i]
-    if (thread_tmp[thread.remaining_time] &lt;= 0){
-        threads[i] = scr_thread(inbox, time)
-        break;
-    }
-}
+scr_component_process(
+    self,
+    scr_thread(inbox, time)
+);
 </string>
           </argument>
         </arguments>
