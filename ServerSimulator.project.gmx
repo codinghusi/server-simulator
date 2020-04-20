@@ -100,6 +100,7 @@
     <script>scripts\scr_reward_packet.gml</script>
     <script>scripts\scr_punish_packet.gml</script>
     <script>scripts\scr_packet_timeouted.gml</script>
+    <script>scripts\scr_gameover.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\obj_packet</object>

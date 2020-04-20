@@ -65,29 +65,31 @@ alarm[0] = DAY_DURATION * room_speed
 
 var message = "";
 var total = 0;
-var amount;
-amount = instance_number(obj_component_server)
-if (amount &gt; 0) {
-    message += "#Servers: " + string(amount) + "* TODO"
-    total += amount //* component.cost
-}
-amount = instance_number(obj_component_switch)
-if (amount &gt; 0) {
-    message += "#Switches: " + string(amount) + "* TODO"
-    total += amount //* component.cost
-}
-amount = instance_number(obj_component_firewall)
-if (amount &gt; 0) {
-    message += "#Firewalls: " + string(amount) + "* TODO"
-    total += amount //* component.cost
-}
-var amount = instance_number(obj_component_queue)
-if (amount &gt; 0) {
-    message += "#Queues: " + string(amount) + "* TODO"
-    total += amount //* component.cost
+var amount = 0;
+
+var pname = "";
+
+with(obj_component){
+    total += data[component_struct.power_consumtion] * global.power_multiplicator
+    
+    if (pname != data[component_struct.name] &amp;&amp; pname != ""){
+        if (amount != 1){
+            message += "*" + string(amount)
+        }
+        amount = 0
+    }
+    if (pname != data[component_struct.name])
+        message += "#" + data[component_struct.name] + ": " + string(data[component_struct.power_consumtion] * global.power_multiplicator)+"$"
+    amount++    
+    pname = data[component_struct.name]
 }
 
-message += "#Total: " + string(total)
+message += "#----------#Total: " + string(total)
+
+global.money -= total;
+if (global.money &lt; 0){
+    scr_gameover();
+}
 
 with(obj_controller) scr_news_post("Daily Costs", message)
 </string>

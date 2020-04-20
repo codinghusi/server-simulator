@@ -54,7 +54,6 @@ component.data = data;
 // Position all components underneath and this one
 if (connection) {
     scr_position_components(root);
-    show_debug_message("updating tree");
 }
 
 // Init

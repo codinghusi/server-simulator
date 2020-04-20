@@ -102,8 +102,6 @@ scr_create_component(global.components_server[0], connection);
 
 clear_debug();
 scr_position_components(internet);
-
-show_debug_message("width: " + string(scr_component_width(sw)));
 </string>
           </argument>
         </arguments>

@@ -8,7 +8,6 @@ var used_downlinks = scr_component_used_downlinks(component);
 var used_count = ds_list_size(used_downlinks);
 
 if (used_count > 1) {
-    show_debug_message("ERROR: can't remove: too many downlinks");
     return false;
 }
 

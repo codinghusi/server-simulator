@@ -21,6 +21,8 @@ yy += h;
 // Daily Cost
 var percent = alarm[0] / (DAY_DURATION * room_speed)
 
+draw_rectangle(1055, 30, 1277, 50, true)
+draw_rectangle(1055, 30, lerp(1055, 1277, percent), 50, false)
 draw_set_colour(c_black)
 draw_text(xx, yy, "daily costs in " + string(percent*DAY_DURATION));
 yy += h;
