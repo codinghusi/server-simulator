@@ -106,7 +106,7 @@ global.components_server = array(
     scr_component(
         "Serverstation+",
         "Serverstation Plus Edition#Powerfull consumer grade hardware",
-        obj_component_server, 2,
+        obj_component_server, 3,
         0, 8,
         2,
         300,

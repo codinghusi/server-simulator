@@ -96,8 +96,6 @@ connection = sw2.downlinks[| 0];
 scr_create_component(global.components_server[0], connection);
 connection = sw2.downlinks[| 1];
 scr_create_component(global.components_server[0], connection);
-connection = sw2.downlinks[| 2];
-scr_create_component(global.components_server[0], connection);
 
 connection = sw3.downlinks[| 0];
 scr_create_component(global.components_server[0], connection);
@@ -373,6 +371,13 @@ if (global.selected_component) {
     var comp = global.selected_component;
     var removable = scr_component_used_downlink_count(comp) &lt;= 1;
     var colour, pressed;
+    
+    if (removable) {
+        if (comp.object_index == obj_component_internet) {
+            removable = false;
+        }
+    }
+    
     pressed = scr_draw_button_sprite(288, 672, spr_button_remove, !removable);
     
     if (pressed &amp;&amp; removable) {
