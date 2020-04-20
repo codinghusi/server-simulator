@@ -81,6 +81,7 @@
     </scripts>
     <script>scripts\scr_find_category.gml</script>
     <script>scripts\scr_component_occupy.gml</script>
+    <script>scripts\scr_thread.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\obj_packet</object>

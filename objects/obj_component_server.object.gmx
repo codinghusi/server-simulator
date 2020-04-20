@@ -47,7 +47,21 @@ image_speed = 0;
         </arguments>
       </action>
     </event>
-    <event eventtype="2" enumb="0">
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>604</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_inherited</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -64,11 +78,19 @@ image_speed = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Send back
-
-slots_used--;
-inbox[packet.outgoing] = true;
-scr_create_packet(inbox, uplink);
+            <string>var length = array_length_1d(threads)
+for(var i = 0; i &lt; length; i++){
+    var thread_tmp = threads[i]
+    if (thread_tmp[thread.remaining_time] &gt; 0){
+        thread_tmp[thread.remaining_time]--
+        if (thread_tmp[thread.remaining_time]) == 0 {
+            slots_used--;
+            var packet_tmp = thread_tmp[thread.packet];
+            packet_tmp[packet.outgoing] = true;
+            scr_create_packet(packet_tmp, uplink);
+        }
+    }
+}
 </string>
           </argument>
         </arguments>
@@ -95,6 +117,12 @@ scr_create_packet(inbox, uplink);
 
 image_index = data[component_struct.subimage];
 max_process_time = global.packet_tasks[packet_task.webpage];
+
+var size = data[component_struct.slots_available]
+threads = array_create(size)
+for(var i = 0; i &lt; size; i++) {
+    threads[i] = scr_thread(noone, 0)
+}
 </string>
           </argument>
         </arguments>
@@ -124,9 +152,16 @@ slots_used++;
 var task = inbox[packet.task];
 var task_info = global.packet_tasks[task];
 
-var time = task_info[task.process_time];
+var time = task_info[task.process_time]*global.process_time;
 
-alarm[0] = global.process_time * time;
+var length = array_length_1d(threads);
+for(var i = 0; i &lt; length; i++) {
+    var thread_tmp = threads[i]
+    if (thread_tmp[thread.remaining_time] &lt;= 0){
+        threads[i] = scr_thread(inbox, time)
+        exit
+    }
+}
 </string>
           </argument>
         </arguments>
