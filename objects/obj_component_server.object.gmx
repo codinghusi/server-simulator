@@ -40,9 +40,6 @@
           <argument>
             <kind>1</kind>
             <string>/// Init
-
-image_speed = 0;
-
 useless_check = true;
 </string>
           </argument>

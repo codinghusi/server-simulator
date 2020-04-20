@@ -78,6 +78,8 @@ inbox = noone;
           <argument>
             <kind>1</kind>
             <string>/// Init
+image_speed = 0;
+
 initialized = false;
 max_process_time = noone;
 useless_check = false;

@@ -22,9 +22,25 @@ global.components_firewall = array(
         "Filters incoming Packets based#on their target port",
         obj_component_firewall, 0,
         1, 1,
-        85,
+        1,
         100,
-        1),
+        85),
+    scr_component(
+        "Advanced Firewall",
+        "Filters incoming Packets based#on their target ip and port",
+        obj_component_firewall, 1,
+        1, 1,
+        1.6,
+        180,
+        100),
+    scr_component(
+        "Professional Firewall",
+        "Filters incoming Packets based#on their target ip and port",
+        obj_component_firewall, 2,
+        1, 1,
+        3,
+        300,
+        150),
 );
 
 global.components_splitter = array(
@@ -40,10 +56,26 @@ global.components_splitter = array(
         "3 Port Switch",
         "Cycles incoming packets to#all of its output connections",
         obj_component_switch, 0,
-        3, 1,
+        2, 1,
         1,
+        45,
+        15),
+    scr_component(
+        "4 Port Switch",
+        "Cycles incoming packets to#all of its output connections",
+        obj_component_switch, 1,
+        3, 1,
+        2,
         175,
         25),
+    scr_component(
+        "6 Port Switch",
+        "Cycles incoming packets to#all of its output connections",
+        obj_component_switch, 2,
+        3, 1,
+        5,
+        400,
+        150),
 );
 
 global.components_server = array(
@@ -60,9 +92,17 @@ global.components_server = array(
         "has seen better days but is still#perfectly able to run a webserver",
         obj_component_server, 1,
         0, 2,
-        1,
+        1.3,
         75,
         300),
+    scr_component(
+        "Serverstation",
+        "Serverstation#Midrange consumer grade hardware",
+        obj_component_server, 2,
+        0, 4,
+        2,
+        200,
+        200),
     scr_component(
         "Serverstation+",
         "Serverstation Plus Edition#Powerfull consumer grade hardware",
@@ -86,8 +126,8 @@ global.components_other = array(
 
 
 global.shop_categories = array(
-    scr_category("Firewall", spr_firewall, 0, global.components_firewall),
-    scr_category("Splitter", spr_hub, 0, global.components_splitter),
-    scr_category("Server", spr_server, 2, global.components_server),
-    scr_category("Other", spr_queue, 0, global.components_other),
+    scr_category("Firewall", spr_category_firewall, 0, global.components_firewall),
+    scr_category("Splitter", spr_category_switch, 0, global.components_splitter),
+    scr_category("Server", spr_category_server, 2, global.components_server),
+    scr_category("Other", spr_category_queue, 0, global.components_other),
 );
