@@ -381,6 +381,7 @@ if (global.selected_component) {
     pressed = scr_draw_button_sprite(288, 672, spr_button_remove, !removable);
     
     if (pressed &amp;&amp; removable) {
+        scr_sell_component(comp.data);
         scr_remove_component(comp);
         global.selected_component = noone;
     }

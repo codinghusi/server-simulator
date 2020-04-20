@@ -6,6 +6,8 @@ var item = scr_shop_item(
     cat[category.name],
     cat[category.sprite],
     cat[category.subimage],
+    cat[category.name],
+    0,
     cat
 );
 

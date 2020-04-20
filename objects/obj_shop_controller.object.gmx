@@ -129,8 +129,10 @@ if (mouse_check_button_pressed(mb_left)) {
             ));
         }
         else if (type == shop_type.component) {
-            if (is_array(data)) {
-                scr_drag_component(data);
+            if (scr_can_buy_item(item)) {
+                if (is_array(data)) {
+                    scr_drag_component(data);
+                }
             }
         }
     }
