@@ -81,7 +81,7 @@ for (var i = 0; i &lt; length; ++i) {
         scr_create_packet(inbox, connection);
     } else {
         scr_create_packet(
-            scr_packet(false, packet_task.delete),
+            scr_packet(false, inbox[packet.task], true),
             connection
         );
     }

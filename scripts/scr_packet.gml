@@ -1,8 +1,9 @@
-///scr_packet(outgoing, task)
+///scr_packet(outgoing, task, useless)
 
 enum packet {
     outgoing,
-    task
+    task,
+    useless
 }
 
-return array(argument0, argument1);
+return array(argument0, argument1, argument2);

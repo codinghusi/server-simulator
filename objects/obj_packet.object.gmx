@@ -144,16 +144,17 @@ if (data[packet.outgoing]) {
             <string>/// Apperance
 visible = true;
 
-switch(data[packet.task]) {
-    case packet_task.webpage:
-        image_index = 0;
-        break;
-    case packet_task.ping:
-        image_index = 1;
-        break;
-    case packet_task.delete:
-        image_index = 2;
-        break;
+if (data[packet.useless]) {
+    image_index = 2;
+} else {
+    switch(data[packet.task]) {
+        case packet_task.webpage:
+            image_index = 0;
+            break;
+        case packet_task.ping:
+            image_index = 1;
+            break;
+    }
 }
 </string>
           </argument>

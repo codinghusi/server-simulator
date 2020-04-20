@@ -134,7 +134,7 @@ max_process_time = 1;
             <kind>1</kind>
             <string>/// Inbox
 
-scr_component_process(self, scr_thread(inbox, 1 * global.process_time));
+scr_component_process(self, scr_thread(inbox, 1));
 </string>
           </argument>
         </arguments>

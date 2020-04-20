@@ -42,6 +42,8 @@
             <string>/// Init
 
 image_speed = 0;
+
+useless_check = true;
 </string>
           </argument>
         </arguments>
@@ -166,7 +168,7 @@ max_process_time = packet_task[task.process_time];
 var task = inbox[packet.task];
 var task_info = global.packet_tasks[task];
 
-var time = task_info[task.process_time] * global.process_time;
+var time = task_info[task.process_time];
 
 scr_component_process(
     self,

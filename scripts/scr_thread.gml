@@ -1,4 +1,4 @@
-///scr_thread(packet, remaining_time)
+///scr_thread(packet, process_time)
 
 enum thread {
     packet,

@@ -42,7 +42,8 @@
             <string>///Round robin cycle init
 last_out_index = 0;
 
-processing_packet = noone;
+useless_check = true;
+
 </string>
           </argument>
         </arguments>
@@ -131,7 +132,7 @@ exit;
             <kind>1</kind>
             <string>/// Wait for processing
 
-scr_component_process(self, scr_thread(inbox, 1 * global.process_time));
+scr_component_process(self, scr_thread(inbox, 1));
 </string>
           </argument>
         </arguments>

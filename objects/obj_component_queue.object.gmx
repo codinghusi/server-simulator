@@ -68,7 +68,7 @@ capacity = 0;
             <string>/// Send packet
 
 scr_create_packet(ds_queue_dequeue(queue), downlinks[| 0]);
-alarm[0] = global.process_time;
+alarm[0] = process_time;
 </string>
           </argument>
         </arguments>
