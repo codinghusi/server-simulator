@@ -23,6 +23,8 @@
     <path>paths\path1</path>
   </paths>
   <scripts name="scripts">
+    <script>scripts\map.gml</script>
+    <script>scripts\foreach.gml</script>
     <scripts name="Component">
       <script>scripts\scr_create_component.gml</script>
       <script>scripts\scr_component_width.gml</script>
@@ -61,8 +63,18 @@
     <scripts name="Shop">
       <script>scripts\scr_shop_init.gml</script>
       <script>scripts\scr_shop_draw.gml</script>
-      <script>scripts\scr_shop_get_hovered_component.gml</script>
+      <script>scripts\scr_shop_get_hovered_item.gml</script>
+      <script>scripts\scr_category.gml</script>
+      <script>scripts\scr_shop_item.gml</script>
+      <script>scripts\scr_component_to_item.gml</script>
+      <script>scripts\scr_category_to_item.gml</script>
+      <script>scripts\scr_shop_draw_items.gml</script>
+      <script>scripts\scr_categories_to_items.gml</script>
+      <script>scripts\scr_components_to_items.gml</script>
+      <script>scripts\scr_shop_route.gml</script>
     </scripts>
+    <script>scripts\scr_find_category.gml</script>
+    <script>scripts\scr_shop_show_category_of_component.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\obj_packet</object>
@@ -79,6 +91,7 @@
     </objects>
     <object>objects\obj_controller</object>
     <object>objects\obj_packet_burning</object>
+    <object>objects\obj_shop_controller</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_simulator</room>

@@ -81,26 +81,26 @@ internet.x = x;
 internet.y = y;
 
 var connection = internet.downlinks[| 0];
-var firewall = scr_create_component(global.components[0], connection);
+var firewall = scr_create_component(global.components_firewall[0], connection);
 
 connection = firewall.downlinks[| 0];
-var sw = scr_create_component(global.components[2], connection);
+var sw = scr_create_component(global.components_splitter[1], connection);
 
 connection = sw.downlinks[| 0];
-var sw2 = scr_create_component(global.components[2], connection);
+var sw2 = scr_create_component(global.components_splitter[1], connection);
 
 connection = sw.downlinks[| 1];
-var sw3 = scr_create_component(global.components[2], connection);
+var sw3 = scr_create_component(global.components_splitter[1], connection);
 
 connection = sw2.downlinks[| 0];
-scr_create_component(global.components[3], connection);
+scr_create_component(global.components_server[0], connection);
 connection = sw2.downlinks[| 1];
-scr_create_component(global.components[3], connection);
+scr_create_component(global.components_server[0], connection);
 connection = sw2.downlinks[| 2];
-scr_create_component(global.components[3], connection);
+scr_create_component(global.components_server[0], connection);
 
 connection = sw3.downlinks[| 0];
-scr_create_component(global.components[3], connection);
+scr_create_component(global.components_server[0], connection);
 
 clear_debug();
 scr_position_components(internet);
@@ -131,28 +131,6 @@ scr_news_init()
 scr_news_post("News", "bla bla bla")
 scr_news_post("&lt;XML 3rr0r&gt;", "Help! Ich stecke in der#Nachrichtenzeile fest!")
 scr_news_post("News2", "blub")
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Shop
-scr_shop_init()
 </string>
           </argument>
         </arguments>
@@ -251,59 +229,8 @@ view_hview[0] = room_height * zoom;
           </argument>
         </arguments>
       </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Shop Drag Drop
-
-if (mouse_check_button_pressed(mb_left)) {
-    var component = scr_shop_get_hovered_component();
-    
-    if (is_array(component)) {
-        scr_drag_component(component);
-    }
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
     </event>
     <event eventtype="8" enumb="64">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Shop
-scr_shop_draw()
-</string>
-          </argument>
-        </arguments>
-      </action>
       <action>
         <libid>1</libid>
         <id>603</id>

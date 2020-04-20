@@ -25,43 +25,23 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Structure Variables
+            <string>///Shop
+scr_shop_init();
 
-uplink = noone;
-downlinks = 0;
-data = undefined;
+routes = ds_stack_create();
 
-// default
-available = true;
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Event Variables
+var route = scr_shop_route(
+    shop_type.category,
+    scr_categories_to_items(global.shop_categories)
+);
 
-inbox = noone;
+ds_stack_push(routes, route);
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="6" enumb="4">
+    <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -78,56 +58,35 @@ inbox = noone;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Shop
+            <string>/// Shop Drag Drop and clicking
 
-scr_shop_show_category_of_component(data);
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="10">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Inbox
-
-// Variable 'inbox' got set
-
-if (!available) {
-    scr_burn_packet(x, y);
-    exit;
-}
-
-if (inbox[packet.outgoing]) {
-    if (uplink) {
-        scr_create_packet(inbox, uplink);
-    } else {
-        scr_burn_packet(x, y); // TODO: Don't burn
+if (mouse_check_button_pressed(mb_left)) {
+    var route = ds_stack_top(routes);
+    var item = scr_shop_get_hovered_item(route[shop_route.items]);
+    var type = route[shop_route.type];
+    
+    if (is_array(item)) {
+        var data = item[shop_item.additional_data];
+        
+        if (type == shop_type.category) {
+            ds_stack_push(routes, scr_shop_route(
+                shop_type.component,
+                scr_components_to_items(data[category.components])
+            ));
+        }
+        else if (type == shop_type.component) {
+            if (is_array(data)) {
+                scr_drag_component(data);
+            }
+        }
     }
-    exit;
 }
-
-event_user(1);
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="8" enumb="0">
+    <event eventtype="8" enumb="64">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -144,17 +103,60 @@ event_user(1);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Test debug
+            <string>///Shop
 
-// var width = scr_component_width(self);
+var route = ds_stack_top(routes)
+scr_shop_draw(route);
 
-// draw_rectangle(x - 75 * width, y - 30, x + 75 * width, y + 30, true);
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Back button
 
-draw_self();
-
-// draw_text(x, y, "width: " + string(width));
-
-
+if (ds_stack_size(routes) &gt; 1) {
+    var text = "Back";
+    
+    var xx = 964;
+    var yy = 555;
+    var padding = 10;
+    var w = string_width(text) + padding * 2;
+    var h = string_height(text) + padding * 2;
+    
+    var hovering = point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), xx, yy, xx + w, yy + h);
+    
+    draw_set_colour(c_white);
+    draw_rectangle(xx, yy, xx + w, yy + h, false);
+    
+    draw_set_colour(c_black);
+    draw_text(xx + padding, yy + padding, text);
+    
+    
+    if (hovering) {
+        draw_set_colour(c_gray);
+        draw_rectangle(xx, yy, xx + w, yy + h, true);
+        
+        if (mouse_check_button_pressed(mb_left)) {
+            ds_stack_pop(routes);
+        }
+    }
+}
 </string>
           </argument>
         </arguments>

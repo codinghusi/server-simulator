@@ -1,4 +1,8 @@
-///scr_shop_draw()
+///scr_shop_draw(route)
+
+var route = argument0;
+var type = route[shop_route.type];
+var items = route[shop_route.items];
 
 draw_background(bgr_hud, 0, 0);
 
@@ -9,18 +13,14 @@ draw_text(10, 565, "Item Description")
 draw_text(1065, 10, "Money: NAN")
 draw_text(400, 565, "Shop")
 
-var hcomponent = scr_shop_get_hovered_component();
-if hcomponent != noone{
-    draw_text(10, 585, "Name: " + hcomponent[component_struct.name])
-    draw_text(10, 605, "Desc: " + hcomponent[component_struct.description])
+if (type == shop_type.component) {
+    var hitem = scr_shop_get_hovered_item(items);
+    
+    if (hitem != noone) {
+        var component = hitem[shop_item.additional_data];
+        draw_text(10, 585, "Name: " + component[component_struct.name])
+        draw_text(10, 605, "Desc: " + component[component_struct.description])
+    }
 }
 
-var length = array_length_1d(global.components);
-var xx = 0;
-for (var i = 0; i < length; i++){
-    var component = global.components[i];
-    draw_roundrect_ext(395+xx, 595, 465+xx, 665, 10, 10, component != hcomponent)
-    if (sprite_exists(object_get_sprite(component[component_struct.object])))
-        draw_sprite(object_get_sprite(component[component_struct.object]), component[component_struct.subimage], 430+xx, 630)
-    xx += 80;
-}
+scr_shop_draw_items(items);
