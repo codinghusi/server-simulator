@@ -36,6 +36,60 @@ var route = scr_shop_route(
 );
 
 ds_stack_push(routes, route);
+
+alarm[0]=1;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Daily Costs
+alarm[0] = DAY_DURATION * room_speed
+
+var message = "";
+var total = 0;
+var amount;
+amount = instance_number(obj_component_server)
+if (amount &gt; 0) {
+    message += "#Servers: " + string(amount) + "* TODO"
+    total += amount //* component.cost
+}
+amount = instance_number(obj_component_switch)
+if (amount &gt; 0) {
+    message += "#Switches: " + string(amount) + "* TODO"
+    total += amount //* component.cost
+}
+amount = instance_number(obj_component_firewall)
+if (amount &gt; 0) {
+    message += "#Firewalls: " + string(amount) + "* TODO"
+    total += amount //* component.cost
+}
+var amount = instance_number(obj_component_queue)
+if (amount &gt; 0) {
+    message += "#Queues: " + string(amount) + "* TODO"
+    total += amount //* component.cost
+}
+
+message += "#Total: " + string(total)
+
+with(obj_controller) scr_news_post("Daily Costs", message)
 </string>
           </argument>
         </arguments>
