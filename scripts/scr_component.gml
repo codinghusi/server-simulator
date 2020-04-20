@@ -1,4 +1,4 @@
-///scr_component(name, description, object, subimage, downlink_count, additional_data)
+///scr_component(name, description, object, subimage, downlink_count, slots_available, additional_data)
 
 enum component_struct {
     name,
@@ -6,12 +6,13 @@ enum component_struct {
     object,
     subimage,
     downlink_count,
+    slots_available,
     additional_data
 }
 
-if (argument_count == 6)  {
-    return array(argument[0], argument[1], argument[2], argument[3], argument[4], argument[5]);
+if (argument_count == 7)  {
+    return array(argument[0], argument[1], argument[2], argument[3], argument[4], argument[5], argument[6]);
 }
 else {
-    return array(argument[0], argument[1], argument[2], argument[3], argument[4], noone);
+    return array(argument[0], argument[1], argument[2], argument[3], argument[4], argument[5], noone);
 }

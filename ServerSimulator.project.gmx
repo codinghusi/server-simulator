@@ -64,6 +64,7 @@
       <script>scripts\scr_news_draw.gml</script>
     </scripts>
     <scripts name="Shop">
+      <script>scripts\scr_shop_show_category_of_component.gml</script>
       <script>scripts\scr_shop_init.gml</script>
       <script>scripts\scr_shop_draw.gml</script>
       <script>scripts\scr_shop_draw_items.gml</script>
@@ -76,9 +77,10 @@
       <script>scripts\scr_components_to_items.gml</script>
       <script>scripts\scr_shop_route.gml</script>
       <script>scripts\scr_draw_tooltip.gml</script>
+      <script>scripts\scr_shop_back.gml</script>
     </scripts>
     <script>scripts\scr_find_category.gml</script>
-    <script>scripts\scr_shop_show_category_of_component.gml</script>
+    <script>scripts\scr_component_occupy.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\obj_packet</object>

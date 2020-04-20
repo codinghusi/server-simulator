@@ -57,4 +57,10 @@ if (connection) {
     show_debug_message("updating tree");
 }
 
+// Init
+with (component) {
+    event_user(2);
+    initialized = true;
+}
+
 return component;

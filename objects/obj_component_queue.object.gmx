@@ -42,13 +42,13 @@
             <string>/// Init
 
 queue = ds_queue_create()
-capacity = 10;
+capacity = 0;
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="0">
+    <event eventtype="2" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -65,22 +65,28 @@ capacity = 10;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Dequeue
-if (!ds_queue_empty(queue)){
-    var downlink = downlinks[| 0];
-    if (downlink != noone) {
-        if (downlink.empty) {
-            if (downlink.downlink != noone) {
-                if (downlink.downlink.available){
-                    scr_create_packet(ds_queue_dequeue(queue), downlink)
-                }
-            }
-        }
-    }
-}
+            <string>/// Cooldown finished
+
+
 </string>
           </argument>
         </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>604</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_inherited</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
       </action>
       <action>
         <libid>1</libid>
@@ -99,11 +105,67 @@ if (!ds_queue_empty(queue)){
           <argument>
             <kind>1</kind>
             <string>///Am I Overloaded?
-if (ds_queue_size(queue) &gt;= capacity) {
-    available = false;
-} else {
-    available = true;
+
+slots_used = ds_queue_size(queue);
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Process next one
+if (!ds_queue_empty(queue) &amp;&amp; alarm[0] &lt;= 0){
+    var downlink = downlinks[| 0];
+    var component = downlink.downlink;
+    if (component) {
+        var downlink_packets = downlink.packets_traveling;
+        var component_free_slots = component.data[component_struct.slots_available] - component.slots_used
+        var free_slots = component_free_slots - downlink_packets;
+        if (free_slots) {
+            scr_create_packet(ds_queue_dequeue(queue), downlinks[| 0]);
+            alarm[0] = global.process_time;
+        }
+    }
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="12">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Init
+
+capacity = data[component_struct.slots_available];
 </string>
           </argument>
         </arguments>

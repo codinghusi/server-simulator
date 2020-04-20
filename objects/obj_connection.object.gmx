@@ -57,7 +57,7 @@ dropable = false;
 dropping_instance = noone;
 drop_possible = false;
 global.dropable_connection = noone;
-empty = true;
+packets_traveling = true;
 </string>
           </argument>
         </arguments>
@@ -124,13 +124,12 @@ if (uplink &amp;&amp; downlink &amp;&amp; (global.dropable_connection == noone |
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Check empty
+            <string>/// Check Packets on me
 
-empty = true;
+packets_traveling = 0;
 with (obj_packet) {
     if (connection == other) {
-        other.empty = false;
-        exit;
+        other.packets_traveling++;
     }
 }
 </string>

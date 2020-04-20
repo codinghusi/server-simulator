@@ -1,8 +1,8 @@
-///scr_task(name, duration)
+///scr_task(name, process_time)
 
 enum task {
     name,
-    duration
+    process_time
 }
 
 return array(argument0, argument1);

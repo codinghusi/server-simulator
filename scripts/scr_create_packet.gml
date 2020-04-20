@@ -12,4 +12,10 @@ if (data[packet.outgoing]) {
     instance.position = 1; // start at the end
 }
 
+// Init
+with (instance) {
+    event_user(2);
+    initialized = true;
+}
+
 return instance;

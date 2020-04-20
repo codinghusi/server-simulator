@@ -12,4 +12,10 @@ connection.downlink = downlink;
 connection.bandwidth = bandwidth;
 connection.root = root;
 
+// Init
+with (connection) {
+    event_user(2);
+    initialized = true;
+}
+
 return connection;

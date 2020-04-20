@@ -73,7 +73,7 @@ global.debug = ds_map_create();
             <string>/// Create internet
 
 var internet = scr_create_component(
-    scr_component("internet", "lösch mich bloß nicht", obj_component_internet, 0, 1),
+    scr_component("internet", "lösch mich bloß nicht", obj_component_internet, 0, 1, 10000),
     noone
 );
 
@@ -158,6 +158,33 @@ mouse_previous_y = 0;
 vx = view_xview[0];
 vy = view_yview[0];
 zoom = 1;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Unselect components
+
+if (mouse_check_button_pressed(mb_left)) {
+    global.selected_component = noone;
+}
 </string>
           </argument>
         </arguments>
