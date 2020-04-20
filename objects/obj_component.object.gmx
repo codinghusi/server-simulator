@@ -6,7 +6,7 @@
   <depth>0</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
-  <maskName>&lt;undefined&gt;</maskName>
+  <maskName>spr_component_card</maskName>
   <events>
     <event eventtype="0" enumb="0">
       <action>
@@ -81,6 +81,7 @@ inbox = noone;
             <string>/// Shop
 
 scr_shop_show_category_of_component(data);
+global.selected_component = id;
 </string>
           </argument>
         </arguments>
@@ -144,17 +145,42 @@ event_user(1);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Test debug
+            <string>/// Selected
 
-// var width = scr_component_width(self);
+var padding = 10;
+if (global.selected_component == id) {
+    draw_rectangle(
+        x - sprite_width / 2 - padding,
+        y - sprite_height / 2 - padding,
+        x + sprite_width / 2 + padding,
+        y + sprite_height / 2 + padding,
+        true
+    )
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Draw self and background card
 
-// draw_rectangle(x - 75 * width, y - 30, x + 75 * width, y + 30, true);
-
+draw_sprite(spr_component_card, 0, x, y);
 draw_self();
-
-// draw_text(x, y, "width: " + string(width));
-
-
 </string>
           </argument>
         </arguments>

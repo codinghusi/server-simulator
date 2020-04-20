@@ -6,6 +6,8 @@ enum packet_task {
     webpage
 }
 
+global.selected_component = noone;
+
 global.packet_tasks = array(
     scr_task("delete", 1),
     scr_task("ping", 3),

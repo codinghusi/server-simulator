@@ -14,6 +14,7 @@
     <sprite>sprites\spr_hub</sprite>
     <sprite>sprites\spr_queue</sprite>
     <sprite>sprites\spr_packet_burn</sprite>
+    <sprite>sprites\spr_component_card</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bgr_hud</background>
