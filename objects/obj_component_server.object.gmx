@@ -91,9 +91,10 @@ scr_create_packet(inbox, uplink);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Init: Image index
+            <string>/// Init
 
 image_index = data[component_struct.subimage];
+max_process_time = global.packet_tasks[packet_task.webpage];
 </string>
           </argument>
         </arguments>

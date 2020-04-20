@@ -48,6 +48,32 @@ capacity = 0;
         </arguments>
       </action>
     </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Send packet
+
+scr_create_packet(ds_queue_dequeue(queue), downlinks[| 0]);
+alarm[0] = global.process_time;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="2" enumb="0">
       <action>
         <libid>1</libid>
@@ -128,16 +154,27 @@ slots_used = ds_queue_size(queue);
           <argument>
             <kind>1</kind>
             <string>/// Process next one
-if (!ds_queue_empty(queue) &amp;&amp; alarm[0] &lt;= 0){
+if (!ds_queue_empty(queue) &amp;&amp; alarm[0] &lt;= 0 &amp;&amp; alarm[1] &lt;= 0){
     var downlink = downlinks[| 0];
     var component = downlink.downlink;
     if (component) {
-        var downlink_packets = downlink.packets_traveling;
+        var downlink_packets = downlink.packets_traveling_incoming;
         var component_free_slots = component.data[component_struct.slots_available] - component.slots_used
         var free_slots = component_free_slots - downlink_packets;
-        if (free_slots) {
-            scr_create_packet(ds_queue_dequeue(queue), downlinks[| 0]);
-            alarm[0] = global.process_time;
+        var can_send = free_slots &gt; 0;
+        
+        if (!can_send) {
+            var wait_for = component.max_process_time;
+            var waited = downlink.last_packet_sent_incoming.position * connection.bandwidth * global.travel_time;
+            max_process_time = wait_for - waited;
+            if (max_process_time &lt; 0) {
+                can_send = true;
+            }
+        }
+        
+        if (can_send) {
+            max_process_time = 1;
+            alarm[1] = 1;
         }
     }
 }
@@ -189,15 +226,12 @@ capacity = data[component_struct.slots_available];
           <argument>
             <kind>1</kind>
             <string>///Enqueue incoming packet
-if (inbox[packet.outgoing]) {
-    scr_create_packet(inbox, uplink)
-} else {
-    if (ds_queue_size(queue) &lt; capacity) {
-        ds_queue_enqueue(queue, inbox)
-    }
-    else {
-        scr_burn_packet(x, y)
-    }
+
+if (ds_queue_size(queue) &lt; capacity) {
+    ds_queue_enqueue(queue, inbox)
+}
+else {
+    scr_burn_packet(x, y)
 }
 </string>
           </argument>

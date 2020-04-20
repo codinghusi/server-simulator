@@ -90,8 +90,10 @@ var len = 1 - data[packet.outgoing] * 2;
 x += lengthdir_x(20 * len, dir);
 y += lengthdir_y(20 * len, dir);
 
+var spd = connection.bandwidth / global.travel_time;
+
 if (data[packet.outgoing]) {
-    position -= 0.01
+    position -= spd;
     if (position) &lt;= 0{
         if connection.uplink != noone {
             connection.uplink.inbox = data;
@@ -105,7 +107,7 @@ if (data[packet.outgoing]) {
         instance_destroy()
     }
 } else {
-    position += 0.01
+    position += spd;
     if (position &gt;= 1) {
         if connection.downlink != noone {
             connection.downlink.inbox = data;

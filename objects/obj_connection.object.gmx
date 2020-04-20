@@ -57,7 +57,8 @@ dropable = false;
 dropping_instance = noone;
 drop_possible = false;
 global.dropable_connection = noone;
-packets_traveling = true;
+packets_travel_incoming = 0;
+last_packet_sent_incoming = noone;
 </string>
           </argument>
         </arguments>
@@ -126,10 +127,16 @@ if (uplink &amp;&amp; downlink &amp;&amp; (global.dropable_connection == noone |
             <kind>1</kind>
             <string>/// Check Packets on me
 
-packets_traveling = 0;
+packets_traveling_incoming = 0
+last_packet_sent_incoming = noone;
+
 with (obj_packet) {
-    if (connection == other) {
-        other.packets_traveling++;
+    if (connection == other &amp;&amp; !data[packet.outgoing]) {
+        other.packets_travel_incoming++;
+    }
+    
+    if (!other.last_packet_sent_incoming || position &lt; other.last_packet_sent_incoming.position) {
+        other.last_packet_sent_incoming = id;
     }
 }
 </string>

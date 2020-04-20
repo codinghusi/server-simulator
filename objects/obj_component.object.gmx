@@ -80,6 +80,7 @@ inbox = noone;
             <string>/// Init
 
 initialized = false;
+max_process_time = noone;
 </string>
           </argument>
         </arguments>

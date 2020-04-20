@@ -41,6 +41,8 @@
             <kind>1</kind>
             <string>/// randomize packets
 
+critical = 1;
+
 alarm[0] = 1;
 </string>
           </argument>
@@ -66,9 +68,38 @@ alarm[0] = 1;
             <kind>1</kind>
             <string>/// Send Packet
 
-alarm[0] = irandom_range(room_speed * 0.1, room_speed * 1);
+alarm[0] = irandom_range(room_speed * 0.1 / critical, room_speed * 1 / critical);
 
 scr_create_packet(scr_packet(false, irandom(2)), downlinks[| 0]);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Right mouse makes critical
+
+if (mouse_check_button(mb_right)) {
+    critical = 5;
+} else {
+    critical = 1;
+}
 </string>
           </argument>
         </arguments>
