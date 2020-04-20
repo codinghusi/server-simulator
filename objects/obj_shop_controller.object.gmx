@@ -86,6 +86,11 @@ with(obj_component){
 
 message += "#----------#Total: " + string(total)
 
+global.money -= total;
+if (global.money &lt; 0){
+    scr_gameover();
+}
+
 with(obj_controller) scr_news_post("Daily Costs", message)
 </string>
           </argument>

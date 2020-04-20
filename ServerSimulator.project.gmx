@@ -97,6 +97,7 @@
     <script>scripts\scr_hovering_ui.gml</script>
     <script>scripts\scr_can_buy_item.gml</script>
     <script>scripts\scr_can_buy_component.gml</script>
+    <script>scripts\scr_gameover.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\obj_packet</object>
