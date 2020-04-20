@@ -78,11 +78,15 @@ image_speed = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var length = array_length_1d(threads)
+            <string>/// Process all packets in paralell
+
+
+
+var length = array_length_1d(threads)
 for(var i = 0; i &lt; length; i++){
     var thread_tmp = threads[i]
-    if (thread_tmp[thread.remaining_time] &gt; 0){
-        thread_tmp[thread.remaining_time]--
+    if (thread_tmp[thread.remaining_time] &gt; 0) {
+        thread_tmp[@ thread.remaining_time] -= 1;
         if (thread_tmp[thread.remaining_time]) == 0 {
             slots_used--;
             var packet_tmp = thread_tmp[thread.packet];
@@ -159,7 +163,7 @@ for(var i = 0; i &lt; length; i++) {
     var thread_tmp = threads[i]
     if (thread_tmp[thread.remaining_time] &lt;= 0){
         threads[i] = scr_thread(inbox, time)
-        exit
+        break;
     }
 }
 </string>
