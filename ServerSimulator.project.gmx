@@ -18,6 +18,10 @@
     <sprite>sprites\spr_tooltip_bottom</sprite>
     <sprite>sprites\spr_tooltip_top</sprite>
     <sprite>sprites\spr_button_remove</sprite>
+    <sprite>sprites\spr_category_firewall</sprite>
+    <sprite>sprites\spr_category_server</sprite>
+    <sprite>sprites\spr_category_switch</sprite>
+    <sprite>sprites\spr_category_queue</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bgr_hud</background>
