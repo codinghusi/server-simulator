@@ -121,7 +121,23 @@ global.components_other = array(
         1, 10,
         1,
         145,
-        25)
+        25),
+    scr_component(
+        "Dualcore Queue",
+        "Tired of packets overloading#your Server? This component FIFO-queues#Packets if the connected Server#is running at max power and#lets them out if capacity gets available",
+        obj_component_queue, 1,
+        1, 20,
+        2,
+        225,
+        45),
+    scr_component(
+        "Delorean-Queue",
+        "Has to reach 88 Miles per hour#before its operational but if it#does its the best option.#Packets will have no feeling of#time after going thru it.",
+        obj_component_queue, 2,
+        1, 50,
+        5,
+        450,
+        88),
 )
 
 
