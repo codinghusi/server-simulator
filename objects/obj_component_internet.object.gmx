@@ -68,6 +68,10 @@ alarm[0] = 1;
             <kind>1</kind>
             <string>/// Send Packet
 
+var rand = random(1);
+
+// var length = 
+
 alarm[0] = irandom_range(room_speed * 0.1 / critical, room_speed * 1 / critical);
 
 scr_create_packet(scr_packet(false, irandom(2)), downlinks[| 0]);

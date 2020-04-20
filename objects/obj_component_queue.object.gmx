@@ -149,7 +149,7 @@ if (!ds_queue_empty(queue) &amp;&amp; alarm[0] &lt;= 0 &amp;&amp; alarm[1] &lt;=
         var free_slots = component_free_slots - downlink_packets;
         var can_send = free_slots &gt; 0;
         
-        if (!can_send) {
+        if (!can_send &amp;&amp; component.max_process_time) {
             var wait_for = component.max_process_time + room_speed / 8; // add small delay because else it's confusing
             var waited = downlink.last_packet_sent_incoming.position * connection.bandwidth * global.travel_time;
             max_process_time = wait_for - waited;
