@@ -306,8 +306,9 @@ if (global.selected_component != noone) {
     switch(comp.object_index) {
         case obj_component_server:
             draw_text(10,605,"Threads: " + string(comp.slots_used) + "/" + string(comp.data[component_struct.slots_available]))
-            for (var i = 0; i &lt; array_length_1d(threads); i++){
-                draw_rectangle(15+i*16, 625, 30+i*16, 640, false)
+            for (var i = 0; i &lt; array_length_1d(comp.threads); i++){
+                var tmp = comp.threads[i];
+                draw_rectangle(15+i*16, 625, 20+i*16, 625 + tmp[thread.remaining_time]/5, false)
             }
             break;
         case obj_component_queue:
