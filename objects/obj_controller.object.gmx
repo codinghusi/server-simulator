@@ -280,6 +280,45 @@ scr_news_draw()
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Selected Component Information
+draw_text(10, 565, "Item Description")
+
+if (global.selected_component != noone) {
+    var comp = global.selected_component;
+    draw_text(10,585,"Name: " + comp.data[component_struct.name])
+    //draw_text(10,605,"Threads: " + string(comp.slots_used) + "/" + string(comp.data[component_struct.slots_available]))
+    switch(comp.object_index) {
+        case obj_component_server:
+            draw_text(10,605,"Threads: " + string(comp.slots_used) + "/" + string(comp.data[component_struct.slots_available]))
+            for (var i = 0; i &lt; array_length_1d(threads); i++){
+                draw_rectangle(15+i*16, 625, 30+i*16, 640, false)
+            }
+            break;
+        case obj_component_queue:
+            draw_text(10,605,"Enqueued: " + string(ds_queue_size(comp.queue)) + "/" + string(comp.capacity))
+            break;
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="8" enumb="0">
       <action>
