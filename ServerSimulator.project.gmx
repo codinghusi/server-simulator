@@ -104,8 +104,9 @@
   <rooms name="rooms">
     <room>rooms\rm_simulator</room>
   </rooms>
-  <constants number="1">
+  <constants number="2">
     <constant name="NEWS_COUNT">10</constant>
+    <constant name="DAY_DURATION">100</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>
