@@ -133,7 +133,6 @@ scr_create_packet(processed_packet, uplink);
             <kind>1</kind>
             <string>/// Init
 
-image_index = data[component_struct.subimage];
 var packet_task = global.packet_tasks[packet_task.webpage];
 max_process_time = packet_task[task.process_time];
 
