@@ -66,8 +66,10 @@ for (var i = 0; i &lt; length; ++i) {
     if (correct == i) {
         scr_create_packet(inbox, connection);
     } else {
-        inbox[packet.task] = packet_task.delete;
-        scr_create_packet(inbox, connection);
+        scr_create_packet(
+            scr_packet(false, packet_task.delete),
+            connection
+        );
     }
 }
 </string>
