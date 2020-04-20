@@ -81,24 +81,10 @@ internet.x = x;
 internet.y = y;
 
 var connection = internet.downlinks[| 0];
-var firewall = scr_create_component(global.components_firewall[0], connection);
+var hub = scr_create_component(global.components_splitter[0], connection);
 
-connection = firewall.downlinks[| 0];
-var sw = scr_create_component(global.components_splitter[1], connection);
-
-connection = sw.downlinks[| 0];
-var sw2 = scr_create_component(global.components_splitter[1], connection);
-
-connection = sw.downlinks[| 1];
-var sw3 = scr_create_component(global.components_splitter[1], connection);
-
-connection = sw2.downlinks[| 0];
-scr_create_component(global.components_server[0], connection);
-connection = sw2.downlinks[| 1];
-scr_create_component(global.components_server[0], connection);
-
-connection = sw3.downlinks[| 0];
-scr_create_component(global.components_server[0], connection);
+connection = hub.downlinks[| 0];
+scr_create_component(global.components_server[1], connection);
 
 clear_debug();
 scr_position_components(internet);

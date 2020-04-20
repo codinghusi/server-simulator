@@ -151,19 +151,21 @@ for (var i = 0; i &lt; length; ++i) {
 
 var id_ = last_id++;
 var timeout = irandom_range(1000 * 20, 1000 * 30);
+var packet_ = scr_packet(
+    false,
+    irandom(1),
+    false,
+    current_time,
+    timeout,
+    id_
+);
 
+ds_list_add(packets, packet_);
 
 alarm[0] = irandom_range(room_speed * 0.1 / critical, room_speed * 1 / critical);
 
 scr_create_packet(
-    scr_packet(
-        false,
-        irandom(1),
-        false,
-        current_time,
-        timeout,
-        id_
-    ),
+    packet_,
     downlinks[| 0]
 );
 </string>
@@ -223,6 +225,8 @@ for (var i = 0; i &lt; length; ++i) {
     var packet_ = packets[| i];
     if (packet_[packet.send_time] + packet_[packet.timeout] &lt; current_time) {
         scr_punish_packet(packet_);
+        ds_list_delete(packets, i);
+        break;
     }
 }
 
@@ -281,6 +285,8 @@ if (!irandom(10000 / (global.user_reputition + global.user_unsatisfied))){
           <argument>
             <kind>1</kind>
             <string>/// Reward finished packet
+
+show_debug_message("packet came back");
 
 var length = ds_list_size(packets);
 for (var i = 0; i &lt; length; ++i) {
