@@ -4,7 +4,7 @@ var component = argument0;
 var downlinks = component.downlinks;
 var length = ds_list_size(downlinks);
 var width = scr_component_width(component);
-var hor_width = 150;
+var hor_width = 100;
 var ver_spacing = 100;
 var count = scr_component_active_downlink_count(component);
 
