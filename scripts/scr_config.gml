@@ -10,9 +10,13 @@ global.process_time = room_speed * 0.5;
 global.travel_time = room_speed;
 global.power_multiplicator = 0.7;
 
+global.user_reputition = 1;
+global.user_unsatisfied = 0;
+global.user_satisfier = 0.1;
+
 global.packet_tasks = array(
-    scr_task("ping", 3, 0.2),
-    scr_task("webpage", 10, 0.8)
+    scr_task("ping", 3, 0.2, 0.1),
+    scr_task("webpage", 10, 0.8, 3)
 );
 
 

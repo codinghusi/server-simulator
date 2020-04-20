@@ -97,6 +97,9 @@
     <script>scripts\scr_hovering_ui.gml</script>
     <script>scripts\scr_can_buy_item.gml</script>
     <script>scripts\scr_can_buy_component.gml</script>
+    <script>scripts\scr_reward_packet.gml</script>
+    <script>scripts\scr_punish_packet.gml</script>
+    <script>scripts\scr_packet_timeouted.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\obj_packet</object>

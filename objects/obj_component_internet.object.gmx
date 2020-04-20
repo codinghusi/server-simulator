@@ -48,6 +48,30 @@ alarm[0] = 1;
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Watcher
+
+packets = ds_list_create();
+last_id = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="2" enumb="0">
       <action>
@@ -79,9 +103,23 @@ for (var i = 0; i &lt; length; ++i) {
     if (
 }*/
 
+var id_ = last_id++;
+var timeout = irandom_range(1000 * 20, 1000 * 30);
+
+
 alarm[0] = irandom_range(room_speed * 0.1 / critical, room_speed * 1 / critical);
 
-scr_create_packet(scr_packet(false, irandom(1), false), downlinks[| 0]);
+scr_create_packet(
+    scr_packet(
+        false,
+        irandom(1),
+        false,
+        current_time,
+        timeout,
+        id_
+    ),
+    downlinks[| 0]
+);
 </string>
           </argument>
         </arguments>
@@ -111,6 +149,70 @@ if (mouse_check_button(mb_right)) {
 } else {
     critical = 1;
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Watcher
+
+
+var length = ds_list_size(packets);
+for (var i = 0; i &lt; length; ++i) {
+    var packet_ = packets[| i];
+    if (packet_[packet.send_time] + packet_[packet.timeout] &lt; current_time) {
+        scr_punish_packet(packet_);
+    }
+}
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="11">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Reward finished packet
+
+var length = ds_list_size(packets);
+for (var i = 0; i &lt; length; ++i) {
+    var packet_ = packets[| i];
+    if (packet_[packet.id] == inbox[packet.id]) {
+        scr_reward_packet(packet_);
+        break;
+    }
+}
+
 </string>
           </argument>
         </arguments>

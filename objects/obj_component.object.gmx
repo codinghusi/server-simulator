@@ -317,7 +317,8 @@ if (inbox[packet.outgoing]) {
     if (uplink) {
         scr_create_packet(inbox, uplink);
     } else {
-        scr_burn_packet(x, y); // TODO: Don't burn
+        // We are in Internet
+        event_user(1);
     }
     exit;
 }
