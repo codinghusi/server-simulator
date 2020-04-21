@@ -6,14 +6,13 @@ enum packet_task {
 }
 
 global.selected_component = noone;
-global.process_time = room_speed * 0.5;
+global.process_time = room_speed * 1;
 global.travel_time = room_speed;
-global.power_multiplicator = 0.3;
+global.power_multiplicator = 0.5;
 
 global.user_reputation = 0.1;
-global.user_unsatisfied = 0;
-global.user_satisfier = 0.01;
-global.reputation_money = 75;
+global.user_satisfier = 0.005;
+global.reputation_money = 30;
 
 global.packet_tasks = array(
     scr_task("ping", 3, 0.2, 0.2),
@@ -27,16 +26,16 @@ global.components_firewall = array(
         "Filters incoming Packets based#on their target port",
         obj_component_firewall, 0,
         1, 1,
-        1,
-        100,
-        85, false),
+        1.4,
+        50,
+        175, false),
     scr_component(
         "Advanced Firewall",
         "Filters incoming Packets based#on their target ip and port",
         obj_component_firewall, 1,
         1, 2,
-        1.6,
-        180,
+        1.8,
+        720,
         100, true),
     scr_component(
         "Professional Firewall",
@@ -44,7 +43,7 @@ global.components_firewall = array(
         obj_component_firewall, 2,
         1, 5,
         3,
-        300,
+        2280,
         150, true),
 );
 
@@ -63,7 +62,7 @@ global.components_splitter = array(
         obj_component_switch, 0,
         2, 1,
         1,
-        45,
+        185,
         15),
     scr_component(
         "4 Port Switch",
@@ -71,7 +70,7 @@ global.components_splitter = array(
         obj_component_switch, 1,
         3, 2,
         1.5,
-        175,
+        735,
         25),
     scr_component(
         "6 Port Switch",
@@ -79,34 +78,34 @@ global.components_splitter = array(
         obj_component_switch, 2,
         5, 3,
         5,
-        400,
+        1890,
         150),
 );
 
 global.components_server = array(
     scr_component(
-        "Potato Pi",
-        "Trusty credit card sized computer#powered by a diyed-potato battery",
-        obj_component_server, 0,
-        0, 1,
-        1,
-        55,
-        5),
-    scr_component(
         "old Computer",
         "has seen better days but is still#perfectly able to run a webserver",
         obj_component_server, 1,
         0, 2,
-        1.25,
-        75,
-        100),
+        1,
+        50,
+        50),
+    scr_component(
+        "Potato Pi",
+        "Trusty credit card sized computer#powered by a diyed-potato battery",
+        obj_component_server, 0,
+        0, 4,
+        0.3,
+        410,
+        15),
     scr_component(
         "Serverstation",
         "Serverstation#Midrange consumer grade hardware",
         obj_component_server, 2,
-        0, 4,
-        1.5,
-        200,
+        0, 6,
+        1.7,
+        1210,
         200),
     scr_component(
         "Serverstation+",
@@ -114,7 +113,7 @@ global.components_server = array(
         obj_component_server, 3,
         0, 8,
         2,
-        300,
+        5158,
         500),
 );
 
@@ -133,15 +132,15 @@ global.components_other = array(
         obj_component_queue, 1,
         1, 20,
         2,
-        225,
+        325,
         45),
     scr_component(
         "Delorean-Queue",
         "Has to reach 88 Miles per hour#before its operational but if it#does its the best option.#Packets will have no feeling of#time after going thru it.",
         obj_component_queue, 2,
         1, 50,
-        5,
-        450,
+        10,
+        750,
         88),
 )
 

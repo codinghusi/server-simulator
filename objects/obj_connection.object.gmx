@@ -81,50 +81,6 @@ last_packet_sent_incoming = noone;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Drag Drop
-
-/*dropable = false;
-
-if (uplink &amp;&amp; downlink &amp;&amp; (global.dropable_connection == noone || global.dropable_connection == id)) {
-    var component_instance = collision_line(uplink.x, uplink.y, downlink.x, downlink.y, obj_drag_component, false, true);
-    if (component_instance) {
-        var component = component_instance.component;
-        if (component[component_struct.downlink_count] || !downlink) {
-            dropable = true;
-        }
-        
-        if (mouse_check_button_released(mb_left)) {
-            if (dropable) {
-                scr_create_component(component, id);
-            }
-            instance_destroy(component_instance);
-        }
-        
-        global.dropable_connection = id;
-    } else {
-        global.dropable_connection = noone;
-    }
-}*/
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
             <string>/// Check Packets on me
 
 packets_traveling_incoming = 0
@@ -194,6 +150,11 @@ draw_line(x1, y1, x2, y2);
 
 var xx = scr_connection_x(self, 0.5);
 var yy = scr_connection_y(self, 0.5);
+
+if (!instance_exists(dropping_instance)) {
+    drop_possible = false;
+    dropable = false;
+}
 
 if (drop_possible) {
     draw_set_color(c_gray);

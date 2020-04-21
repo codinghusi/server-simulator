@@ -84,7 +84,7 @@ var connection = internet.downlinks[| 0];
 var hub = scr_create_component(global.components_splitter[0], connection);
 
 connection = hub.downlinks[| 0];
-scr_create_component(global.components_server[1], connection);
+scr_create_component(global.components_server[0], connection);
 
 clear_debug();
 scr_position_components(internet);

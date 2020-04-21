@@ -69,11 +69,20 @@ processing_packet = noone;
 var smart = data[component_struct.additional_data];
 var ddos_packet = processed_packet[packet.ddos];
 var task_ = processed_packet[packet.task];
+var is_ping = task_ == packet_task.ping;
 
-if ((smart &amp;&amp; ddos_packet) || (!smart &amp;&amp; task_ != packet_task.webpage)) {
+show_debug_message("smart: " + string(smart));
+
+if ((smart &amp;&amp; ddos_packet) || (!smart &amp;&amp; is_ping)) {
     scr_burn_packet(x,y, processed_packet)
 } else {
-    scr_create_packet(processed_packet, downlinks[| 0])
+    if (smart &amp;&amp; is_ping) {
+        processed_packet[@ packet.outgoing] = true;
+        scr_create_packet(processed_packet, uplink);
+        show_debug_message("firewall send outgoing");
+    } else {
+        scr_create_packet(processed_packet, downlinks[| 0]);
+    }
 }
 </string>
           </argument>
