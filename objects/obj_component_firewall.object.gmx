@@ -71,8 +71,6 @@ var ddos_packet = processed_packet[packet.ddos];
 var task_ = processed_packet[packet.task];
 var is_ping = task_ == packet_task.ping;
 
-show_debug_message("smart: " + string(smart));
-
 if ((smart &amp;&amp; ddos_packet) || (!smart &amp;&amp; is_ping)) {
     scr_burn_packet(x,y, processed_packet)
 } else {

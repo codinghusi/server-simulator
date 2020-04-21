@@ -14,6 +14,11 @@ global.user_reputation = 0.1;
 global.user_satisfier = 0.005;
 global.reputation_money = 30;
 
+/// Time Score Measurement
+global.start_time = current_time;
+
+
+
 global.packet_tasks = array(
     scr_task("ping", 3, 0.2, 0.2),
     scr_task("webpage", 10, 0.8, 3)

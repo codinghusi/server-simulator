@@ -39,11 +39,10 @@
       <script>scripts\scr_create_component.gml</script>
       <script>scripts\scr_component_width.gml</script>
       <script>scripts\scr_position_components.gml</script>
-      <script>scripts\scr_component_active_downlink_count.gml</script>
       <script>scripts\scr_component_used_downlink_count.gml</script>
       <script>scripts\scr_component.gml</script>
       <script>scripts\scr_drag_component.gml</script>
-      <script>scripts\scr_component_active_downlinks.gml</script>
+      <script>scripts\scr_component_available_downlinks.gml</script>
       <script>scripts\scr_component_used_downlinks.gml</script>
       <script>scripts\scr_component_process.gml</script>
       <script>scripts\scr_remove_component.gml</script>
@@ -103,6 +102,7 @@
     <script>scripts\scr_packet_timeouted.gml</script>
     <script>scripts\scr_gameover.gml</script>
     <script>scripts\scr_daily_cost.gml</script>
+    <script>scripts\scr_downlink_available_in.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\obj_packet</object>

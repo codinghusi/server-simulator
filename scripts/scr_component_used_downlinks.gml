@@ -9,7 +9,10 @@ var used = ds_list_create();
 
 for (var i = 0; i < length; ++i) {
     var downlink_connection = downlinks[| i];
-    if (!downlink_connection || !downlink_connection.downlink) {
+    if (!downlink_connection) {
+        continue;
+    }
+    if (!downlink_connection.downlink) {
         continue;
     }
     ds_list_add(used, downlink_connection);

@@ -6,7 +6,7 @@ var length = ds_list_size(downlinks);
 var width = scr_component_width(component);
 var hor_width = 100;
 var ver_spacing = 100;
-var count = scr_component_active_downlink_count(component);
+var count = scr_component_used_downlink_count(component);
 
 
 // width missing in calculation

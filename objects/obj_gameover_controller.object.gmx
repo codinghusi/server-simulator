@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>/// Time
 
-time = current_time;
+time = current_time - global.start_time;
 </string>
           </argument>
         </arguments>

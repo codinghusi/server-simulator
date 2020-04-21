@@ -8,6 +8,35 @@
   <parentName>obj_component</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
+    <event eventtype="7" enumb="14">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Update Available (call from a downlink)
+
+if (ds_list_size(scr_component_available_downlinks(self)) == 0) {
+    available = false;
+} else {
+    available = true;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="7" enumb="12">
       <action>
         <libid>1</libid>
@@ -66,8 +95,8 @@ max_process_time = 0;
             <kind>1</kind>
             <string>/// Inbox
 
-var actives = scr_component_active_downlinks(self);
-var length = ds_list_size(actives);
+var used = scr_component_available_downlinks(self);
+var length = ds_list_size(used);
 
 if (!length) {
     scr_burn_packet(x,y, inbox);
@@ -76,7 +105,7 @@ if (!length) {
 var correct = irandom(length - 1);
 
 for (var i = 0; i &lt; length; ++i) {
-    var connection = actives[| i];
+    var connection = used[| i];
     if (correct == i) {
         scr_create_packet(inbox, connection);
     } else {

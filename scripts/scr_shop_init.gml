@@ -1,3 +1,3 @@
 ///scr_shop_init()
 
-global.money = 1000;
+global.money = 10000;

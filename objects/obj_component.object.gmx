@@ -83,6 +83,7 @@ image_speed = 0;
 initialized = false;
 max_process_time = noone;
 useless_check = false;
+prev_available = true;
 </string>
           </argument>
         </arguments>
@@ -138,6 +139,14 @@ if (slots_used &gt;= data[component_struct.slots_available]) {
     available = true;
 }
 
+if (prev_available != available) {
+    if (uplink) {
+        with (uplink) {
+            event_user(4);
+        }
+    }
+    prev_available = available;
+}
 
 if (available) {
     image_blend = c_white;

@@ -68,12 +68,9 @@ useless_check = true;
             <kind>1</kind>
             <string>/// Round robin cycle packets to outputs
 
-if (ds_list_empty(downlinks)) {
-    scr_burn_packet(x,y, processed_packet);
-    exit;
-}
+var availables = scr_component_available_downlinks(self);
 
-var length = ds_list_size(downlinks);
+var length = ds_list_size(availables);
 for (var i = 0; i &lt; length; ++i) {
     last_out_index++;
     

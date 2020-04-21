@@ -142,26 +142,13 @@ slots_used = ds_queue_size(queue);
             <string>/// Process next one
 if (!ds_queue_empty(queue) &amp;&amp; alarm[0] &lt;= 0 &amp;&amp; alarm[1] &lt;= 0){
     var downlink = downlinks[| 0];
-    var component = downlink.downlink;
-    if (component) {
-        var downlink_packets = downlink.packets_traveling_incoming;
-        var component_free_slots = component.data[component_struct.slots_available] - component.slots_used
-        var free_slots = component_free_slots - downlink_packets;
-        var can_send = free_slots &gt; 0;
-        
-        if (!can_send &amp;&amp; component.max_process_time) {
-            var wait_for = component.max_process_time + room_speed / 8; // add small delay because else it's confusing
-            var waited = downlink.last_packet_sent_incoming.position * connection.bandwidth * global.travel_time;
-            max_process_time = wait_for - waited;
-            if (max_process_time &lt; 0) {
-                can_send = true;
-            }
-        }
-        
-        if (can_send) {
-            max_process_time = 1;
-            alarm[1] = 1;
-        }
+    var time = scr_downlink_available_in(downlink);
+    
+    if (time == 0) {
+        max_process_time = 1;
+        alarm[1] = 1;
+    } else {
+        max_process_time = time;
     }
 }
 </string>
