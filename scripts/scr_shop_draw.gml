@@ -11,11 +11,11 @@ draw_set_colour(c_white)
 
 var xx = 1065;
 var yy = 10;
-var h = 30;
+var h = 25;
 var w = 212;
 
 // Money
-draw_text(xx, yy, "Money: " + string(global.money));
+draw_text(xx, yy, "Money: " + scr_convert_price(global.money));
 yy += h;
 
 // Daily Cost
@@ -26,20 +26,19 @@ draw_rectangle(xx, yy, lerp(xx, xx + w, percent), yy + h, false)
 draw_set_colour(c_black)
 draw_text(xx, yy, "daily costs in " + string(round(percent*DAY_DURATION)));
 yy += h;
-draw_text(xx, yy, "costs: " + string(scr_daily_cost()));
+draw_text(xx, yy, "costs: " + scr_convert_price(scr_daily_cost()));
 yy += h;
 
 // Reputation
 // TODO: Shouldn't be here! Because not Shop specific
-var total = global.user_reputation + global.user_unsatisfied;
-var rep_percent = global.user_reputation / total;
-var neg_percent = global.user_unsatisfied / total;
 
+draw_set_colour(c_black)
+draw_text(xx, yy, "reputation");
+yy += h;
+draw_set_colour(c_black);
 draw_rectangle(xx, yy, xx + w, yy + h, true);
 draw_set_colour(c_green);
-draw_rectangle(xx, yy, lerp(xx, xx + w, rep_percent), yy + h, false);
-draw_set_colour(c_red);
-draw_rectangle(lerp(xx, xx + w, rep_percent), yy, xx + w, yy + h, false);
+draw_rectangle(xx, yy, lerp(xx, xx + w, global.user_reputation), yy + h, false);
 yy += h;
 
 

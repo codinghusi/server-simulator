@@ -8,12 +8,10 @@ var reputation = packet_task_[task.reputation];
 var factor = reputation * global.user_satisfier;
 
 global.user_reputation += factor;
-global.user_unsatisfied -= factor / 2;
 
 global.user_reputation = clamp(global.user_reputation, 0, 1);
-global.user_unsatisfied = clamp(global.user_unsatisfied, 0, 1);
 
-var reward = random_range(reputation * 0.8, reputation * 1.2);
+var reward = random_range(reputation * 0.8 / 2, reputation * 1.2 / 2) * global.reputation_money;
 
 global.money += reward;
 

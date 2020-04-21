@@ -1,4 +1,4 @@
-show_message("Game Over!")
+room_goto(rm_gameover);
 global.gameover = true;
 
 var minx = 10000;

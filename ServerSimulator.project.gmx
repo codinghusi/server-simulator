@@ -25,6 +25,7 @@
   </sprites>
   <backgrounds name="background">
     <background>background\bgr_hud</background>
+    <background>background\bgr_gameover</background>
   </backgrounds>
   <paths name="paths">
     <path>paths\pt_test</path>
@@ -119,6 +120,7 @@
     <object>objects\obj_controller</object>
     <object>objects\obj_packet_burning</object>
     <object>objects\obj_shop_controller</object>
+    <object>objects\obj_gameover_controller</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_simulator</room>
@@ -126,7 +128,7 @@
   </rooms>
   <constants number="2">
     <constant name="NEWS_COUNT">10</constant>
-    <constant name="DAY_DURATION">20</constant>
+    <constant name="DAY_DURATION">30</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>

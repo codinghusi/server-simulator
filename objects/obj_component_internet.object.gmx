@@ -114,6 +114,7 @@ ddos = false
             <kind>1</kind>
             <string>///stop DDOS
 ddos = false
+critical = 1;
 </string>
           </argument>
         </arguments>
@@ -161,9 +162,9 @@ if (!ddos_packet) {
 }
 
 
-var probability = critical * global.user_reputation * 2 * clamp(current_time / 1000 / 5, 1, 5);
+var probability = critical * max(0.4, global.user_reputation) * 2 * clamp(current_time / 1000 / 1, 1, 5);
 
-alarm[0] = irandom_range(room_speed * 2 / probability, room_speed * 5 / probability);
+alarm[0] = 1 + irandom_range(room_speed * 2 / probability, room_speed * 5 / probability);
 
 scr_create_packet(
     packet_,
@@ -225,18 +226,18 @@ for (var i = 0; i &lt; length; ++i) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//chance für ein ddos
+            <string>/// DDos
 
 if (alarm[1] &lt;= 0) {
-    var strength = irandom(100) * global.user_unsatisfied;
+    var strength = irandom(1000) * global.user_reputation
     
-    if (strength &gt; 80) {
+    if (strength &gt; 960) {
         ddos = true;
-        alarm[1] = room_speed * strength / 100 * 20;
+        alarm[1] = room_speed * strength / 1000 * 20;
         var attacker = choose("&lt;Anonymous&gt;","&lt;ScriptKiddy&gt;","&lt;StressTester&gt;")
         with(obj_controller) scr_news_post(attacker, "DDOS!")
         
-        critical = irandom_range(5, 20);
+        critical = irandom_range(5, 10);
     }
 }
 </string>
@@ -270,6 +271,7 @@ for (var i = 0; i &lt; length; ++i) {
     var packet_ = packets[| i];
     if (packet_[packet.id] == inbox[packet.id]) {
         scr_reward_packet(packet_);
+        ds_list_delete(packets, i);
         break;
     }
 }

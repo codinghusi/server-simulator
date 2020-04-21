@@ -8,15 +8,15 @@ enum packet_task {
 global.selected_component = noone;
 global.process_time = room_speed * 0.5;
 global.travel_time = room_speed;
-global.power_multiplicator = 0.7;
+global.power_multiplicator = 0.3;
 
-global.user_reputation = 1;
+global.user_reputation = 0.1;
 global.user_unsatisfied = 0;
 global.user_satisfier = 0.01;
-global.reputation_money = 25;
+global.reputation_money = 75;
 
 global.packet_tasks = array(
-    scr_task("ping", 3, 0.2, 0),
+    scr_task("ping", 3, 0.2, 0.2),
     scr_task("webpage", 10, 0.8, 3)
 );
 
@@ -99,7 +99,7 @@ global.components_server = array(
         0, 2,
         1.25,
         75,
-        300),
+        100),
     scr_component(
         "Serverstation",
         "Serverstation#Midrange consumer grade hardware",
