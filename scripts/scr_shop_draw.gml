@@ -24,13 +24,15 @@ var percent = alarm[0] / (DAY_DURATION * room_speed)
 draw_rectangle(xx, yy, xx + w, yy + h, true)
 draw_rectangle(xx, yy, lerp(xx, xx + w, percent), yy + h, false)
 draw_set_colour(c_black)
-draw_text(xx, yy, "daily costs in " + string(percent*DAY_DURATION));
+draw_text(xx, yy, "daily costs in " + string(round(percent*DAY_DURATION)));
+yy += h;
+draw_text(xx, yy, "costs: " + string(scr_daily_cost()));
 yy += h;
 
 // Reputation
 // TODO: Shouldn't be here! Because not Shop specific
-var total = global.user_reputition + global.user_unsatisfied;
-var rep_percent = global.user_reputition / total;
+var total = global.user_reputation + global.user_unsatisfied;
+var rep_percent = global.user_reputation / total;
 var neg_percent = global.user_unsatisfied / total;
 
 draw_rectangle(xx, yy, xx + w, yy + h, true);

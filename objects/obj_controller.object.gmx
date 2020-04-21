@@ -73,7 +73,7 @@ global.debug = ds_map_create();
             <string>/// Create internet
 
 var internet = scr_create_component(
-    scr_component("internet", "lösch mich bloß nicht", obj_component_internet, 0, 1, 10000, 1, 1, 500),
+    scr_component("internet", "lösch mich bloß nicht", obj_component_internet, 0, 1, 10000, 1, 1, 50),
     noone
 );
 

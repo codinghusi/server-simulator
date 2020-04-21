@@ -69,7 +69,7 @@ useless_check = true;
             <string>/// Round robin cycle packets to outputs
 
 if (ds_list_empty(downlinks)) {
-    scr_burn_packet(x,y);
+    scr_burn_packet(x,y, processed_packet);
     exit;
 }
 
@@ -90,7 +90,7 @@ for (var i = 0; i &lt; length; ++i) {
     }
 }
 
-scr_burn_packet(x,y);
+scr_burn_packet(x,y, processed_packet);
 exit;
 </string>
           </argument>

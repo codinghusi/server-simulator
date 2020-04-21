@@ -70,7 +70,7 @@ var actives = scr_component_active_downlinks(self);
 var length = ds_list_size(actives);
 
 if (!length) {
-    scr_burn_packet(x,y);
+    scr_burn_packet(x,y, inbox);
 }
 
 var correct = irandom(length - 1);
@@ -81,7 +81,7 @@ for (var i = 0; i &lt; length; ++i) {
         scr_create_packet(inbox, connection);
     } else {
         scr_create_packet(
-            scr_packet(false, inbox[packet.task], true, inbox[packet.send_time], inbox[packet.timeout], inbox[packet.id]),
+            scr_packet(false, inbox[packet.task], true, inbox[packet.send_time], inbox[packet.timeout], inbox[packet.id], inbox[packet.ddos]),
             connection
         );
     }

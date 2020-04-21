@@ -178,7 +178,7 @@ for(var i = 0; i &lt; length; i++){
             threads[i] = noone;
             
             if (useless_check &amp;&amp; processed_packet[packet.useless]) {
-                scr_burn_packet(x, y);
+                scr_burn_packet(x, y, processed_packet);
             } else {
                 event_user(3);
             }
@@ -325,7 +325,7 @@ if (inbox[packet.outgoing]) {
 
 
 if (!available) {
-    scr_burn_packet(x, y);
+    scr_burn_packet(x, y, inbox);
     exit;
 }
 

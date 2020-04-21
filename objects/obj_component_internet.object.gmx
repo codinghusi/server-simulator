@@ -138,31 +138,32 @@ ddos = false
             <kind>1</kind>
             <string>/// Send Packet
 
-/*
-Probability 
-var tasks = global.packet_tasks;
-var length = array_length_1d(tasks);
-var rand = random(1);
-
-for (var i = 0; i &lt; length; ++i) {
-    var task_ = tasks[i];
-    if (
-}*/
-
 var id_ = last_id++;
-var timeout = irandom_range(1000 * 20, 1000 * 30);
+var timeout = irandom_range(1000 * 40, 1000 * 60);
+
+var ddos_packet = false;
+if (ddos) {
+    ddos_packet = random(1) &lt; 0.90;
+}
+
 var packet_ = scr_packet(
     false,
     irandom(1),
     false,
     current_time,
     timeout,
-    id_
+    id_,
+    ddos_packet
 );
 
-ds_list_add(packets, packet_);
+if (!ddos_packet) {
+    ds_list_add(packets, packet_);
+}
 
-alarm[0] = irandom_range(room_speed * 0.1 / critical, room_speed * 1 / critical);
+
+var probability = critical * global.user_reputation * 2 * clamp(current_time / 1000 / 5, 1, 5);
+
+alarm[0] = irandom_range(room_speed * 2 / probability, room_speed * 5 / probability);
 
 scr_create_packet(
     packet_,
@@ -190,33 +191,6 @@ scr_create_packet(
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Right mouse makes critical
-
-if (mouse_check_button(mb_right)) {
-    critical = 5;
-} else {
-    critical = 1;
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
             <string>///Watcher
 
 
@@ -225,6 +199,7 @@ for (var i = 0; i &lt; length; ++i) {
     var packet_ = packets[| i];
     if (packet_[packet.send_time] + packet_[packet.timeout] &lt; current_time) {
         scr_punish_packet(packet_);
+        show_debug_message("timeout");
         ds_list_delete(packets, i);
         break;
     }
@@ -250,17 +225,19 @@ for (var i = 0; i &lt; length; ++i) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// DDOS
-if (ddos) {
-    critical = 5
-}
+            <string>//chance für ein ddos
 
-//chance für ein ddos
-if (!irandom(10000 / (global.user_reputition + global.user_unsatisfied))){
-    ddos = true
-    alarm[1] = irandom_range(room_speed*5, room_speed*30)
-    var attacker = choose("&lt;Anonymous&gt;","&lt;ScriptKiddy&gt;","&lt;StressTester&gt;")
-    with(obj_controller) scr_news_post(attacker,"DDOS!")
+if (alarm[1] &lt;= 0) {
+    var strength = irandom(100) * global.user_unsatisfied;
+    
+    if (strength &gt; 80) {
+        ddos = true;
+        alarm[1] = room_speed * strength / 100 * 20;
+        var attacker = choose("&lt;Anonymous&gt;","&lt;ScriptKiddy&gt;","&lt;StressTester&gt;")
+        with(obj_controller) scr_news_post(attacker, "DDOS!")
+        
+        critical = irandom_range(5, 20);
+    }
 }
 </string>
           </argument>

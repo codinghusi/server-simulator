@@ -10,13 +10,13 @@ global.process_time = room_speed * 0.5;
 global.travel_time = room_speed;
 global.power_multiplicator = 0.7;
 
-global.user_reputition = 1;
+global.user_reputation = 1;
 global.user_unsatisfied = 0;
-global.user_satisfier = 0.1;
+global.user_satisfier = 0.01;
 global.reputation_money = 25;
 
 global.packet_tasks = array(
-    scr_task("ping", 3, 0.2, 0.1),
+    scr_task("ping", 3, 0.2, 0),
     scr_task("webpage", 10, 0.8, 3)
 );
 
@@ -29,7 +29,7 @@ global.components_firewall = array(
         1, 1,
         1,
         100,
-        85),
+        85, false),
     scr_component(
         "Advanced Firewall",
         "Filters incoming Packets based#on their target ip and port",
@@ -37,7 +37,7 @@ global.components_firewall = array(
         1, 2,
         1.6,
         180,
-        100),
+        100, true),
     scr_component(
         "Professional Firewall",
         "Filters incoming Packets based#on their target ip and port",
@@ -45,7 +45,7 @@ global.components_firewall = array(
         1, 5,
         3,
         300,
-        150),
+        150, true),
 );
 
 global.components_splitter = array(

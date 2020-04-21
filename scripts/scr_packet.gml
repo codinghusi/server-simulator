@@ -1,4 +1,4 @@
-///scr_packet(outgoing, task, useless, send_time, timeout, id)
+///scr_packet(outgoing, task, useless, send_time, timeout, id, ddos)
 
 enum packet {
     outgoing,
@@ -6,7 +6,8 @@ enum packet {
     useless,
     send_time,
     timeout,
-    id
+    id,
+    ddos
 }
 
-return array(argument0, argument1, argument2, argument3, argument4, argument5);
+return array(argument0, argument1, argument2, argument3, argument4, argument5, argument6);

@@ -66,8 +66,12 @@ processing_packet = noone;
             <kind>1</kind>
             <string>/// Inbox
 
-if (processed_packet[packet.task] != packet_task.webpage) {
-    scr_burn_packet(x,y)
+var smart = data[component_struct.additional_data];
+var ddos_packet = processed_packet[packet.ddos];
+var task_ = processed_packet[packet.task];
+
+if ((smart &amp;&amp; ddos_packet) || (!smart &amp;&amp; task_ != packet_task.webpage)) {
+    scr_burn_packet(x,y, processed_packet)
 } else {
     scr_create_packet(processed_packet, downlinks[| 0])
 }

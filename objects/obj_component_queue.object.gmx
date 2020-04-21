@@ -245,7 +245,7 @@ if (ds_queue_size(queue) &lt; capacity) {
     ds_queue_enqueue(queue, inbox)
 }
 else {
-    scr_burn_packet(x, y)
+    scr_burn_packet(x, y, inbox)
 }
 </string>
           </argument>
