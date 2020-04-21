@@ -144,6 +144,28 @@ zoom = 1;
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///not Game over
+global.gameover = false
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="3" enumb="1">
       <action>
@@ -224,6 +246,7 @@ mouse_previous_y = my;
           <argument>
             <kind>1</kind>
             <string>/// View Zoom
+if global.gameover exit;
 
 var factor = 0.1;
 zoom += (mouse_wheel_down() - mouse_wheel_up()) * factor * zoom;
@@ -398,6 +421,29 @@ for (var i = 0; i &lt; instance_count; ++i) {
     var instance = instance_id[i];
     draw_text(instance.x, instance.y, debug_get(instance));
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="32">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>scr_gameover()
 </string>
           </argument>
         </arguments>

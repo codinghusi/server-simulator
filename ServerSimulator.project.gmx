@@ -122,6 +122,7 @@
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_simulator</room>
+    <room>rooms\rm_gameover</room>
   </rooms>
   <constants number="2">
     <constant name="NEWS_COUNT">10</constant>
