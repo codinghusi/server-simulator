@@ -114,10 +114,12 @@ if (comp != noone) {
           <argument>
             <kind>1</kind>
             <string>/// Disappear if money is less
+if (comp == noone) exit;
 
 if (!scr_can_buy_component(comp)) {
     instance_destroy();
 }
+
 </string>
           </argument>
         </arguments>
@@ -139,6 +141,7 @@ if (!scr_can_buy_component(comp)) {
           <argument>
             <kind>1</kind>
             <string>/// Dropping
+if (comp == noone) exit;
 
 nearest_distance = -1;
 nearest_instance = noone;
