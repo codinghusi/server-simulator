@@ -2,4 +2,4 @@
 
 var components = argument0;
 
-return map(components, scr_component_to_item);
+return array_map(components, scr_component_to_item);

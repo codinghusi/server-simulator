@@ -27,13 +27,8 @@
     <background>background\bgr_hud</background>
     <background>background\bgr_gameover</background>
   </backgrounds>
-  <paths name="paths">
-    <path>paths\pt_test</path>
-    <path>paths\path1</path>
-  </paths>
+  <paths name="paths"/>
   <scripts name="scripts">
-    <script>scripts\map.gml</script>
-    <script>scripts\foreach.gml</script>
     <scripts name="Component">
       <script>scripts\scr_thread.gml</script>
       <script>scripts\scr_create_component.gml</script>
@@ -46,21 +41,25 @@
       <script>scripts\scr_component_used_downlinks.gml</script>
       <script>scripts\scr_component_process.gml</script>
       <script>scripts\scr_remove_component.gml</script>
+      <script>scripts\scr_find_category.gml</script>
     </scripts>
     <scripts name="Paket">
+      <script>scripts\scr_reward_packet.gml</script>
       <script>scripts\scr_create_packet.gml</script>
       <script>scripts\scr_burn_packet.gml</script>
+      <script>scripts\scr_packet_timeouted.gml</script>
       <script>scripts\scr_task.gml</script>
       <script>scripts\scr_packet.gml</script>
     </scripts>
     <scripts name="Connection">
       <script>scripts\scr_create_connection.gml</script>
       <script>scripts\scr_connection_x.gml</script>
+      <script>scripts\scr_punish_packet.gml</script>
       <script>scripts\scr_connection_y.gml</script>
       <script>scripts\scr_connection_length.gml</script>
       <script>scripts\scr_connection_direction.gml</script>
+      <script>scripts\scr_downlink_available_in.gml</script>
     </scripts>
-    <script>scripts\array.gml</script>
     <script>scripts\scr_config.gml</script>
     <scripts name="Debug">
       <script>scripts\debug_get.gml</script>
@@ -80,29 +79,46 @@
       <script>scripts\scr_shop_get_hovered_item.gml</script>
       <script>scripts\scr_category.gml</script>
       <script>scripts\scr_shop_item.gml</script>
-      <script>scripts\scr_component_to_item.gml</script>
-      <script>scripts\scr_category_to_item.gml</script>
-      <script>scripts\scr_categories_to_items.gml</script>
-      <script>scripts\scr_components_to_items.gml</script>
+      <script>scripts\scr_can_buy_item.gml</script>
+      <script>scripts\scr_can_buy_component.gml</script>
       <script>scripts\scr_shop_route.gml</script>
       <script>scripts\scr_draw_tooltip.gml</script>
       <script>scripts\scr_shop_back.gml</script>
+      <script>scripts\scr_daily_cost.gml</script>
       <script>scripts\scr_convert_price.gml</script>
       <script>scripts\scr_buy_component.gml</script>
       <script>scripts\scr_sell_component.gml</script>
+      <script>scripts\scr_component_to_item.gml</script>
+      <script>scripts\scr_components_to_items.gml</script>
+      <script>scripts\scr_category_to_item.gml</script>
+      <script>scripts\scr_categories_to_items.gml</script>
     </scripts>
-    <script>scripts\scr_find_category.gml</script>
-    <script>scripts\scr_draw_button_text.gml</script>
-    <script>scripts\scr_draw_button_sprite.gml</script>
-    <script>scripts\scr_hovering_ui.gml</script>
-    <script>scripts\scr_can_buy_item.gml</script>
-    <script>scripts\scr_can_buy_component.gml</script>
-    <script>scripts\scr_reward_packet.gml</script>
-    <script>scripts\scr_punish_packet.gml</script>
-    <script>scripts\scr_packet_timeouted.gml</script>
     <script>scripts\scr_gameover.gml</script>
-    <script>scripts\scr_daily_cost.gml</script>
-    <script>scripts\scr_downlink_available_in.gml</script>
+    <scripts name="UI">
+      <script>scripts\scr_hovering_ui.gml</script>
+      <script>scripts\scr_draw_button_sprite.gml</script>
+      <script>scripts\scr_draw_button_text.gml</script>
+    </scripts>
+    <scripts name="Array">
+      <script>scripts\array_map.gml</script>
+      <script>scripts\array_foreach.gml</script>
+      <script>scripts\array.gml</script>
+    </scripts>
+    <scripts name="Map">
+      <script>scripts\kv.gml</script>
+      <script>scripts\map.gml</script>
+      <script>scripts\map_add.gml</script>
+      <script>scripts\map_set.gml</script>
+      <script>scripts\map_get.gml</script>
+    </scripts>
+    <scripts name="Instances">
+      <script>scripts\check_instances.gml</script>
+      <scripts name="Method">
+        <script>scripts\method.gml</script>
+        <script>scripts\method_param.gml</script>
+        <script>scripts\method_return.gml</script>
+      </scripts>
+    </scripts>
   </scripts>
   <objects name="objects">
     <object>objects\obj_packet</object>
