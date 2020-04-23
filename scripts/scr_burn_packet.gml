@@ -1,6 +1,9 @@
 ///scr_burn_packet(x, y, packet)
 
-var packet_ = argument2;
-packet_[@ packet.timeout] = 0;
+var xx = argument0;
+var yy = argument1;
+var packet = argument2;
 
-instance_create(argument0, argument1, obj_packet_burning)
+map_set(packet, kv("timeout", 0));
+
+instance_create(xx, yy, obj_packet_burning)

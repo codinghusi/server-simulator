@@ -1,9 +1,7 @@
 ///scr_thread(packet, process_time)
 
-enum thread {
-    packet,
-    remaining_time,
-    time
-}
-
-return array(argument0, argument1, argument1);
+return map(
+    kv("packet", argument0),
+    kv("process_time", argument1),
+    kv("time", argument1),
+);

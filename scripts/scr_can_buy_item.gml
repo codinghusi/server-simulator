@@ -2,4 +2,4 @@
 
 var item = argument0;
 
-return item[shop_item.price] <= global.money;
+return map_get(item, "price") <= global.money;

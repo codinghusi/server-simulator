@@ -1,13 +1,11 @@
 ///scr_packet(outgoing, task, useless, send_time, timeout, id, ddos)
 
-enum packet {
-    outgoing,
-    task,
-    useless,
-    send_time,
-    timeout,
-    id,
-    ddos
-}
-
-return array(argument0, argument1, argument2, argument3, argument4, argument5, argument6);
+return map(
+    kv("outgoing", argument0),
+    kv("task", argument0),
+    kv("useless", argument0),
+    kv("send_time", argument0),
+    kv("timeout", argument0),
+    kv("id", argument0),
+    kv("ddos", argument0),
+);

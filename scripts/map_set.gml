@@ -1,9 +1,14 @@
-///map_set(map, key, value)
+///map_set(map, ...keyvalues)
 
-var map_ = argument0;
-var key = argument1;
-var value = argument2;
+var map_ = argument[0];
 
-ds_map_add(map_, key, value);
+var keyvalues = array_create(argument_count - 1);
+
+for (var i = 1; i < argument_count; ++i) {
+    var keyvalue = argument[i];
+    keyvalues[i - 1] = keyvalue;
+}
+
+map_add(map_, keyvalues);
 
 return map_;

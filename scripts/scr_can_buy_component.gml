@@ -1,5 +1,7 @@
-///scr_can_buy_component(item)
+///scr_can_buy_component(component)
 
-var item = argument0;
+assert_component(component, true);
 
-return item[component_struct.price] <= global.money;
+var component = argument0;
+
+return map_get(component, "price") <= global.money;

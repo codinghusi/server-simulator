@@ -1,8 +1,8 @@
 ///scr_shop_draw(route)
 
 var route = argument0;
-var type = route[shop_route.type];
-var items = route[shop_route.items];
+var type = map_get(route, "type");
+var items = map_get(route, "items");
 
 draw_background(bgr_hud, 0, 0);
 

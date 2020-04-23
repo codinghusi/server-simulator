@@ -5,9 +5,7 @@ enum shop_type {
     component
 }
 
-enum shop_route {
-    type,
-    items
-}
-
-return array(argument0, argument1);
+return map(
+    kv("type", argument0),
+    kv("items", argument1)
+);

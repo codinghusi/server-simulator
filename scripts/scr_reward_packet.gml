@@ -1,9 +1,9 @@
 ///scr_reward_packet(packet)
 
-var packet_ = argument0;
-var task_ = packet_[packet.task];
-var packet_task_ = global.packet_tasks[task_];
-var reputation = packet_task_[task.reputation];
+var packet = argument0;
+var task = map_get(packet, "task");
+var packet_task = map_get(global.packet_tasks, task);
+var reputation = map_get(packet_task, "reputation");
 
 reputation *=  clamp(1 - global.user_reputation, 0.2, 1);
 

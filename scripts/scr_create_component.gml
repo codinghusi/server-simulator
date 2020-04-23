@@ -1,23 +1,25 @@
 ///scr_create_component(component_data, connection)
 
-var data = argument0;
-var component_object = data[component_struct.object];
+var component = argument0;
 var connection = argument1;
-var downlink_count = data[component_struct.downlink_count];
-var additional_data = data[component_struct.additional_data];
+
+assert_component(component, true);
+
+var component_object = map_get(component, "object");
+var downlink_count = map_get(component, "downlink_count");
 var uplink, downlink, downlinks, root;
 
-var component = instance_create(0, 0, component_object);
+var instance = instance_create(0, 0, component_object);
 
 if (!connection) {
-    root = component;
+    root = instance;
 } else {
-    root = connection.root;
+    root = instance.root;
 }
 
 downlinks = ds_list_create();
 for (var i = downlink_count - 1; i >= 0; --i) {
-    downlinks[| i] = scr_create_connection(root, component, noone, 1); // TODO: Hardcoded
+    downlinks[| i] = scr_create_connection(root, instance, noone, 1); // TODO: Hardcoded
 }
 
 if (downlink_count) {
@@ -32,7 +34,7 @@ if (!connection) {
 // 2. Or we need to go in the middle
 else {
     var bottom_component = connection.downlink; // could be noone (see 1.)
-    connection.downlink = component;
+    connection.downlink = instance;
     
     uplink = connection;
     
@@ -45,10 +47,11 @@ else {
     }
 }
 
-component.uplink = uplink;
-component.downlinks = downlinks;
-component.connection = connection;
-component.data = data;
+instance.uplink = uplink;
+instance.downlinks = downlinks;
+instance.connection = connection;
+
+data_init(component, instance);
 
 
 // Position all components underneath and this one
@@ -57,9 +60,9 @@ if (connection) {
 }
 
 // Init
-with (component) {
+with (instance) {
     event_user(2);
     initialized = true;
 }
 
-return component;
+return instance;

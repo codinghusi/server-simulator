@@ -2,4 +2,4 @@
 
 var name = argument0;
 
-return ds_map_find_value(method_params, name);
+return map_get(method_params, name);

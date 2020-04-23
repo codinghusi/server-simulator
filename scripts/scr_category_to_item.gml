@@ -1,14 +1,14 @@
 ///scr_category_to_item(category)
 
-var cat = argument0;
+var category = argument0;
 
 var item = scr_shop_item(
-    cat[category.name],
-    cat[category.sprite],
-    cat[category.subimage],
-    cat[category.name],
+    map_get(category, "name"),
+    map_get(category, "sprite"),
+    map_get(category, "subimage"),
+    map_get(category, "name"),
     0,
-    cat
+    category
 );
 
 return item;

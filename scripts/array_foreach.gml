@@ -1,7 +1,7 @@
-///foreach(array, script)
+///foreach(array, callback_script)
 
 var arr = argument0;
-var script = argument1;
+var callback_script = argument1;
 
 var length = array_length_1d(arr);
 for (var i = 0; i < length; ++i) {

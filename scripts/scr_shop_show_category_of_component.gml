@@ -2,9 +2,9 @@
 
 var component = argument0;
 
-var cat = scr_find_category(component);
+var category = scr_find_category(component);
 
-var items = scr_components_to_items(cat[category.components]);
+var items = scr_components_to_items(map_get(category, "components"));
 var type = shop_type.component;
 var route = scr_shop_route(type, items);
 

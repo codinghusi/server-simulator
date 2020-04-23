@@ -1,10 +1,8 @@
 ///scr_task(name, process_time, probability, reputation)
 
-enum task {
-    name,
-    process_time,
-    probability,
-    reputation
-}
-
-return array(argument0, argument1, argument2, argument3);
+return map(
+    kv("name", argument0),
+    kv("process_time", argument1),
+    kv("probability", argument2),
+    kv("reputation", argument3)
+);

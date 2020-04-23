@@ -85,38 +85,36 @@ visible = false;
 x = scr_connection_x(connection, position);
 y = scr_connection_y(connection, position);
 
+var outgoing = data_get("outgoing");
+
 var dir = scr_connection_direction(connection) + 90;
-var len = 1 - data[packet.outgoing] * 2;
+var len = 1 - outgoing * 2;
 x += lengthdir_x(20 * len, dir);
 y += lengthdir_y(20 * len, dir);
 
 var spd = connection.bandwidth / global.travel_time;
 
-if (data[packet.outgoing]) {
+if (outgoing) {
     position -= spd;
     if (position) &lt;= 0{
-        if connection.uplink != noone {
-            connection.uplink.inbox = data;
-            with (connection.uplink) {
-                event_user(0)
-            }
+        var uplink = data_get_chain(self, "connection", "uplink", false);
+        if (uplink) {
+            method(uplink, component_method.internal_inbox, data());
         } else {
             show_debug_message("TODO: hier ist ein Paket aus der Leitung gefallen, das sollte nicht passieren!")
             scr_burn_packet(x, y, data);
         }
-        instance_destroy()
+        instance_destroy();
     }
 } else {
     position += spd;
     if (position &gt;= 1) {
-        if connection.downlink != noone {
-            connection.downlink.inbox = data;
-            with (connection.downlink) {
-                event_user(0)
-            }
+        var downlink = data_get_chain(self, "connection", "downlink", false);
+        if (downlink) {
+            method(downlink, component_method.internal_inbox, data());
         } else {
             show_debug_message("TODO: hier ist ein Paket aus der Leitung gefallen, das sollte nicht passieren!")
-            scr_burn_packet(x, y, data)
+            scr_burn_packet(x, y, data);
         }
         instance_destroy();
     }

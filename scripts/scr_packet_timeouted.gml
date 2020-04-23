@@ -1,7 +1,7 @@
 ///scr_packet_timeouted(packet)
 
-var packet_ = argument0;
-if (packet_[packet.send_time] + packet_[packet.timeout] < current_time) {
+var packet = argument0;
+if (map_get(packet, "send_time") + map_get(packet, "timeout") < current_time) {
     return true;
 }
 

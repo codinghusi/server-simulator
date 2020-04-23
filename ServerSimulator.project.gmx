@@ -30,18 +30,20 @@
   <paths name="paths"/>
   <scripts name="scripts">
     <scripts name="Component">
-      <script>scripts\scr_thread.gml</script>
+      <script>scripts\scr_component.gml</script>
       <script>scripts\scr_create_component.gml</script>
       <script>scripts\scr_component_width.gml</script>
       <script>scripts\scr_position_components.gml</script>
       <script>scripts\scr_component_used_downlink_count.gml</script>
-      <script>scripts\scr_component.gml</script>
       <script>scripts\scr_drag_component.gml</script>
       <script>scripts\scr_component_available_downlinks.gml</script>
       <script>scripts\scr_component_used_downlinks.gml</script>
       <script>scripts\scr_component_process.gml</script>
       <script>scripts\scr_remove_component.gml</script>
       <script>scripts\scr_find_category.gml</script>
+      <scripts name="Thread">
+        <script>scripts\scr_thread.gml</script>
+      </scripts>
     </scripts>
     <scripts name="Paket">
       <script>scripts\scr_reward_packet.gml</script>
@@ -72,6 +74,7 @@
       <script>scripts\scr_news_draw.gml</script>
     </scripts>
     <scripts name="Shop">
+      <script>scripts\scr_shop_route.gml</script>
       <script>scripts\scr_shop_init.gml</script>
       <script>scripts\scr_shop_show_category_of_component.gml</script>
       <script>scripts\scr_shop_draw.gml</script>
@@ -81,7 +84,6 @@
       <script>scripts\scr_shop_item.gml</script>
       <script>scripts\scr_can_buy_item.gml</script>
       <script>scripts\scr_can_buy_component.gml</script>
-      <script>scripts\scr_shop_route.gml</script>
       <script>scripts\scr_draw_tooltip.gml</script>
       <script>scripts\scr_shop_back.gml</script>
       <script>scripts\scr_daily_cost.gml</script>
@@ -103,6 +105,7 @@
       <script>scripts\array_map.gml</script>
       <script>scripts\array_foreach.gml</script>
       <script>scripts\array.gml</script>
+      <script>scripts\array_some.gml</script>
     </scripts>
     <scripts name="Map">
       <script>scripts\kv.gml</script>
@@ -110,6 +113,8 @@
       <script>scripts\map_add.gml</script>
       <script>scripts\map_set.gml</script>
       <script>scripts\map_get.gml</script>
+      <script>scripts\map_check.gml</script>
+      <script>scripts\map_has.gml</script>
     </scripts>
     <scripts name="Instances">
       <script>scripts\check_instances.gml</script>
@@ -118,6 +123,27 @@
         <script>scripts\method_param.gml</script>
         <script>scripts\method_return.gml</script>
       </scripts>
+      <scripts name="Data">
+        <script>scripts\data.gml</script>
+        <script>scripts\data_init.gml</script>
+        <script>scripts\data_set.gml</script>
+        <script>scripts\data_get.gml</script>
+        <script>scripts\data_has.gml</script>
+        <script>scripts\data_get_chain.gml</script>
+        <script>scripts\data_has_chain.gml</script>
+      </scripts>
+    </scripts>
+    <scripts name="Error">
+      <script>scripts\error.gml</script>
+      <script>scripts\assert.gml</script>
+      <script>scripts\assert_component.gml</script>
+      <script>scripts\assert_category.gml</script>
+      <script>scripts\assert_thread.gml</script>
+      <script>scripts\assert_packet.gml</script>
+      <script>scripts\assert_task.gml</script>
+      <script>scripts\assert_shop_route.gml</script>
+      <script>scripts\assert_shop_item.gml</script>
+      <script>scripts\assert_argument_count.gml</script>
     </scripts>
   </scripts>
   <objects name="objects">

@@ -1,11 +1,10 @@
-///map(array, script)
+///map(array, callback_script)
 
 var arr = argument0;
-var script = argument1;
+var callback_script = argument1;
 
 var length = array_length_1d(arr);
-var result;
-result[length - 1] = 0;
+var result = array_create(length);
 
 for (var i = 0; i < length; ++i) {
     var item = arr[i];
