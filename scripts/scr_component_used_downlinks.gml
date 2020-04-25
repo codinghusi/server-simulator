@@ -1,7 +1,7 @@
 ///scr_component_used_downlinks(component)
 
 var component = argument0;
-var downlinks = component.downlinks;
+var downlinks = data_get("downlinks", component);
 var length = ds_list_size(downlinks);
 var count = 0;
 
@@ -9,10 +9,7 @@ var used = ds_list_create();
 
 for (var i = 0; i < length; ++i) {
     var downlink_connection = downlinks[| i];
-    if (!downlink_connection) {
-        continue;
-    }
-    if (!downlink_connection.downlink) {
+    if (!data_has_chain(downlink_connection, "downlink")) {
         continue;
     }
     ds_list_add(used, downlink_connection);

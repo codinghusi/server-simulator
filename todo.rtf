@@ -1,0 +1,534 @@
+	Found	Search Description	Search Context
+		Found "" in script "scr_create_component" at line 33, position 5	
+// 1. At the end of the connection there is no component so we will be that
+		Found "" in script "scr_create_component" at line 34, position 5	
+// 2. Or we need to go in the middle
+		Found "" in script "scr_create_component" at line 36, position 93	
+    var bottom_component = data_get("downlink", noone, connection); // could be noone (see 1.)
+		Found "" in script "scr_position_components" at line 21, position 23	
+    downlink_component.x = component.x + (xx + component_width) / 2 * hor_width;
+		Found "" in script "scr_position_components" at line 21, position 37	
+    downlink_component.x = component.x + (xx + component_width) / 2 * hor_width;
+		Found "" in script "scr_position_components" at line 22, position 23	
+    downlink_component.y = component.y + ver_spacing;
+		Found "" in script "scr_position_components" at line 22, position 37	
+    downlink_component.y = component.y + ver_spacing;
+		Found "" in script "scr_component_process" at line 6, position 10	
+component.slots_used++;
+		Found "" in script "scr_remove_component" at line 5, position 23	
+var uplink = component.uplink;
+		Found "" in script "scr_remove_component" at line 6, position 26	
+var downlinks = component.downlinks;
+		Found "" in script "scr_remove_component" at line 17, position 13	
+    downlink.downlink.uplink = uplink;
+		Found "" in script "scr_remove_component" at line 17, position 22	
+    downlink.downlink.uplink = uplink;
+		Found "" in script "scr_remove_component" at line 18, position 11	
+    uplink.downlink = downlink.downlink;
+		Found "" in script "scr_remove_component" at line 18, position 31	
+    uplink.downlink = downlink.downlink;
+		Found "" in script "scr_remove_component" at line 20, position 11	
+    uplink.downlink = noone;
+		Found "" in script "scr_remove_component" at line 28, position 32	
+        if (connection == other.downlink_to_remove) {
+		Found "" in script "scr_remove_component" at line 29, position 31	
+            connection = other.uplink_thats_new;
+		Found "" in script "scr_remove_component" at line 37, position 31	
+scr_position_components(uplink.root);
+		Found "" in script "scr_find_category" at line 4, position 24	
+var categories = global.shop_categories;
+		Found "" in script "scr_reward_packet" at line 5, position 33	
+var packet_task = map_get(global.packet_tasks, task);
+		Found "" in script "scr_reward_packet" at line 8, position 32	
+reputation *=  clamp(1 - global.user_reputation, 0.2, 1);
+		Found "" in script "scr_reward_packet" at line 8, position 51	
+reputation *=  clamp(1 - global.user_reputation, 0.2, 1);
+		Found "" in script "scr_reward_packet" at line 10, position 33	
+var factor = reputation * global.user_satisfier;
+		Found "" in script "scr_reward_packet" at line 12, position 7	
+global.user_reputation += factor;
+		Found "" in script "scr_reward_packet" at line 14, position 7	
+global.user_reputation = clamp(global.user_reputation, 0, 1);
+		Found "" in script "scr_reward_packet" at line 14, position 38	
+global.user_reputation = clamp(global.user_reputation, 0, 1);
+		Found "" in script "scr_reward_packet" at line 16, position 41	
+var reward = random_range(reputation * 0.8, reputation * 1.2) * global.reputation_money;
+		Found "" in script "scr_reward_packet" at line 16, position 59	
+var reward = random_range(reputation * 0.8, reputation * 1.2) * global.reputation_money;
+		Found "" in script "scr_reward_packet" at line 16, position 71	
+var reward = random_range(reputation * 0.8, reputation * 1.2) * global.reputation_money;
+		Found "" in script "scr_reward_packet" at line 18, position 7	
+global.money += reward;
+		Found "" in script "scr_create_packet" at line 14, position 13	
+    instance.position = 1; // start at the end
+		Found "" in script "scr_create_connection" at line 10, position 11	
+connection.uplink = uplink;
+		Found "" in script "scr_create_connection" at line 11, position 11	
+connection.downlink = downlink;
+		Found "" in script "scr_create_connection" at line 12, position 11	
+connection.bandwidth = bandwidth;
+		Found "" in script "scr_create_connection" at line 13, position 11	
+connection.root = root;
+		Found "" in script "scr_connection_x" at line 10, position 18	
+return connection.uplink.x + xx;
+		Found "" in script "scr_connection_x" at line 10, position 25	
+return connection.uplink.x + xx;
+		Found "" in script "scr_punish_packet" at line 5, position 33	
+var packet_task = map_get(global.packet_tasks, "task");
+		Found "" in script "scr_punish_packet" at line 8, position 32	
+reputation *=  clamp(1 - global.user_reputation, 0.2, 1);
+		Found "" in script "scr_punish_packet" at line 8, position 51	
+reputation *=  clamp(1 - global.user_reputation, 0.2, 1);
+		Found "" in script "scr_punish_packet" at line 10, position 33	
+var factor = reputation * global.user_satisfier;
+		Found "" in script "scr_punish_packet" at line 12, position 7	
+global.user_reputation -= factor;
+		Found "" in script "scr_punish_packet" at line 14, position 7	
+global.user_reputation = clamp(global.user_reputation, 0, 1);
+		Found "" in script "scr_punish_packet" at line 14, position 38	
+global.user_reputation = clamp(global.user_reputation, 0, 1);
+		Found "" in script "scr_punish_packet" at line 16, position 41	
+var punish = random_range(reputation * 0.8, reputation * 1.2) * global.reputation_money / 2;
+		Found "" in script "scr_punish_packet" at line 16, position 59	
+var punish = random_range(reputation * 0.8, reputation * 1.2) * global.reputation_money / 2;
+		Found "" in script "scr_punish_packet" at line 16, position 71	
+var punish = random_range(reputation * 0.8, reputation * 1.2) * global.reputation_money / 2;
+		Found "" in script "scr_punish_packet" at line 18, position 7	
+global.money -= punish;
+		Found "" in script "scr_connection_y" at line 10, position 18	
+return connection.uplink.y + yy;
+		Found "" in script "scr_connection_y" at line 10, position 25	
+return connection.uplink.y + yy;
+		Found "" in script "scr_connection_length" at line 4, position 26	
+var downlink = connection.downlink;
+		Found "" in script "scr_connection_length" at line 5, position 24	
+var uplink = connection.uplink;
+		Found "" in script "scr_connection_length" at line 9, position 12	
+x1 = uplink.x;
+		Found "" in script "scr_connection_length" at line 10, position 12	
+y1 = uplink.y;
+		Found "" in script "scr_connection_length" at line 16, position 18	
+    x2 = downlink.x;
+		Found "" in script "scr_connection_length" at line 17, position 18	
+    y2 = downlink.y;
+		Found "" in script "scr_connection_direction" at line 4, position 26	
+var downlink = connection.downlink;
+		Found "" in script "scr_connection_direction" at line 5, position 24	
+var uplink = connection.uplink;
+		Found "" in script "scr_connection_direction" at line 9, position 12	
+x1 = uplink.x;
+		Found "" in script "scr_connection_direction" at line 10, position 12	
+y1 = uplink.y;
+		Found "" in script "scr_connection_direction" at line 16, position 18	
+    x2 = downlink.x;
+		Found "" in script "scr_connection_direction" at line 17, position 18	
+    y2 = downlink.y;
+		Found "" in script "scr_downlink_available_in" at line 7, position 25	
+var component = downlink.downlink;
+		Found "" in script "scr_downlink_available_in" at line 9, position 36	
+    var downlink_packets = downlink.packets_traveling_incoming;
+		Found "" in script "scr_downlink_available_in" at line 15, position 33	
+        var wait_for = component.max_process_time + room_speed / 8; // add small delay because else it's confusing
+		Found "" in script "scr_downlink_available_in" at line 16, position 134	
+        var waited = data_get("position", data_get("last_packet_sent_incoming", downlink)) * data_get("bandwidth", downlink) * global.travel_time;
+		Found "" in script "scr_config" at line 8, position 7	
+global.selected_component = noone;
+		Found "" in script "scr_config" at line 9, position 7	
+global.process_time = room_speed * 1;
+		Found "" in script "scr_config" at line 10, position 7	
+global.travel_time = room_speed;
+		Found "" in script "scr_config" at line 11, position 7	
+global.power_multiplicator = 0.5;
+		Found "" in script "scr_config" at line 11, position 31	
+global.power_multiplicator = 0.5;
+		Found "" in script "scr_config" at line 13, position 7	
+global.user_reputation = 0.1;
+		Found "" in script "scr_config" at line 13, position 27	
+global.user_reputation = 0.1;
+		Found "" in script "scr_config" at line 14, position 7	
+global.user_satisfier = 0.005;
+		Found "" in script "scr_config" at line 14, position 26	
+global.user_satisfier = 0.005;
+		Found "" in script "scr_config" at line 15, position 7	
+global.reputation_money = 30;
+		Found "" in script "scr_config" at line 18, position 7	
+global.start_time = current_time;
+		Found "" in script "scr_config" at line 22, position 7	
+global.packet_tasks = array(
+		Found "" in script "scr_config" at line 23, position 26	
+    scr_task("ping", 3, 0.2, 0.2),
+		Found "" in script "scr_config" at line 23, position 31	
+    scr_task("ping", 3, 0.2, 0.2),
+		Found "" in script "scr_config" at line 24, position 30	
+    scr_task("webpage", 10, 0.8, 3)
+		Found "" in script "scr_config" at line 28, position 7	
+global.components_firewall = array(
+		Found "" in script "scr_config" at line 34, position 10	
+        1.4,
+		Found "" in script "scr_config" at line 42, position 10	
+        1.8,
+		Found "" in script "scr_config" at line 55, position 7	
+global.components_splitter = array(
+		Found "" in script "scr_config" at line 58, position 71	
+        "Usable for splitting an Ethernet#connection to two components.#Requires no power as its a completly#passive Component. This also#means there is no logic involved#Each Packet goes out to each connection#which leads to useless traffic.",
+		Found "" in script "scr_config" at line 58, position 127	
+        "Usable for splitting an Ethernet#connection to two components.#Requires no power as its a completly#passive Component. This also#means there is no logic involved#Each Packet goes out to each connection#which leads to useless traffic.",
+		Found "" in script "scr_config" at line 58, position 242	
+        "Usable for splitting an Ethernet#connection to two components.#Requires no power as its a completly#passive Component. This also#means there is no logic involved#Each Packet goes out to each connection#which leads to useless traffic.",
+		Found "" in script "scr_config" at line 77, position 10	
+        1.5,
+		Found "" in script "scr_config" at line 90, position 7	
+global.components_server = array(
+		Found "" in script "scr_config" at line 104, position 10	
+        0.3,
+		Found "" in script "scr_config" at line 112, position 10	
+        1.7,
+		Found "" in script "scr_config" at line 125, position 7	
+global.components_other = array(
+		Found "" in script "scr_config" at line 144, position 98	
+        "Has to reach 88 Miles per hour#before its operational but if it#does its the best option.#Packets will have no feeling of#time after going thru it.",
+		Found "" in script "scr_config" at line 144, position 156	
+        "Has to reach 88 Miles per hour#before its operational but if it#does its the best option.#Packets will have no feeling of#time after going thru it.",
+		Found "" in script "scr_config" at line 153, position 7	
+global.shop_categories = array(
+		Found "" in script "scr_config" at line 154, position 62	
+    scr_category("Firewall", spr_category_firewall, 0, global.components_firewall),
+		Found "" in script "scr_config" at line 155, position 60	
+    scr_category("Splitter", spr_category_switch, 0, global.components_splitter),
+		Found "" in script "scr_config" at line 156, position 58	
+    scr_category("Server", spr_category_server, 2, global.components_server),
+		Found "" in script "scr_config" at line 157, position 56	
+    scr_category("Other", spr_category_queue, 0, global.components_other),
+		Found "" in script "debug_get" at line 5, position 18	
+var list = global.debug[? instance];
+		Found "" in script "debug_get" at line 8, position 11	
+    global.debug[? instance] = list;
+		Found "" in script "debug_instance" at line 6, position 18	
+var list = global.debug[? instance];
+		Found "" in script "debug_instance" at line 9, position 11	
+    global.debug[? instance] = list;
+		Found "" in script "clear_debug" at line 3, position 7	
+global.debug = ds_map_create();
+		Found "" in script "scr_shop_init" at line 3, position 7	
+global.money = 10000;
+		Found "" in script "scr_shop_show_category_of_component" at line 8, position 21	
+var type = shop_type.component;
+		Found "" in script "scr_shop_show_category_of_component" at line 11, position 33	
+var routes = obj_shop_controller.routes;
+		Found "" in script "scr_shop_draw" at line 18, position 55	
+draw_text(xx, yy, "Money: " + scr_convert_price(global.money));
+		Found "" in script "scr_shop_draw" at line 41, position 47	
+draw_rectangle(xx, yy, lerp(xx, xx + w, global.user_reputation), yy + h, false);
+		Found "" in script "scr_shop_draw_items" at line 51, position 26	
+    if (type == shop_type.component) {
+		Found "" in script "scr_can_buy_item" at line 5, position 40	
+return map_get(item, "price") <= global.money;
+		Found "" in script "scr_can_buy_component" at line 7, position 45	
+return map_get(component, "price") <= global.money;
+		Found "" in script "scr_shop_back" at line 3, position 33	
+var routes = obj_shop_controller.routes;
+		Found "" in script "scr_daily_cost" at line 5, position 51	
+    total += data_get("power_consumtion") * global.power_multiplicator
+		Found "" in script "scr_buy_component" at line 7, position 11	
+    global.money -= price;
+		Found "" in script "scr_sell_component" at line 6, position 7	
+global.money += price;
+		Found "" in script "scr_gameover" at line 2, position 7	
+global.gameover = true;
+		Found "" in script "array" at line 1, position 9	///array(...values)
+		Found "" in script "array" at line 1, position 10	///array(...values)
+		Found "" in script "array" at line 1, position 11	///array(...values)
+		Found "" in script "map" at line 1, position 7	///map(...keyvalues)
+		Found "" in script "map" at line 1, position 8	///map(...keyvalues)
+		Found "" in script "map" at line 1, position 9	///map(...keyvalues)
+		Found "" in script "map" at line 7, position 33	
+    var key = keyvalue[kv_struct.key];
+		Found "" in script "map" at line 8, position 35	
+    var value = keyvalue[kv_struct.value];
+		Found "" in script "map_add" at line 9, position 33	
+    var key = keyvalue[kv_struct.key];
+		Found "" in script "map_add" at line 10, position 35	
+    var value = keyvalue[kv_struct.value];
+		Found "" in script "map_set" at line 1, position 16	///map_set(map, ...keyvalues)
+		Found "" in script "map_set" at line 1, position 17	///map_set(map, ...keyvalues)
+		Found "" in script "map_set" at line 1, position 18	///map_set(map, ...keyvalues)
+		Found "" in script "check_instances" at line 1, position 19	///check_instances(...instances)
+		Found "" in script "check_instances" at line 1, position 20	///check_instances(...instances)
+		Found "" in script "check_instances" at line 1, position 21	///check_instances(...instances)
+		Found "" in script "method" at line 23, position 56	
+    show_debug_message("Error: couldn't perform method(...) because instance doesn't exist");
+		Found "" in script "method" at line 23, position 57	
+    show_debug_message("Error: couldn't perform method(...) because instance doesn't exist");
+		Found "" in script "method" at line 23, position 58	
+    show_debug_message("Error: couldn't perform method(...) because instance doesn't exist");
+		Found "" in script "data" at line 13, position 26	
+if (is_undefined(instance.my_data)) {
+		Found "" in script "data" at line 14, position 13	
+    instance.my_data = map();
+		Found "" in script "data" at line 17, position 16	
+return instance.my_data;
+		Found "" in script "data_get_chain" at line 1, position 28	///data_get_chain(instance, ...instances, key, crash)
+		Found "" in script "data_get_chain" at line 1, position 29	///data_get_chain(instance, ...instances, key, crash)
+		Found "" in script "data_get_chain" at line 1, position 30	///data_get_chain(instance, ...instances, key, crash)
+		Found "" in script "data_has_chain" at line 1, position 28	///data_has_chain(instance, ...instances, key)
+		Found "" in script "data_has_chain" at line 1, position 29	///data_has_chain(instance, ...instances, key)
+		Found "" in script "data_has_chain" at line 1, position 30	///data_has_chain(instance, ...instances, key)
+		Found "" in object "obj_packet", event "Step" at line 13, position 21	
+var spd = connection.bandwidth / global.travel_time;
+		Found "" in object "obj_packet", event "Step" at line 13, position 40	
+var spd = connection.bandwidth / global.travel_time;
+		Found "" in object "obj_packet", event "Step" at line 20, position 44	
+            method(uplink, component_method.internal_inbox, data());
+		Found "" in object "obj_packet", event "Step" at line 32, position 46	
+            method(downlink, component_method.internal_inbox, data());
+		Found "" in object "obj_packet", event "Step" at line 4, position 16	
+if (data[packet.useless]) {
+		Found "" in object "obj_packet", event "Step" at line 7, position 23	
+    switch(data[packet.task]) {
+		Found "" in object "obj_packet", event "Step" at line 8, position 25	
+        case packet_task.webpage:
+		Found "" in object "obj_packet", event "Step" at line 11, position 25	
+        case packet_task.ping:
+		Found "" in object "obj_connection", event "Create" at line 6, position 7	
+global.dropable_connection = noone;
+		Found "" in object "obj_connection", event "Step" at line 7, position 44	
+    if (connection == other && !data[packet.outgoing]) {
+		Found "" in object "obj_connection", event "Step" at line 8, position 14	
+        other.packets_travel_incoming++;
+		Found "" in object "obj_connection", event "Step" at line 11, position 15	
+    if (!other.last_packet_sent_incoming || position < other.last_packet_sent_incoming.position) {
+		Found "" in object "obj_connection", event "Step" at line 11, position 61	
+    if (!other.last_packet_sent_incoming || position < other.last_packet_sent_incoming.position) {
+		Found "" in object "obj_connection", event "Step" at line 11, position 87	
+    if (!other.last_packet_sent_incoming || position < other.last_packet_sent_incoming.position) {
+		Found "" in object "obj_connection", event "Step" at line 12, position 14	
+        other.last_packet_sent_incoming = id;
+		Found "" in object "obj_connection", event "Draw" at line 3, position 34	
+var xx = scr_connection_x(self, 0.5);
+		Found "" in object "obj_connection", event "Draw" at line 4, position 34	
+var yy = scr_connection_y(self, 0.5);
+		Found "" in object "obj_connection", event "Draw" at line 17, position 35	
+    var sprite = dropping_instance.sprite_index;
+		Found "" in object "obj_connection", event "Draw" at line 18, position 34	
+    var index = dropping_instance.image_index;
+		Found "" in object "obj_component", event "Step" at line 3, position 40	
+if (slots_used >= data[component_struct.slots_available]) {
+		Found "" in object "obj_component", event "Step" at line 7, position 28	
+        thread_tmp[@ thread.remaining_time] -= 1 / process_time;
+		Found "" in object "obj_component", event "Step" at line 8, position 30	
+        if (thread_tmp[thread.remaining_time] <= 0) {
+		Found "" in object "obj_component", event "Step" at line 10, position 47	
+            var packet_tmp = thread_tmp[thread.packet];
+		Found "" in object "obj_component", event "Step" at line 14, position 57	
+            if (useless_check && processed_packet[packet.useless]) {
+		Found "" in object "obj_component", event "Left Pressed" at line 3, position 7	
+global.selected_component = id;
+		Found "" in object "obj_component", event "User Defined 0" at line 5, position 17	
+if (inbox[packet.outgoing]) {
+		Found "" in object "obj_component", event "User Defined 0" at line 21, position 34	
+if (useless_check && inbox[packet.useless]) {
+		Found "" in object "obj_component", event "User Defined 2" at line 3, position 33	
+var size = data[component_struct.slots_available];
+		Found "" in object "obj_component", event "User Defined 2" at line 3, position 22	
+process_time = global.process_time / data[component_struct.speed];
+		Found "" in object "obj_component", event "User Defined 2" at line 3, position 59	
+process_time = global.process_time / data[component_struct.speed];
+		Found "" in object "obj_component", event "User Defined 2" at line 3, position 36	
+image_index = data[component_struct.subimage];
+		Found "" in object "obj_component", event "Draw" at line 4, position 11	
+if (global.selected_component == id) {
+		Found "" in object "obj_component_firewall", event "User Defined 3" at line 3, position 34	
+var smart = data[component_struct.additional_data];
+		Found "" in object "obj_component_firewall", event "User Defined 3" at line 4, position 42	
+var ddos_packet = processed_packet[packet.ddos];
+		Found "" in object "obj_component_firewall", event "User Defined 3" at line 5, position 36	
+var task_ = processed_packet[packet.task];
+		Found "" in object "obj_component_firewall", event "User Defined 3" at line 6, position 35	
+var is_ping = task_ == packet_task.ping;
+		Found "" in object "obj_component_firewall", event "User Defined 3" at line 12, position 34	
+        processed_packet[@ packet.outgoing] = true;
+		Found "" in object "obj_component_hub", event "User Defined 1" at line 18, position 43	
+            scr_packet(false, inbox[packet.task], true, inbox[packet.send_time], inbox[packet.timeout], inbox[packet.id], inbox[packet.ddos]),
+		Found "" in object "obj_component_hub", event "User Defined 1" at line 18, position 69	
+            scr_packet(false, inbox[packet.task], true, inbox[packet.send_time], inbox[packet.timeout], inbox[packet.id], inbox[packet.ddos]),
+		Found "" in object "obj_component_hub", event "User Defined 1" at line 18, position 94	
+            scr_packet(false, inbox[packet.task], true, inbox[packet.send_time], inbox[packet.timeout], inbox[packet.id], inbox[packet.ddos]),
+		Found "" in object "obj_component_hub", event "User Defined 1" at line 18, position 117	
+            scr_packet(false, inbox[packet.task], true, inbox[packet.send_time], inbox[packet.timeout], inbox[packet.id], inbox[packet.ddos]),
+		Found "" in object "obj_component_hub", event "User Defined 1" at line 18, position 135	
+            scr_packet(false, inbox[packet.task], true, inbox[packet.send_time], inbox[packet.timeout], inbox[packet.id], inbox[packet.ddos]),
+		Found "" in object "obj_component_switch", event "User Defined 3" at line 14, position 17	
+    if (downlink.downlink) {
+		Found "" in object "obj_component_switch", event "User Defined 3" at line 15, position 21	
+        if (downlink.downlink.available) {
+		Found "" in object "obj_component_switch", event "User Defined 3" at line 15, position 30	
+        if (downlink.downlink.available) {
+		Found "" in object "obj_component_internet", event "Alarm 0" at line 8, position 32	
+    ddos_packet = random(1) < 0.90;
+		Found "" in object "obj_component_internet", event "Alarm 0" at line 25, position 35	
+var probability = critical * max(0.1, global.user_reputation * 10) * clamp(current_time / 1000 / 20, 1, 10);
+		Found "" in object "obj_component_internet", event "Alarm 0" at line 25, position 45	
+var probability = critical * max(0.1, global.user_reputation * 10) * clamp(current_time / 1000 / 20, 1, 10);
+		Found "" in object "obj_component_internet", event "Alarm 0" at line 30, position 31	
+    alarm[0] = max((1 - global.user_reputation) * room_speed * 2, alarm[0]);
+		Found "" in object "obj_component_internet", event "Alarm 2" at line 4, position 42	
+    var strength = irandom(1000) * global.user_reputation
+		Found "" in object "obj_component_internet", event "Step" at line 7, position 23	
+    if (packet_[packet.send_time] + packet_[packet.timeout] < current_time) {
+		Found "" in object "obj_component_internet", event "Step" at line 7, position 51	
+    if (packet_[packet.send_time] + packet_[packet.timeout] < current_time) {
+		Found "" in object "obj_component_internet", event "User Defined 1" at line 8, position 23	
+    if (packet_[packet.id] == inbox[packet.id]) {
+		Found "" in object "obj_component_internet", event "User Defined 1" at line 8, position 43	
+    if (packet_[packet.id] == inbox[packet.id]) {
+		Found "" in object "obj_component_server", event "User Defined 1" at line 3, position 24	
+var task = inbox[packet.task];
+		Found "" in object "obj_component_server", event "User Defined 1" at line 4, position 23	
+var task_info = global.packet_tasks[task];
+		Found "" in object "obj_component_server", event "User Defined 1" at line 6, position 26	
+var time = task_info[task.process_time];
+		Found "" in object "obj_component_server", event "User Defined 2" at line 3, position 25	
+var packet_task = global.packet_tasks[packet_task.webpage];
+		Found "" in object "obj_component_server", event "User Defined 2" at line 3, position 50	
+var packet_task = global.packet_tasks[packet_task.webpage];
+		Found "" in object "obj_component_server", event "User Defined 2" at line 4, position 36	
+max_process_time = packet_task[task.process_time];
+		Found "" in object "obj_component_server", event "User Defined 3" at line 3, position 24	
+processed_packet[packet.outgoing] = true;
+		Found "" in object "obj_component_queue", event "User Defined 2" at line 3, position 33	
+capacity = data[component_struct.slots_available];
+		Found "" in object "obj_drag_component", event "Step" at line 8, position 57	
+    var sprite = object_get_sprite(comp[component_struct.object]);
+		Found "" in object "obj_drag_component", event "Step" at line 9, position 38	
+    var index = comp[component_struct.subimage];
+		Found "" in object "obj_drag_component", event "Step" at line 9, position 77	
+    var distance = point_distance(mouse_x, mouse_y, scr_connection_x(self, 0.5), scr_connection_y(self, 0.5));
+		Found "" in object "obj_drag_component", event "Step" at line 9, position 106	
+    var distance = point_distance(mouse_x, mouse_y, scr_connection_x(self, 0.5), scr_connection_y(self, 0.5));
+		Found "" in object "obj_drag_component", event "Step" at line 10, position 15	
+    if (!other.nearest_instance
+		Found "" in object "obj_drag_component", event "Step" at line 11, position 25	
+    ||  distance < other.nearest_distance) {
+		Found "" in object "obj_drag_component", event "Step" at line 12, position 14	
+        other.nearest_instance = id;
+		Found "" in object "obj_drag_component", event "Step" at line 13, position 14	
+        other.nearest_distance = distance;
+		Found "" in object "obj_drag_component", event "Step" at line 17, position 26	
+    var component = other.comp;
+		Found "" in object "obj_drag_component", event "Step" at line 18, position 35	
+    if (component[component_struct.downlink_count] || !downlink) {
+		Found "" in object "obj_drag_component", event "Step" at line 27, position 19	
+        if (global.dropable_connection == noone || global.dropable_connection == id) {
+		Found "" in object "obj_drag_component", event "Step" at line 27, position 58	
+        if (global.dropable_connection == noone || global.dropable_connection == id) {
+		Found "" in object "obj_drag_component", event "Step" at line 39, position 19	
+            global.dropable_connection = id;
+		Found "" in object "obj_drag_component", event "Step" at line 41, position 19	
+            global.dropable_connection = noone;
+		Found "" in object "obj_controller", event "Create" at line 3, position 7	
+global.debug = ds_map_create();
+		Found "" in object "obj_controller", event "Create" at line 8, position 9	
+internet.x = x;
+		Found "" in object "obj_controller", event "Create" at line 9, position 9	
+internet.y = y;
+		Found "" in object "obj_controller", event "Create" at line 11, position 26	
+var connection = internet.downlinks[| 0];
+		Found "" in object "obj_controller", event "Create" at line 12, position 38	
+var hub = scr_create_component(global.components_splitter[0], connection);
+		Found "" in object "obj_controller", event "Create" at line 14, position 17	
+connection = hub.downlinks[| 0];
+		Found "" in object "obj_controller", event "Create" at line 15, position 28	
+scr_create_component(global.components_server[0], connection);
+		Found "" in object "obj_controller", event "Create" at line 2, position 7	
+global.gameover = false
+		Found "" in object "obj_controller", event "Step" at line 2, position 10	
+if global.gameover exit;
+		Found "" in object "obj_controller", event "Step" at line 4, position 15	
+var factor = 0.1;
+		Found "" in object "obj_controller", event "Step" at line 7, position 21	
+zoom = clamp(zoom, 0.1, 3);
+		Found "" in object "obj_controller", event "Begin Step" at line 4, position 11	
+    global.selected_component = noone;
+		Found "" in object "obj_controller", event "Draw" at line 5, position 23	
+    draw_text(instance.x, instance.y, debug_get(instance));
+		Found "" in object "obj_controller", event "Draw" at line 5, position 35	
+    draw_text(instance.x, instance.y, debug_get(instance));
+		Found "" in object "obj_controller", event "Draw GUI" at line 4, position 11	
+if (global.selected_component != noone) {
+		Found "" in object "obj_controller", event "Draw GUI" at line 5, position 22	
+    var comp = global.selected_component;
+		Found "" in object "obj_controller", event "Draw GUI" at line 12, position 38	
+    draw_text(10, yy, "Name: " + comp.data[component_struct.name]);
+		Found "" in object "obj_controller", event "Draw GUI" at line 12, position 60	
+    draw_text(10, yy, "Name: " + comp.data[component_struct.name]);
+		Found "" in object "obj_controller", event "Draw GUI" at line 16, position 16	
+    switch(comp.object_index) {
+		Found "" in object "obj_controller", event "Draw GUI" at line 22, position 56	
+            draw_text(10, yy, "Threads: " + string(comp.slots_used) + "/" + string(comp.data[component_struct.slots_available]))
+		Found "" in object "obj_controller", event "Draw GUI" at line 22, position 88	
+            draw_text(10, yy, "Threads: " + string(comp.slots_used) + "/" + string(comp.data[component_struct.slots_available]))
+		Found "" in object "obj_controller", event "Draw GUI" at line 22, position 110	
+            draw_text(10, yy, "Threads: " + string(comp.slots_used) + "/" + string(comp.data[component_struct.slots_available]))
+		Found "" in object "obj_controller", event "Draw GUI" at line 26, position 53	
+            for (var i = 0; i < array_length_1d(comp.threads); i++){
+		Found "" in object "obj_controller", event "Draw GUI" at line 27, position 31	
+                var tmp = comp.threads[i];
+		Found "" in object "obj_controller", event "Draw GUI" at line 31, position 48	
+                    remaining_time = tmp[thread.remaining_time];
+		Found "" in object "obj_controller", event "Draw GUI" at line 32, position 38	
+                    time = tmp[thread.time]
+		Found "" in object "obj_controller", event "Draw GUI" at line 43, position 71	
+            draw_text(10, yy, "Enqueued: " + string(ds_queue_size(comp.queue)) + "/" + string(comp.capacity));
+		Found "" in object "obj_controller", event "Draw GUI" at line 43, position 99	
+            draw_text(10, yy, "Enqueued: " + string(ds_queue_size(comp.queue)) + "/" + string(comp.capacity));
+		Found "" in object "obj_controller", event "Draw GUI" at line 3, position 11	
+if (global.selected_component) {   
+		Found "" in object "obj_controller", event "Draw GUI" at line 4, position 22	
+    var comp = global.selected_component;
+		Found "" in object "obj_controller", event "Draw GUI" at line 9, position 17	
+        if (comp.object_index == obj_component_internet) {
+		Found "" in object "obj_controller", event "Draw GUI" at line 17, position 32	
+        scr_sell_component(comp.data);
+		Found "" in object "obj_controller", event "Draw GUI" at line 19, position 15	
+        global.selected_component = noone;
+		Found "" in object "obj_shop_controller", event "Create" at line 7, position 14	
+    shop_type.category,
+		Found "" in object "obj_shop_controller", event "Create" at line 8, position 35	
+    scr_categories_to_items(global.shop_categories)
+		Found "" in object "obj_shop_controller", event "Alarm 0" at line 11, position 35	
+    total += data[component_struct.power_consumtion] * global.power_multiplicator
+		Found "" in object "obj_shop_controller", event "Alarm 0" at line 11, position 62	
+    total += data[component_struct.power_consumtion] * global.power_multiplicator
+		Found "" in object "obj_shop_controller", event "Alarm 0" at line 13, position 39	
+    if (pname != data[component_struct.name] && pname != ""){
+		Found "" in object "obj_shop_controller", event "Alarm 0" at line 19, position 39	
+    if (pname != data[component_struct.name])
+		Found "" in object "obj_shop_controller", event "Alarm 0" at line 20, position 47	
+        message += "#" + data[component_struct.name] + ": " + string(data[component_struct.power_consumtion] * global.power_multiplicator)+"$"
+		Found "" in object "obj_shop_controller", event "Alarm 0" at line 20, position 91	
+        message += "#" + data[component_struct.name] + ": " + string(data[component_struct.power_consumtion] * global.power_multiplicator)+"$"
+		Found "" in object "obj_shop_controller", event "Alarm 0" at line 20, position 118	
+        message += "#" + data[component_struct.name] + ": " + string(data[component_struct.power_consumtion] * global.power_multiplicator)+"$"
+		Found "" in object "obj_shop_controller", event "Alarm 0" at line 22, position 34	
+    pname = data[component_struct.name]
+		Found "" in object "obj_shop_controller", event "Alarm 0" at line 27, position 7	
+global.money -= total;
+		Found "" in object "obj_shop_controller", event "Alarm 0" at line 28, position 11	
+if (global.money < 0){
+		Found "" in object "obj_shop_controller", event "Step" at line 5, position 58	
+    var item = scr_shop_get_hovered_item(route[shop_route.items]);
+		Found "" in object "obj_shop_controller", event "Step" at line 6, position 32	
+    var type = route[shop_route.type];
+		Found "" in object "obj_shop_controller", event "Step" at line 9, position 34	
+        var data = item[shop_item.additional_data];
+		Found "" in object "obj_shop_controller", event "Step" at line 11, position 30	
+        if (type == shop_type.category) {
+		Found "" in object "obj_shop_controller", event "Step" at line 13, position 26	
+                shop_type.component,
+		Found "" in object "obj_shop_controller", event "Step" at line 14, position 54	
+                scr_components_to_items(data[category.components])
+		Found "" in object "obj_shop_controller", event "Step" at line 17, position 35	
+        else if (type == shop_type.component) {
+		Found "" in object "obj_gameover_controller", event "Create" at line 3, position 29	
+time = current_time - global.start_time;
+			

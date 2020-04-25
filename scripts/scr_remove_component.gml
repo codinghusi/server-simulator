@@ -2,7 +2,7 @@
 
 var component = argument0;
 
-var uplink = component.uplink;
+var uplink = data_get("uplink", noone, component);
 var downlinks = component.downlinks;
 var used_downlinks = scr_component_used_downlinks(component);
 var used_count = ds_list_size(used_downlinks);

@@ -14,7 +14,7 @@ var instance = instance_create(0, 0, component_object);
 if (!connection) {
     root = instance;
 } else {
-    root = instance.root;
+    root = data_get("root", noone, instance);
 }
 
 downlinks = ds_list_create();
@@ -33,23 +33,25 @@ if (!connection) {
 // 1. At the end of the connection there is no component so we will be that
 // 2. Or we need to go in the middle
 else {
-    var bottom_component = connection.downlink; // could be noone (see 1.)
-    connection.downlink = instance;
+    var bottom_component = data_get("downlink", noone, connection); // could be noone (see 1.)
+    data_set("downlink", instance, connection);
     
     uplink = connection;
     
     if (downlink_count) {
-        downlink.downlink = bottom_component;
+        data_set("downlink", bottom_component, downlink);
     }
     
     if (bottom_component) {
-        bottom_component.uplink = downlink;
+        data_set("uplink", downlink, bottom_component);
     }
 }
 
-instance.uplink = uplink;
-instance.downlinks = downlinks;
-instance.connection = connection;
+data_init(map(
+    kv("uplink", uplink),
+    kv("downlinks", downlinks),
+    kv("connection", connection)
+), instance);
 
 data_init(component, instance);
 
