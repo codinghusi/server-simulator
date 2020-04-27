@@ -1,10 +1,10 @@
 ///map_get(map, key, [default])
 
-var map_ = argument0;
-var key = argument1;
+var map_ = argument[0];
+var key = argument[1];
 var def = noone;
 if (argument_count < 2) {
-    def = argument2;
+    def = argument[2];
 }
 var value;
 

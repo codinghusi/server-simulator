@@ -70,18 +70,18 @@ var amount = 0;
 var pname = "";
 
 with(obj_component){
-    total += data[component_struct.power_consumtion] * global.power_multiplicator
+    total += data_get("power_consumtion") * global.power_multiplicator
     
-    if (pname != data[component_struct.name] &amp;&amp; pname != ""){
+    if (pname != data_get("name") &amp;&amp; pname != ""){
         if (amount != 1){
             message += "*" + string(amount)
         }
         amount = 0
     }
-    if (pname != data[component_struct.name])
-        message += "#" + data[component_struct.name] + ": " + string(data[component_struct.power_consumtion] * global.power_multiplicator)+"$"
+    if (pname != data_get("name"))
+        message += "#" + data_get("name") + ": " + string(data_get("power_consumtion") * global.power_multiplicator) + "$"
     amount++    
-    pname = data[component_struct.name]
+    pname = data_get("name")
 }
 
 message += "#----------#Total: " + string(total)
@@ -122,19 +122,17 @@ if (mouse_check_button_pressed(mb_left)) {
     var type = route[shop_route.type];
     
     if (is_array(item)) {
-        var data = item[shop_item.additional_data];
+        var additional_data = map_get(item, "additional_data");
         
         if (type == shop_type.category) {
             ds_stack_push(routes, scr_shop_route(
                 shop_type.component,
-                scr_components_to_items(data[category.components])
+                scr_components_to_items(data_get("components"))
             ));
         }
         else if (type == shop_type.component) {
             if (scr_can_buy_item(item)) {
-                if (is_array(data)) {
-                    scr_drag_component(data);
-                }
+                scr_drag_component(additional_data);
             }
         }
     }
