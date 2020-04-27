@@ -40,10 +40,9 @@
           <argument>
             <kind>1</kind>
             <string>///Round robin cycle init
-last_out_index = 0;
+data_set("last_out_index", 0);
 
-useless_check = true;
-
+data_set("useless_check", true);
 </string>
           </argument>
         </arguments>
@@ -69,25 +68,23 @@ useless_check = true;
             <string>/// Round robin cycle packets to outputs
 
 var availables = scr_component_available_downlinks(self);
+var packet = method_param("packet");
 
 var length = ds_list_size(availables);
 for (var i = 0; i &lt; length; ++i) {
-    last_out_index++;
+    data_increase("last_out_index", 1);
     
-    if last_out_index &gt;= length {
-        last_out_index = 0
+    if data_get("last_out_index") &gt;= length {
+        data_set("last_out_index", 0);
     }
     
-    var downlink = downlinks[| last_out_index];
-    if (downlink.downlink) {
-        if (downlink.downlink.available) {
-            scr_create_packet(processed_packet, downlink);
-            exit;
-        }
-    }
+    var downlinks = data_get("downlinks");
+    var downlink = downlinks[| data_get("last_out_index")];
+    scr_create_packet(packet, downlink);
+    exit;
 }
 
-scr_burn_packet(x,y, processed_packet);
+scr_burn_packet(x,y, packet);
 exit;
 </string>
           </argument>
@@ -129,7 +126,7 @@ exit;
             <kind>1</kind>
             <string>/// Wait for processing
 
-scr_component_process(self, scr_thread(inbox, 1));
+scr_component_process(self, scr_thread(method_param("inbox"), 1));
 </string>
           </argument>
         </arguments>
