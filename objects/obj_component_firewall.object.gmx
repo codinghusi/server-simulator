@@ -76,7 +76,7 @@ var smart = data_get("additional_data");
 
 var ddos_packet = map_get(packet, "ddos");
 var task = map_get(packet, "task");
-var is_ping = task == packet_task.ping;
+var is_ping = task == "ping";
 
 
 if ((smart &amp;&amp; ddos_packet) || (!smart &amp;&amp; is_ping)) {

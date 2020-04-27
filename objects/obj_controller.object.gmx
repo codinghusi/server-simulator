@@ -315,7 +315,7 @@ if (global.selected_component != noone) {
                 var thread = threads[i];
                 var remaining_time;
                 var time;
-                 if (is_array(tmp)) {
+                 if (thread) {
                     remaining_time = map_get(thread, "remaining_time");
                     time = map_get(thread, "time");
                 } else {
