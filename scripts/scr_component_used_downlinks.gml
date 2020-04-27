@@ -1,7 +1,7 @@
 ///scr_component_used_downlinks(component)
 
 var component = argument0;
-var downlinks = data_get("downlinks", component);
+var downlinks = data_get(component, "downlinks");
 var length = ds_list_size(downlinks);
 var count = 0;
 

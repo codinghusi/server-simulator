@@ -130,7 +130,10 @@
         <script>scripts\data_get.gml</script>
         <script>scripts\data_has.gml</script>
         <script>scripts\data_get_chain.gml</script>
+        <script>scripts\data_set_chain.gml</script>
         <script>scripts\data_has_chain.gml</script>
+        <script>scripts\data_increase.gml</script>
+        <script>scripts\data_decrease.gml</script>
       </scripts>
     </scripts>
     <scripts name="Error">

@@ -3,7 +3,7 @@
 var component = argument0;
 var new_thread = argument1;
 
-component.slots_used++;
+data_increase(component, "slots_used", 1);
 
 var length = array_length_1d(threads);
 for(var i = 0; i < length; i++) {

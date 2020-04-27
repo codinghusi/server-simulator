@@ -1,8 +1,8 @@
 ///scr_connection_direction(connection)
 
 var connection = argument0;
-var downlink = connection.downlink;
-var uplink = connection.uplink;
+var downlink = data_get(connection, "downlink");
+var uplink = data_get(connection, "uplink");
 
 var x1, y1, x2, y2;
 

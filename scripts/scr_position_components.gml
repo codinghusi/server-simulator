@@ -16,7 +16,7 @@ var xx = -width;
 
 for (var i = 0; i < length; ++i) {
     var downlink_connection = downlinks[| i];
-    var downlink_component = data_get("downlink_connection", downlink);
+    var downlink_component = data_get(downlink, "downlink_connection");
     var component_width = scr_component_width(downlink_component);
     downlink_component.x = component.x + (xx + component_width) / 2 * hor_width;
     downlink_component.y = component.y + ver_spacing;

@@ -7,10 +7,12 @@ var bandwidth = argument3;
 
 var connection = instance_create(0, 0, obj_connection);
 
-connection.uplink = uplink;
-connection.downlink = downlink;
-connection.bandwidth = bandwidth;
-connection.root = root;
+data_init(connection, map(
+    kv("uplink", uplink),
+    kv("downlink", downlink),
+    kv("bandwidth", bandwidth),
+    kv("root", root)
+));
 
 // Init
 with (connection) {

@@ -133,10 +133,10 @@ if (!initialized) {
             <kind>1</kind>
             <string>/// Available, Image Blend
 
-if (slots_used &gt;= data[component_struct.slots_available]) {
-    available = false;
+if (data_get("slots_used") &gt;= data_get("slots_available")) {
+    data_set("available", false);
 } else {
-    available = true;
+    data_set("available", true);
 }
 
 if (prev_available != available) {

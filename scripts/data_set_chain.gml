@@ -1,13 +1,16 @@
-///data_get_chain(instance, ...instances, key, crash)
+///data_set_chain(instance, ...instances, key, value, crash)
 
-assert_argument_count(data_get_chain, argument_count, 3, 16);
+assert_argument_count(data_get_chain, argument_count, 4, 16);
 
 var instance = argument[0];
+var key = argument[argument_count - 3];
+var value = argument[argument_count - 2];
+var crash = argument[argument_count - 1];
 var path = "";
 var lastkey = noone;
 
 var context = instance;
-for (var i = 1; i < argument_count - 2; ++i) {
+for (var i = 1; i < argument_count - 3; ++i) {
     var key = argument[i];
     
     if (!instance_exists(context)) {
@@ -30,5 +33,7 @@ for (var i = 1; i < argument_count - 2; ++i) {
     
     lastkey = key;
 }
+
+data_set(context, key, value);
 
 return context;

@@ -7,7 +7,7 @@ var width = 0;
 
 for (var i = 0; i < length; ++i) {
     var downlink_connection = downlinks[| i];
-    var downlink_component = data_get("downlink", noone, downlink_connection);
+    var downlink_component = data_get(downlink_connection, "downlink");
     width += scr_component_width(downlink_component);
 }
 

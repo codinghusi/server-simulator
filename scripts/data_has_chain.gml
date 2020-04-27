@@ -6,14 +6,14 @@ var instance = argument[0];
 var path = "";
 
 var context = instance;
-for (var i = 1; i < argument_count; ++i) {
+for (var i = 1; i < argument_count - 1; ++i) {
     var key = argument[i];
     
     if (!instance_exists(context)) {
         return false;
     }
     
-    context = data_get(key, noone, instance);
+    context = data_get(instance, key);
 }
 
 return true

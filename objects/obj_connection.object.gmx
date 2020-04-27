@@ -53,12 +53,15 @@ root = noone;
             <kind>1</kind>
             <string>/// Variables
 
-dropable = false;
-dropping_instance = noone;
-drop_possible = false;
+data_init(map(
+    kv("dropable", false),
+    kv("dropping_instance", noone),
+    kv("drop_possible", false),
+    kv("packets_travel_incoming", 0),
+    kv("last_packet_sent_incoming", noone)
+));
+
 global.dropable_connection = noone;
-packets_travel_incoming = 0;
-last_packet_sent_incoming = noone;
 </string>
           </argument>
         </arguments>
@@ -83,16 +86,17 @@ last_packet_sent_incoming = noone;
             <kind>1</kind>
             <string>/// Check Packets on me
 
-packets_traveling_incoming = 0
-last_packet_sent_incoming = noone;
+data_set("packets_traveling_incoming", 0);
+data_set("last_packet_sent_incoming", noone);
 
 with (obj_packet) {
-    if (connection == other &amp;&amp; !data[packet.outgoing]) {
-        other.packets_travel_incoming++;
+    if (data_get("connection") == other &amp;&amp; !data_get("outgoing")) {
+        data_increase(other, packets_travel_incoming, 1);
     }
     
-    if (!other.last_packet_sent_incoming || position &lt; other.last_packet_sent_incoming.position) {
-        other.last_packet_sent_incoming = id;
+    if (!data_get(other, "last_packet_sent_incoming")
+    ||  data_get("position") &lt; data_get_chain(other, "last_packet_sent_incoming", "position")) {
+        data_set(other, "last_packet_sent_incoming", id);
     }
 }
 </string>
@@ -151,21 +155,21 @@ draw_line(x1, y1, x2, y2);
 var xx = scr_connection_x(self, 0.5);
 var yy = scr_connection_y(self, 0.5);
 
-if (!instance_exists(dropping_instance)) {
-    drop_possible = false;
-    dropable = false;
+if (!instance_exists(data_get("dropping_instance"))) {
+    data_set("drop_possible", false);
+    data_set("dropable", false);
 }
 
-if (drop_possible) {
+if (data_get("drop_possible")) {
     draw_set_color(c_gray);
     draw_rectangle(xx - 10, yy - 10, xx + 10, yy + 10, false);
 }
 
-if (dropable) {
-    var sprite = dropping_instance.sprite_index;
-    var index = dropping_instance.image_index;
+if (data_get("dropable")) {
+    var sprite = data_get("dropping_instance").sprite_index;
+    var index = data_get("dropping_instance").image_index;
     
-    if (!downlink) {
+    if (!data_get("downlink")) {
         xx += sprite_get_height(sprite) / 2;
     }
     draw_sprite_ext(sprite, index, xx, yy, 1, 1, 0, c_black, 1);
