@@ -66,7 +66,7 @@ processing_packet = noone;
             <kind>1</kind>
             <string>/// Inbox
 
-var smart = data[component_struct.additional_data];
+var smart = data_get("additional_data");
 var ddos_packet = processed_packet[packet.ddos];
 var task_ = processed_packet[packet.task];
 var is_ping = task_ == packet_task.ping;
