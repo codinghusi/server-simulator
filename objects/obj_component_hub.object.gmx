@@ -28,9 +28,9 @@
             <string>/// Update Available (call from a downlink)
 
 if (ds_list_size(scr_component_available_downlinks(self)) == 0) {
-    available = false;
+    data_set("available", false);
 } else {
-    available = true;
+    data_set("available", true);
 }
 </string>
           </argument>
@@ -70,7 +70,7 @@ if (ds_list_size(scr_component_available_downlinks(self)) == 0) {
             <kind>1</kind>
             <string>/// Init
 
-max_process_time = 0;
+data_set("max_process_time", 0);
 </string>
           </argument>
         </arguments>
@@ -94,6 +94,7 @@ max_process_time = 0;
           <argument>
             <kind>1</kind>
             <string>/// Inbox
+var inbox = method_param("inbox");
 
 var used = scr_component_available_downlinks(self);
 var length = ds_list_size(used);
@@ -110,7 +111,7 @@ for (var i = 0; i &lt; length; ++i) {
         scr_create_packet(inbox, connection);
     } else {
         scr_create_packet(
-            scr_packet(false, inbox[packet.task], true, inbox[packet.send_time], inbox[packet.timeout], inbox[packet.id], inbox[packet.ddos]),
+            scr_packet(false, map_get(inbox, "task"), true, map_get(inbox, "send_time"), map_get(inbox, "timeout"), map_get(inbox, "id"), map_get(inbox, "ddos")),
             connection
         );
     }

@@ -29,11 +29,10 @@
 
 // source_ip = '';
 // target_ip = '';
-data = noone;
-connection = noone;
-
-// default
-position = 0;
+data_init(map(
+    kv("connection", noone),
+    kv("position", 0)
+));
 </string>
           </argument>
         </arguments>
@@ -92,11 +91,11 @@ var len = 1 - outgoing * 2;
 x += lengthdir_x(20 * len, dir);
 y += lengthdir_y(20 * len, dir);
 
-var spd = connection.bandwidth / global.travel_time;
+var spd = data_get(connection, "bandwidth") / global.travel_time;
 
 if (outgoing) {
-    position -= spd;
-    if (position) &lt;= 0{
+    data_increase("position", -spd);
+    if (data_get("position")) &lt;= 0{
         var uplink = data_get_chain(self, "connection", "uplink", false);
         if (uplink) {
             method(uplink, component_method.internal_inbox, data());
@@ -107,8 +106,8 @@ if (outgoing) {
         instance_destroy();
     }
 } else {
-    position += spd;
-    if (position &gt;= 1) {
+    data_increase("position", spd);
+    if (data_get("position") &gt;= 1) {
         var downlink = data_get_chain(self, "connection", "downlink", false);
         if (downlink) {
             method(downlink, component_method.internal_inbox, data());
@@ -142,10 +141,10 @@ if (outgoing) {
             <string>/// Apperance
 visible = true;
 
-if (data[packet.useless]) {
+if (data_get("useless")) {
     image_index = 2;
 } else {
-    switch(data[packet.task]) {
+    switch(data_get("task")) {
         case packet_task.webpage:
             image_index = 0;
             break;

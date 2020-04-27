@@ -1,6 +1,6 @@
 ///data_increase([instance], key, amount)
 
-assert_argument_count(data_has, argument_count, 2, 3);
+assert_argument_count(data_increase, argument_count, 2, 3);
 
 var key;
 var amount;

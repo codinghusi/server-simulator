@@ -33,7 +33,7 @@ global.components_firewall = array(
         1, 1,
         1.4,
         50,
-        175, false),
+        175),
     scr_component(
         "Advanced Firewall",
         "Filters incoming Packets based#on their target ip and port",
@@ -41,7 +41,7 @@ global.components_firewall = array(
         1, 2,
         1.8,
         720,
-        100, true),
+        100),
     scr_component(
         "Professional Firewall",
         "Filters incoming Packets based#on their target ip and port",
@@ -49,7 +49,7 @@ global.components_firewall = array(
         1, 5,
         3,
         2280,
-        150, true),
+        150),
 );
 
 global.components_splitter = array(
