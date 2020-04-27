@@ -119,8 +119,8 @@
       <script>scripts\map_check.gml</script>
       <script>scripts\map_has.gml</script>
       <script>scripts\map_kvs.gml</script>
-      <script>scripts\key.gml</script>
-      <script>scripts\value.gml</script>
+      <script>scripts\kv_key.gml</script>
+      <script>scripts\kv_value.gml</script>
     </scripts>
     <scripts name="Instances">
       <script>scripts\check_instances.gml</script>

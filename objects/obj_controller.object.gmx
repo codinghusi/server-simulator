@@ -263,28 +263,6 @@ view_hview[0] = room_height * zoom;
         </arguments>
       </action>
     </event>
-    <event eventtype="7" enumb="2">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string></string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="8" enumb="64">
       <action>
         <libid>1</libid>
@@ -306,14 +284,15 @@ view_hview[0] = room_height * zoom;
 draw_text(10, 565, "Item Description")
 
 if (global.selected_component != noone) {
-    var comp = global.selected_component;
+    var component = global.selected_component;
+    var name = data_get(component, "name");
     
     var h = 20;
     var yy = 585;
     
     // Name
     draw_set_colour(c_white);
-    draw_text(10, yy, "Name: " + comp.data[component_struct.name]);
+    draw_text(10, yy, "Name: " + name);
     yy += h;
     
     // Specific
@@ -321,19 +300,23 @@ if (global.selected_component != noone) {
         case obj_component_switch:
         case obj_component_firewall:
         case obj_component_server:
+            var slots_used = data_get(component, "slots_used");
+            var slots_available = data_get(component, "slots_available");
+            var threads = data_get(component, "threads");
+        
             // Threads
             draw_set_colour(c_white);
-            draw_text(10, yy, "Threads: " + string(comp.slots_used) + "/" + string(comp.data[component_struct.slots_available]))
+            draw_text(10, yy, "Threads: " + string(slots_used) + "/" + string(slots_available))
             yy += h;
             
             draw_set_colour(c_black);
-            for (var i = 0; i &lt; array_length_1d(comp.threads); i++){
-                var tmp = comp.threads[i];
+            for (var i = 0; i &lt; array_length_1d(threads); i++){
+                var thread = threads[i];
                 var remaining_time;
                 var time;
                  if (is_array(tmp)) {
-                    remaining_time = tmp[thread.remaining_time];
-                    time = tmp[thread.time]
+                    remaining_time = map_get(thread, "remaining_time");
+                    time = map_get(thread, "time");
                 } else {
                     remaining_time = 0;
                     time = 1;
@@ -343,8 +326,11 @@ if (global.selected_component != noone) {
             }
             break;
         case obj_component_queue:
+            var queue = data_get(component, "queue");
+        var capacity = data_get(component, "capacity");
+    
             draw_set_colour(c_white);
-            draw_text(10, yy, "Enqueued: " + string(ds_queue_size(comp.queue)) + "/" + string(comp.capacity));
+            draw_text(10, yy, "Enqueued: " + string(ds_queue_size(queue)) + "/" + string(capacity));
             yy += h;
             break;
     }
@@ -398,12 +384,12 @@ scr_news_draw()
             <string>/// Delete Component
 
 if (global.selected_component) {   
-    var comp = global.selected_component;
-    var removable = scr_component_used_downlink_count(comp) &lt;= 1;
+    var component = global.selected_component;
+    var removable = scr_component_used_downlink_count(component) &lt;= 1;
     var colour, pressed;
     
     if (removable) {
-        if (comp.object_index == obj_component_internet) {
+        if (component.object_index == obj_component_internet) {
             removable = false;
         }
     }
@@ -411,8 +397,8 @@ if (global.selected_component) {
     pressed = scr_draw_button_sprite(288, 672, spr_button_remove, !removable);
     
     if (pressed &amp;&amp; removable) {
-        scr_sell_component(comp.data);
-        scr_remove_component(comp);
+        scr_sell_component(data(component));
+        scr_remove_component(component);
         global.selected_component = noone;
     }
 }

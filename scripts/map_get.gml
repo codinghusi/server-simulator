@@ -6,7 +6,7 @@ var def = noone;
 if (argument_count < 2) {
     def = argument[2];
 }
-var value;
+var value_;
 
 
 if (map_has(map_, value)) {

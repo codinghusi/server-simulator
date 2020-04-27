@@ -1,4 +1,4 @@
-///key(keyvalue)
+///kv_key(keyvalue)
 
 var keyvalue = argument0;
 
