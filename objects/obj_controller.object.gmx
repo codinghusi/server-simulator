@@ -297,7 +297,7 @@ if (global.selected_component != noone) {
     yy += h;
     
     // Specific
-    switch(comp.object_index) {
+    switch(component.object_index) {
         case obj_component_switch:
         case obj_component_firewall:
         case obj_component_server:
