@@ -4,7 +4,7 @@ assert_argument_count(data_get, argument_count, 1, 3);
 
 var key;
 var instance = self;
-var def = noone;
+var def = undefined;
 var i = argument_count - 1;
 
 switch (argument_count) {
@@ -16,8 +16,16 @@ switch (argument_count) {
     case 2:
         instance = argument[0];
         key = argument[1];
+        break;
     case 1:
         key = argument[0];
 }
 
-map_get(data(instance), key);
+var value = map_get(data(instance), key, def);
+
+if (is_undefined(value)) {
+    error("Instance " + string(object_get_name(instance.object_index)) + " has no key " + key, true);   
+}
+
+return value;
+

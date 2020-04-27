@@ -2,8 +2,8 @@
 
 var map_ = argument[0];
 var key = argument[1];
-var def = noone;
-if (argument_count < 2) {
+var def = undefined;
+if (argument_count > 2) {
     def = argument[2];
 }
 var value;

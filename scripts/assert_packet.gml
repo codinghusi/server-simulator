@@ -1,7 +1,6 @@
-///assert_packet(packet, crash)
+///assert_packet(packet)
 
 var packet = argument0;
-var crash = argument1;
 
 var keys = array("outgoing", "task", "useless", "send_time", "timeout", "id", "ddos");
 

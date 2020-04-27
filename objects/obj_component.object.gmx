@@ -338,6 +338,8 @@ method(self, component_method.inbox, map(
 if (!data_get("initialized")) {
     exit;
 }
+
+show_debug_message("initialized!");
 </string>
           </argument>
         </arguments>

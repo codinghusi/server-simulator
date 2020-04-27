@@ -90,13 +90,15 @@ data_set("packets_traveling_incoming", 0);
 data_set("last_packet_sent_incoming", noone);
 
 with (obj_packet) {
-    if (data_get("connection") == other &amp;&amp; !data_get("outgoing")) {
-        data_increase(other, "packets_travel_incoming", 1);
-    }
-    
-    if (!data_get(other, "last_packet_sent_incoming")
-    ||  data_get("position") &lt; data_get_chain(other, "last_packet_sent_incoming", "position")) {
-        data_set(other, "last_packet_sent_incoming", id);
+    if (data_get("initialized")) {
+        if (data_get("connection") == other &amp;&amp; !data_get("outgoing")) {
+            data_increase(other, "packets_travel_incoming", 1);
+        }
+        
+        if (!data_get(other, "last_packet_sent_incoming")
+        ||  data_get("position") &lt; data_get_chain(other, "last_packet_sent_incoming", "position")) {
+            data_set(other, "last_packet_sent_incoming", id);
+        }
     }
 }
 </string>

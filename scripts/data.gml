@@ -10,7 +10,9 @@ if (argument_count > 0) {
     instance = self;
 }
 
-
+if (!instance_exists(instance)) {
+    error("Given instance doesn't exist", true);
+}
 
 if (!variable_instance_exists(instance, "my_data")) {
     instance.my_data = map();

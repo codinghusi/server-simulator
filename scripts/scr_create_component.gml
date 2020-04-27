@@ -34,30 +34,37 @@ if (!connection) {
 // 2. Or we need to go in the middle
 else {
     var bottom_component = data_get(connection, "downlink"); // could be noone (see 1.)
-    data_set(instance, "downlink", connection);
     
-    uplink = connection;
     
+    // set the connections down and uplinks
     if (downlink_count) {
-        data_set(bottom_component, "downlink", downlink);
+        data_set(downlink, "uplink", instance);
+        data_set(downlink, "downlink", bottom_component);
     }
+    
+    data_set(connection, "downlink", instance);
+    
+    // Set instance down- and uplinks
+    uplink = connection;
     
     if (bottom_component) {
         data_set(bottom_component, "uplink", downlink);
+        data_set(bottom_component, "downlink", noone);
     }
 }
 
 data_init(instance, map(
     kv("uplink", uplink),
     kv("downlinks", downlinks),
-    kv("connection", connection)
+    kv("connection", connection),
+    kv("root", root)
 ));
 
 data_init(instance, component);
 
 
 // Position all components underneath and this one
-if (connection) {
+if (connection && root) {
     scr_position_components(root);
 }
 

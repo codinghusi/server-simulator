@@ -1,4 +1,4 @@
-///data_has(key, [instance])
+///data_has([instance], key)
 
 assert_argument_count(data_has, argument_count, 1, 2);
 
@@ -13,4 +13,4 @@ if (argument_count == 1) {
     key = argument[1];
 }
 
-map_get(data(instance), key);
+return map_has(data(instance), key);
