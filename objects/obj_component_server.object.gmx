@@ -40,7 +40,9 @@
           <argument>
             <kind>1</kind>
             <string>/// Init
-useless_check = true;
+data_init(map(
+    kv("useless_check", true)
+));
 </string>
           </argument>
         </arguments>
@@ -92,9 +94,11 @@ with (obj_connection) {
           <argument>
             <kind>1</kind>
             <string>/// Thread finished
+var packet = method_param("packet");
+var uplink = data_get("uplink");
 
-processed_packet[packet.outgoing] = true;
-scr_create_packet(processed_packet, uplink);
+map_set(packet, "outgoing", true);
+scr_create_packet(packet, uplink);
 </string>
           </argument>
         </arguments>
@@ -132,9 +136,10 @@ scr_create_packet(processed_packet, uplink);
           <argument>
             <kind>1</kind>
             <string>/// Init
+//TODO: queue soll fragen können, wie lange das nächste packet braucht
 
 var packet_task = global.packet_tasks[packet_task.webpage];
-max_process_time = packet_task[task.process_time];
+data_set(max_process_time, packet_task[task.process_time]);
 
 
 </string>
@@ -161,14 +166,15 @@ max_process_time = packet_task[task.process_time];
             <kind>1</kind>
             <string>/// Process
 
-var task = inbox[packet.task];
+var inbox = method_param("inbox");
+var task = map_get(inbox, "task");
 var task_info = global.packet_tasks[task];
 
-var time = task_info[task.process_time];
+var time = map_get(task_info, "process_time");
 
 scr_component_process(
     self,
-    scr_thread(inbox, time)
+    scr_thread(method_param("inbox"), time)
 );
 </string>
           </argument>
