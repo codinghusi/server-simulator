@@ -41,7 +41,9 @@
             <kind>1</kind>
             <string>/// Init
 
-processing_packet = noone;
+data_init(map(
+    kv("processing_packet", noone)
+));
 </string>
           </argument>
         </arguments>
@@ -66,20 +68,26 @@ processing_packet = noone;
             <kind>1</kind>
             <string>/// Inbox
 
+var packet = method_param("packet");
+
+var uplink = data_get("uplink");
+var downlinks = data_get("downlinks");
 var smart = data_get("additional_data");
-var ddos_packet = processed_packet[packet.ddos];
-var task_ = processed_packet[packet.task];
+
+var ddos_packet = map_get(packet, "ddos");
+var task_ = map_get("packet", task);
 var is_ping = task_ == packet_task.ping;
 
+
 if ((smart &amp;&amp; ddos_packet) || (!smart &amp;&amp; is_ping)) {
-    scr_burn_packet(x,y, processed_packet)
+    scr_burn_packet(x,y, packet)
 } else {
     if (smart &amp;&amp; is_ping) {
-        processed_packet[@ packet.outgoing] = true;
-        scr_create_packet(processed_packet, uplink);
+        map_set(packet, "outgoing", true);
+        scr_create_packet(packet, uplink);
         show_debug_message("firewall send outgoing");
     } else {
-        scr_create_packet(processed_packet, downlinks[| 0]);
+        scr_create_packet(packet, downlinks[| 0]);
     }
 }
 </string>
@@ -120,7 +128,7 @@ if ((smart &amp;&amp; ddos_packet) || (!smart &amp;&amp; is_ping)) {
             <kind>1</kind>
             <string>/// Init
 
-max_process_time = 1;
+data_set("max_process_time", 1);
 </string>
           </argument>
         </arguments>
@@ -144,6 +152,10 @@ max_process_time = 1;
           <argument>
             <kind>1</kind>
             <string>/// Inbox
+
+// TODO: automate this
+
+var inbox = method_param("inbox");
 
 scr_component_process(self, scr_thread(inbox, 1));
 </string>
