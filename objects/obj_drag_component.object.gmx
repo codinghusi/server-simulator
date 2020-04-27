@@ -27,7 +27,9 @@
             <kind>1</kind>
             <string>/// Structure Variables
 
-comp = noone;
+data_init(map(
+    kv("component", noone)
+));
 </string>
           </argument>
         </arguments>
@@ -53,8 +55,10 @@ comp = noone;
             <string>/// Reset connection dropable
 
 with (obj_connection) {
-    dropable = false;
-    dropping_instance = noone;
+    data_init(map(
+        kv("dropable", false),
+        kv("dropping_instance", noone)
+    ));
 }
 </string>
           </argument>
@@ -84,9 +88,10 @@ x = mouse_x;
 y = mouse_y;
 
 // set sprite
-if (comp != noone) {
-    var sprite = object_get_sprite(comp[component_struct.object]);
-    var index = comp[component_struct.subimage];
+var component = data_get("component");
+if (component) {
+    var sprite = object_get_sprite(map_get(component, "object"));
+    var index = map_get(component, "subimage");
     
     if (sprite &gt;= 0) {
         sprite_index = sprite;
@@ -115,7 +120,9 @@ if (comp != noone) {
             <kind>1</kind>
             <string>/// Disappear if money is less
 
-if (!scr_can_buy_component(comp)) {
+var component = data_get("component");
+
+if (!scr_can_buy_component(component)) {
     instance_destroy();
 }
 </string>
@@ -140,23 +147,25 @@ if (!scr_can_buy_component(comp)) {
             <kind>1</kind>
             <string>/// Dropping
 
-nearest_distance = -1;
-nearest_instance = noone;
+var nearest_distance = -1;
+var nearest_instance = noone;
+var component = data_get(other, "component");
 
 with (obj_connection) {
     // search for nearest connection
-    dropable = false;
+    data_set("dropable", false);
     var distance = point_distance(mouse_x, mouse_y, scr_connection_x(self, 0.5), scr_connection_y(self, 0.5));
-    if (!other.nearest_instance
-    ||  distance &lt; other.nearest_distance) {
-        other.nearest_instance = id;
-        other.nearest_distance = distance;
+    if (!nearest_instance
+    ||  distance &lt; nearest_distance) {
+        nearest_instance = id;
+        nearest_distance = distance;
     }
     
     // check if drop is possible
-    var component = other.comp;
-    if (component[component_struct.downlink_count] || !downlink) {
-        drop_possible = true;
+    var downlink = data_get("downlink");
+    var downlink_count = map_get(component, "downlink_count");
+    if (downlink_count || !downlink) {
+        data_set("drop_possible", true);
     } else {
         drop_possible = false;
     }
@@ -165,14 +174,14 @@ with (obj_connection) {
 if (nearest_instance &amp;&amp; nearest_distance &lt; 150) {
     with (nearest_instance) {
         if (global.dropable_connection == noone || global.dropable_connection == id) {
-            if (drop_possible) {
-                dropable = true;
-                dropping_instance = other;
+            if (data_get("drop_possible")) {
+                data_set("dropable", true);
+                data_set("dropping_instance", other);
                 
                 if (mouse_check_button_released(mb_left) &amp;&amp; !scr_hovering_ui()) {
                     scr_create_component(component, id);
                     scr_buy_component(component);
-                    dropable = false;
+                    data_set("dropable", false);
                 }
             }
             
@@ -185,7 +194,7 @@ if (nearest_instance &amp;&amp; nearest_distance &lt; 150) {
 
 if (mouse_check_button_released(mb_left)) {
     with (obj_connection) {
-        drop_possible = false;
+        data_set("drop_possible", false);
     }
     instance_destroy();
 }
