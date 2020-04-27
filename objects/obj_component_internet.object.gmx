@@ -41,7 +41,7 @@
             <kind>1</kind>
             <string>/// randomize packets
 
-critical = 1;
+data_set("critical", 1);
 
 alarm[0] = 1;
 </string>
@@ -66,8 +66,10 @@ alarm[0] = 1;
             <kind>1</kind>
             <string>/// Watcher
 
-packets = ds_list_create();
-last_id = 0;
+data_init(map(
+    kv("packets", ds_list_create()),
+    kv("last_id", 0)
+));
 </string>
           </argument>
         </arguments>
@@ -89,7 +91,9 @@ last_id = 0;
           <argument>
             <kind>1</kind>
             <string>/// DDOS
-ddos = false
+
+data_set("ddos", false);
+
 alarm[2] = 1;
 </string>
           </argument>
@@ -142,12 +146,13 @@ if (alarm[1] &lt;= 0) {
     var strength = irandom(1000) * global.user_reputation
     
     if (strength &gt; 600) {
-        ddos = true;
+        data_set("ddos", true);
         alarm[1] = room_speed * strength / 1000 * 20;
         var attacker = choose("&lt;Anonymous&gt;","&lt;ScriptKiddy&gt;","&lt;StressTester&gt;")
         with(obj_controller) scr_news_post(attacker, "DDOS!")
         
-        critical = irandom_range(5, 10);
+        var critical = irandom_range(5, 10);
+        data_set("critical", critical);
     }
 }
 </string>
@@ -173,8 +178,11 @@ if (alarm[1] &lt;= 0) {
           <argument>
             <kind>1</kind>
             <string>///stop DDOS
-ddos = false
-critical = 1;
+
+data_init(map(
+    kv("ddos", false),
+    kv("critical", 1)
+));
 </string>
           </argument>
         </arguments>
@@ -199,7 +207,11 @@ critical = 1;
             <kind>1</kind>
             <string>/// Send Packet
 
-var id_ = last_id++;
+var id_ = data_get("last_id");
+var ddos = data_get("ddos");
+var critical = data_get("critical");
+
+data_increase("last_id", 1);
 var timeout = irandom_range(1000 * 40, 1000 * 60);
 
 var ddos_packet = false;
@@ -257,12 +269,13 @@ scr_create_packet(
             <kind>1</kind>
             <string>///Watcher
 
+var packets = data_get("packets");
 
 var length = ds_list_size(packets);
 for (var i = 0; i &lt; length; ++i) {
-    var packet_ = packets[| i];
-    if (packet_[packet.send_time] + packet_[packet.timeout] &lt; current_time) {
-        scr_punish_packet(packet_);
+    var packet = packets[| i];
+    if (map_get(packet, "send_time") + map_get(packet, "timeout") &lt; current_time) {
+        scr_punish_packet(packet);
         show_debug_message("timeout");
         ds_list_delete(packets, i);
         break;
@@ -291,15 +304,17 @@ for (var i = 0; i &lt; length; ++i) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Reward finished packet
+            <string>/// Inbox (Ingoing): Reward finished packet
 
 show_debug_message("packet came back");
 
+var packets = data_get("packets");
+
 var length = ds_list_size(packets);
 for (var i = 0; i &lt; length; ++i) {
-    var packet_ = packets[| i];
-    if (packet_[packet.id] == inbox[packet.id]) {
-        scr_reward_packet(packet_);
+    var packet = packets[| i];
+    if (map_get(packet, "id") == map_get("packet", id)) {
+        scr_reward_packet(packet);
         ds_list_delete(packets, i);
         break;
     }
