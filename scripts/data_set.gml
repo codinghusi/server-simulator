@@ -1,13 +1,20 @@
-///data_set(key, value, [instance])
+///data_set([instance], key, value)
 
 assert_argument_count(data_has, argument_count, 2, 3);
 
-var key = argument[0];
+var key;
 var value;
 var instance = self;
 
-if (argument_count > 1) {
-    instance = argument[1];
+switch (argument_count) {
+    case 3:
+        instance = argument[0];
+        key = argument[1];
+        value = argument[2];
+        break;
+    default:
+        key = argument[0];
+        value = argument[1];
 }
 
 map_set(data(instance), kv(key, value));

@@ -6,11 +6,11 @@ var key;
 var instance = self;
 var i = argument_count - 1;
 
-switch (argument_count) {
-    case 1:
-        instance = argument[i--];
-    case 0:
-        key = argument[i--];
+if (argument_count == 1) {
+    key = argument[0];
+} else {
+    instance = argument[0];
+    key = argument[1];
 }
 
 map_get(data(instance), key);

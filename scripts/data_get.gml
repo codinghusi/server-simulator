@@ -1,4 +1,4 @@
-///data_get(key, [default], [instance])
+///data_get([instance], key, [default])
 
 assert_argument_count(data_get, argument_count, 1, 3);
 
@@ -8,12 +8,16 @@ var def = noone;
 var i = argument_count - 1;
 
 switch (argument_count) {
+    case 3:
+        instance = argument[0];
+        key = argument[1];
+        def = argument[2];
+        break;
     case 2:
-        instance = argument[i--];
+        instance = argument[0];
+        key = argument[1];
     case 1:
-        def = argument[i--];
-    case 0:
-        key = argument[i--];
+        key = argument[0];
 }
 
 map_get(data(instance), key);
