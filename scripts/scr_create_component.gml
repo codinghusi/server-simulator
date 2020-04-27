@@ -14,7 +14,7 @@ var instance = instance_create(0, 0, component_object);
 if (!connection) {
     root = instance;
 } else {
-    root = data_get(instance, "root", noone);
+    root = data_get(connection, "root", noone);
 }
 
 downlinks = ds_list_create();
@@ -53,6 +53,8 @@ else {
     }
 }
 
+
+
 data_init(instance, map(
     kv("uplink", uplink),
     kv("downlinks", downlinks),
@@ -70,6 +72,7 @@ if (connection && root) {
 
 // Init
 data_set(instance, "initialized", true);
+
 method(instance, component_method.init, map());
 
 return instance;

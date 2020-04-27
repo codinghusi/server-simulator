@@ -30,8 +30,8 @@
 image_speed = 0;
 
 data_init(map(
-    kv("initialized", false),
     kv("max_process_time", noone),
+    kv("initialized", false),
     kv("useless_check", false),
     kv("prev_available", true),
     kv("available", true),
@@ -198,6 +198,8 @@ global.selected_component = id;
           <argument>
             <kind>1</kind>
             <string>/// Init: Threads
+
+show_debug_message("initialized: " + string(data_get("initialized")));
 
 var size = data_get("slots_available");
 threads = array_create(size);
