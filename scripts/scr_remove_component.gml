@@ -22,11 +22,11 @@ if (used_count > 0) {
 
 var length = ds_list_size(downlinks);
 for (var i = 0; i < length; ++i) {
-    downlink_to_remove = downlinks[| i];
-    uplink_thats_new = uplink;
+    var downlink_to_remove = downlinks[| i];
+    var uplink_thats_new = uplink;
     with (obj_packet) {
-        if (data_get("connection") == data_get(other, downlink_to_remove)) {
-            data_set(connection, data_get(other, uplink_thats_new));
+        if (data_get("connection") == downlink_to_remove) {
+            data_set("connection", uplink_thats_new);
         }
     }
     instance_destroy(downlink_to_remove);

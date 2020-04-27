@@ -203,7 +203,7 @@ if (!ds_queue_empty(data_get("queue")) &amp;&amp; alarm[0] &lt;= 0 &amp;&amp; al
             <kind>1</kind>
             <string>/// Init
 
-data_set(capacity, data_get("slots_available"));
+data_set("capacity", data_get("slots_available"));
 </string>
           </argument>
         </arguments>

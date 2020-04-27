@@ -88,6 +88,8 @@ var hub = scr_create_component(global.components_splitter[0], connection);
 downlinks = data_get(hub, "downlinks");
 connection = downlinks[| 0];
 scr_create_component(global.components_server[0], connection);
+
+scr_position_components(internet);
 </string>
           </argument>
         </arguments>

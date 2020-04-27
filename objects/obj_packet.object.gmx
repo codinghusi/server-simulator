@@ -147,10 +147,10 @@ if (data_get("useless")) {
     image_index = 2;
 } else {
     switch(data_get("task")) {
-        case packet_task.webpage:
+        case "webpage":
             image_index = 0;
             break;
-        case packet_task.ping:
+        case "ping":
             image_index = 1;
             break;
     }

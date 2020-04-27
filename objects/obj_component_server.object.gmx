@@ -140,8 +140,8 @@ scr_create_packet(packet, uplink);
             <string>/// Init
 //TODO: queue soll fragen können, wie lange das nächste packet braucht
 
-var packet_task_ = global.packet_tasks[packet_task.webpage];
-data_set("max_process_time", map_get(packet_task_, "process_time"));
+var packet_task = map_get(global.packet_tasks, "webpage");
+data_set("max_process_time", map_get(packet_task, "process_time"));
 
 
 </string>
@@ -170,7 +170,7 @@ data_set("max_process_time", map_get(packet_task_, "process_time"));
 
 var inbox = method_param("inbox");
 var task = map_get(inbox, "task");
-var task_info = global.packet_tasks[task];
+var task_info = map_get(global.packet_tasks, task);
 
 var time = map_get(task_info, "process_time");
 

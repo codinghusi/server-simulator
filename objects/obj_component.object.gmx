@@ -135,7 +135,7 @@ for(var i = 0; i &lt; length; i++){
         map_decrease(thread, kv("remaining_time", 1 / data_get("process_time")));
         if (map_get(thread, "remaining_time") &lt;= 0) {
             data_decrease("slots_used", 1);
-            var packet = thread[thread.packet];
+            var packet = map_get(thread, "packet");
             threads[i] = noone;
             
             if (data_get("useless_check") &amp;&amp; map_get(packet, "useless")) {

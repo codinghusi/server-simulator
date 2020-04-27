@@ -1,9 +1,5 @@
 ///scr_config()
 
-enum packet_task {
-    ping,
-    webpage
-}
 
 global.selected_component = noone;
 global.process_time = room_speed * 1;
@@ -19,9 +15,9 @@ global.start_time = current_time;
 
 
 
-global.packet_tasks = array(
-    scr_task("ping", 3, 0.2, 0.2),
-    scr_task("webpage", 10, 0.8, 3)
+global.packet_tasks = map(
+    kv("ping", scr_task("ping", 3, 0.2, 0.2)),
+    kv("webpage", scr_task("webpage", 10, 0.8, 3))
 );
 
 

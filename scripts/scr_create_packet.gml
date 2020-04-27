@@ -11,7 +11,7 @@ data_init(map(
 ));
 
 if (map_get(packet, "outgoing")) {
-    data_set(instance, position, 1); // start at the end
+    data_set(instance, "position", 1); // start at the end
 }
 
 // Init

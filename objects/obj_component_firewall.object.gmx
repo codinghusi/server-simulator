@@ -75,8 +75,8 @@ var downlinks = data_get("downlinks");
 var smart = data_get("additional_data");
 
 var ddos_packet = map_get(packet, "ddos");
-var task_ = map_get("packet", task);
-var is_ping = task_ == packet_task.ping;
+var task = map_get(packet, "task");
+var is_ping = task == packet_task.ping;
 
 
 if ((smart &amp;&amp; ddos_packet) || (!smart &amp;&amp; is_ping)) {
