@@ -56,8 +56,8 @@
     <scripts name="Connection">
       <script>scripts\scr_create_connection.gml</script>
       <script>scripts\scr_connection_x.gml</script>
-      <script>scripts\scr_punish_packet.gml</script>
       <script>scripts\scr_connection_y.gml</script>
+      <script>scripts\scr_punish_packet.gml</script>
       <script>scripts\scr_connection_length.gml</script>
       <script>scripts\scr_connection_direction.gml</script>
       <script>scripts\scr_downlink_available_in.gml</script>

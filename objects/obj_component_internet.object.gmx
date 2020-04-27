@@ -210,6 +210,8 @@ data_init(map(
 var id_ = data_get("last_id");
 var ddos = data_get("ddos");
 var critical = data_get("critical");
+var packets = data_get("packets");
+var downlinks = data_get("downlinks");
 
 data_increase("last_id", 1);
 var timeout = irandom_range(1000 * 40, 1000 * 60);

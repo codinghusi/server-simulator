@@ -308,7 +308,9 @@ if (useless_check &amp;&amp; useless) {
     exit;
 }
 
-event_user(1);
+method(self, component_method.inbox, map(
+    kv("inbox", inbox)
+));
 </string>
           </argument>
         </arguments>

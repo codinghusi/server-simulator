@@ -47,11 +47,11 @@ else {
     }
 }
 
-data_init(map(
+data_init(instance, map(
     kv("uplink", uplink),
     kv("downlinks", downlinks),
     kv("connection", connection)
-), instance);
+));
 
 data_init(instance, component);
 
@@ -62,9 +62,7 @@ if (connection) {
 }
 
 // Init
-with (instance) {
-    event_user(2);
-    initialized = true;
-}
+data_set(instance, "initialized", true);
+method(instance, component_method.init, map());
 
 return instance;

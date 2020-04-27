@@ -8,6 +8,6 @@ if (argument_count == 4) {
     to = argument[3];
 }
 
-assert(from >= is && is <= to, "Wrong argument number in script " + script_get_name(script) + " got " + string(is) + " but " + string(should) + " needed");
+assert(from <= is && is <= to, "Wrong argument number in script " + script_get_name(script) + " got " + string(is) + " but " + string(from) + " to " + string(to) + " needed");
 
 

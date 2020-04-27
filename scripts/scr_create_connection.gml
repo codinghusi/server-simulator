@@ -15,9 +15,7 @@ data_init(connection, map(
 ));
 
 // Init
-with (connection) {
-    event_user(2);
-    initialized = true;
-}
+data_set(connection, "initialized", true);
+method(connection, component_method.init, map());
 
 return connection;

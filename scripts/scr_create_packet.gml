@@ -15,9 +15,7 @@ if (map_get(packet, "outgoing")) {
 }
 
 // Init
-with (instance) {
-    event_user(2);
-    initialized = true;
-}
+data_set(instance, "initialized", true);
+method(instance, component_method.init, map());
 
 return instance;

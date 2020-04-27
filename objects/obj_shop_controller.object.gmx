@@ -28,7 +28,7 @@
             <string>///Shop
 scr_shop_init();
 
-routes = ds_stack_create();
+var routes = ds_stack_create();
 
 var route = scr_shop_route(
     shop_type.category,
@@ -36,6 +36,8 @@ var route = scr_shop_route(
 );
 
 ds_stack_push(routes, route);
+
+data_set("routes", routes);
 
 alarm[0]=1;
 </string>
@@ -63,6 +65,7 @@ alarm[0]=1;
             <string>///Daily Costs
 alarm[0] = DAY_DURATION * room_speed
 
+
 var message = "";
 var total = 0;
 var amount = 0;
@@ -79,7 +82,7 @@ with(obj_component){
         amount = 0
     }
     if (pname != data_get("name"))
-        message += "#" + data_get("name") + ": " + string(data_get("power_consumtion") * global.power_multiplicator) + "$"
+        message += "#" + string(data_get("name")) + ": " + string(data_get("power_consumtion") * global.power_multiplicator) + "$"
     amount++    
     pname = data_get("name")
 }
@@ -116,10 +119,12 @@ with(obj_controller) scr_news_post("Daily Costs", message)
             <kind>1</kind>
             <string>/// Shop Drag Drop and clicking
 
+var routes = data_get("routes");
+
 if (mouse_check_button_pressed(mb_left)) {
     var route = ds_stack_top(routes);
-    var item = scr_shop_get_hovered_item(route[shop_route.items]);
-    var type = route[shop_route.type];
+    var item = scr_shop_get_hovered_item(map_get(route, "items"));
+    var type = map_get(route, "type");
     
     if (is_array(item)) {
         var additional_data = map_get(item, "additional_data");
@@ -161,6 +166,8 @@ if (mouse_check_button_pressed(mb_left)) {
             <kind>1</kind>
             <string>///Shop
 
+var routes = data_get("routes");
+
 var route = ds_stack_top(routes)
 scr_shop_draw(route);
 
@@ -185,6 +192,8 @@ scr_shop_draw(route);
           <argument>
             <kind>1</kind>
             <string>/// Back button
+
+var routes = data_get("routes");
 
 if (ds_stack_size(routes) &gt; 1) {
     var pressed = scr_draw_button_text(964, 555, "Back", c_white, c_gray);

@@ -9,6 +9,6 @@ for (var i = 1; i < argument_count; ++i) {
     keyvalues[i - 1] = keyvalue;
 }
 
-map_add(map_, keyvalues);
+map_add_kvs(map_, keyvalues);
 
 return map_;

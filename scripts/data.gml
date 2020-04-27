@@ -10,7 +10,9 @@ if (argument_count > 0) {
     instance = self;
 }
 
-if (is_undefined(instance.my_data)) {
+
+
+if (!variable_instance_exists(instance, "my_data")) {
     instance.my_data = map();
 }
 

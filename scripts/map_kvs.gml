@@ -1,7 +1,7 @@
 ///map_kvs(map)
 
 var map_ = argument0;
-var size = ds_list_size(map_);
+var size = ds_map_size(map_);
 var entries = array_create(size);
 
 // TODO: ineficient. Please fix this soon!!11!!!1elf

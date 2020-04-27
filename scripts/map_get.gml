@@ -6,10 +6,10 @@ var def = noone;
 if (argument_count < 2) {
     def = argument[2];
 }
-var value_;
+var value;
 
 
-if (map_has(map_, value)) {
+if (map_has(map_, key)) {
     value = ds_map_find_value(map_, key);
 } else {
     value = def;

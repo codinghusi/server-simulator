@@ -6,7 +6,7 @@ var crash = argument1;
 var keys = array("type", "items");
 
 assert(
-    !map_check(route, keys),
+    map_check(route, keys),
     "Route data is not in correct format: " + json_encode(route)
 );
 

@@ -81,14 +81,13 @@ var internet = scr_create_component(
 internet.x = x;
 internet.y = y;
 
-var connection = internet.downlinks[| 0];
+var downlinks = data_get(internet, "downlinks");
+var connection = downlinks[| 0];
 var hub = scr_create_component(global.components_splitter[0], connection);
 
-connection = hub.downlinks[| 0];
+downlinks = data_get(hub, "downlinks");
+connection = downlinks[| 0];
 scr_create_component(global.components_server[0], connection);
-
-clear_debug();
-scr_position_components(internet);
 </string>
           </argument>
         </arguments>

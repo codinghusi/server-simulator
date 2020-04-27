@@ -8,7 +8,7 @@ var result = array_create(length);
 
 for (var i = 0; i < length; ++i) {
     var item = arr[i];
-    result[i] = script_execute(script, item);
+    result[i] = script_execute(callback_script, item);
 }
 
 return result;

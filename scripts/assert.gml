@@ -3,6 +3,6 @@
 var condition = argument0;
 var message = argument1;
 
-if (condition) {
+if (!condition) {
     error(message, true);
 }
