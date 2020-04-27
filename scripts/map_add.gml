@@ -1,14 +1,9 @@
-///map_add(map, keyvalues)
+///map_add(map, other_map)
 
 var map_ = argument0;
-var keyvalues = argument1;
+var other_map = argument1;
+var kvs = map_kvs(other_map);
 
-var length = array_length_1d(keyvalues);
-for (var i = 0; i < length; ++i) {
-    var keyvalue = keyvalues[i];
-    var key = keyvalue[kv_struct.key];
-    var value = keyvalue[kv_struct.value];
-    ds_map_add(map_, key, value);
-}
+map_add_kvs(map_, kvs);
 
 return map_;

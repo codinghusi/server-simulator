@@ -25,65 +25,18 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Structure Variables
-
-uplink = noone;
-downlinks = 0;
-data = undefined;
-
-// default
-available = true;
-slots_used = 0;
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Event Variables
-
-inbox = noone;
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
             <string>/// Init
+
 image_speed = 0;
 
-initialized = false;
-max_process_time = noone;
-useless_check = false;
-prev_available = true;
+data_init(map(
+    kv("initialized", false),
+    kv("max_process_time", noone),
+    kv("useless_check", false),
+    kv("prev_available", true),
+    kv("available", true),
+    kv("slots_used", 0)
+));
 </string>
           </argument>
         </arguments>
@@ -108,7 +61,7 @@ prev_available = true;
             <kind>1</kind>
             <string>/// Exit if not initialized
 
-if (!initialized) {
+if (!data_get("initialized")) {
     exit;
 }
 </string>
@@ -139,16 +92,14 @@ if (data_get("slots_used") &gt;= data_get("slots_available")) {
     data_set("available", true);
 }
 
-if (prev_available != available) {
-    if (uplink) {
-        with (uplink) {
-            event_user(4);
-        }
+if (data_get("prev_available") != data_get("available")) {
+    if (data_get("uplink")) {
+        method(data_get("uplink"), component_method.update, map());
     }
-    prev_available = available;
+    data_set("prev_available", data_get("available"));
 }
 
-if (available) {
+if (data_get("available")) {
     image_blend = c_white;
 } else {
     image_blend = c_red;
@@ -175,21 +126,24 @@ if (available) {
             <kind>1</kind>
             <string>/// Process threads
 
-var length = array_length_1d(threads)
+var threads = data_get("threads");
+
+var length = array_length_1d(threads);
 for(var i = 0; i &lt; length; i++){
-    var thread_tmp = threads[i]
-    if (is_array(thread_tmp)) {
-        thread_tmp[@ thread.remaining_time] -= 1 / process_time;
-        if (thread_tmp[thread.remaining_time] &lt;= 0) {
-            slots_used--;
-            var packet_tmp = thread_tmp[thread.packet];
-            processed_packet = packet_tmp;
+    var thread = threads[i]
+    if (is_array(thread)) {
+        map_decrease(thread, kv("remaining_time", 1 / data_get("process_time")));
+        if (map_get(thread, "remaining_time") &lt;= 0) {
+            data_decrease("slots_used", 1);
+            var packet = thread[thread.packet];
             threads[i] = noone;
             
-            if (useless_check &amp;&amp; processed_packet[packet.useless]) {
-                scr_burn_packet(x, y, processed_packet);
+            if (data_get("useless_check") &amp;&amp; map_get(packet, "useless")) {
+                scr_burn_packet(x, y, packet);
             } else {
-                event_user(3);
+                method(self, component_method.thread_finish, map(
+                    kv("packet", packet)
+                ));
             }
         }
     }
@@ -245,11 +199,13 @@ global.selected_component = id;
             <kind>1</kind>
             <string>/// Init: Threads
 
-var size = data[component_struct.slots_available];
+var size = data_get("slots_available");
 threads = array_create(size);
 for(var i = 0; i &lt; size; i++) {
     threads[i] = noone;
 }
+
+data_set("threads", threads);
 </string>
           </argument>
         </arguments>
@@ -272,7 +228,7 @@ for(var i = 0; i &lt; size; i++) {
             <kind>1</kind>
             <string>///Init: Process Time / Speed
 
-process_time = global.process_time / data[component_struct.speed];
+data_set("process_time", global.process_time / data_get("speed"));
 </string>
           </argument>
         </arguments>
@@ -295,7 +251,7 @@ process_time = global.process_time / data[component_struct.speed];
             <kind>1</kind>
             <string>///Init: Image Index
 
-image_index = data[component_struct.subimage];
+image_index = data_get("subimage");
 </string>
           </argument>
         </arguments>
@@ -320,14 +276,23 @@ image_index = data[component_struct.subimage];
             <kind>1</kind>
             <string>/// Inbox
 
-// Variable 'inbox' got set
+var inbox = method_param("inbox");
+var uplink = data_get("uplink");
+var outgoing = map_get(inbox, "outgoing");
+var available = data_get("available");
+var useless_check = data_get("useless_check");
+var useless = map_get(inbox, "useless");
+var process_time = 1;
 
-if (inbox[packet.outgoing]) {
-    if (uplink) {
+if (outgoing) {
+    if (data_get("uplink")) {
         scr_create_packet(inbox, uplink);
     } else {
-        // We are in Internet
-        event_user(1);
+        // We are in obj_component_internet
+        // TODO: move into obj_component_internet and handle it there
+        method(self, component_method.inbox, map(
+            kv("inbox", inbox)
+        ));
     }
     exit;
 }
@@ -338,8 +303,8 @@ if (!available) {
     exit;
 }
 
-if (useless_check &amp;&amp; inbox[packet.useless]) {
-    scr_component_process(self, scr_thread(inbox, 1));
+if (useless_check &amp;&amp; useless) {
+    scr_component_process(self, scr_thread(inbox, process_time));
     exit;
 }
 
@@ -368,7 +333,7 @@ event_user(1);
             <kind>1</kind>
             <string>/// Exit if not initialized
 
-if (!initialized) {
+if (!data_get("initialized")) {
     exit;
 }
 </string>

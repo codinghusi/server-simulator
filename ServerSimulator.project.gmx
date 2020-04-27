@@ -110,11 +110,17 @@
     <scripts name="Map">
       <script>scripts\kv.gml</script>
       <script>scripts\map.gml</script>
+      <script>scripts\map_add_kvs.gml</script>
       <script>scripts\map_add.gml</script>
       <script>scripts\map_set.gml</script>
+      <script>scripts\map_increase.gml</script>
+      <script>scripts\map_decrease.gml</script>
       <script>scripts\map_get.gml</script>
       <script>scripts\map_check.gml</script>
       <script>scripts\map_has.gml</script>
+      <script>scripts\map_kvs.gml</script>
+      <script>scripts\key.gml</script>
+      <script>scripts\value.gml</script>
     </scripts>
     <scripts name="Instances">
       <script>scripts\check_instances.gml</script>
