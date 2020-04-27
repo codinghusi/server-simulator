@@ -68,8 +68,10 @@ data_init(map(
             <string>/// Clear dropable in connections
 
 with (obj_connection) {
-    dropable = false;
-    dropping_instance = noone;
+    data_init(map(
+        kv("dropable", false),
+        kv("dropping_instance", noone)
+    ));
 }
 </string>
           </argument>
@@ -139,7 +141,7 @@ scr_create_packet(packet, uplink);
 //TODO: queue soll fragen können, wie lange das nächste packet braucht
 
 var packet_task = global.packet_tasks[packet_task.webpage];
-data_set(max_process_time, packet_task[task.process_time]);
+data_set(max_process_time, map_get(packet_task, "process_time"));
 
 
 </string>
