@@ -110,8 +110,6 @@ var connection = data_get("connection");
 var position = data_get("position");
 var outgoing = data_get("outgoing");
 
-show_debug_message(connection);
-
 x = scr_connection_x(connection, position);
 y = scr_connection_y(connection, position);
 

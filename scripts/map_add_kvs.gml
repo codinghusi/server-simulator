@@ -8,7 +8,7 @@ for (var i = 0; i < length; ++i) {
     var keyvalue = keyvalues[i];
     var key = kv_key(keyvalue);
     var value = kv_value(keyvalue);
-    ds_map_add(map_, key, value);
+    ds_map_replace(map_, key, value);
 }
 
 return map_;

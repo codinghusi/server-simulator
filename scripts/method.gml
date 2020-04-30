@@ -20,5 +20,5 @@ if (instance_exists(instance)) {
         return method_return_value;
     }
 } else {
-    show_debug_message("Error: couldn't perform method(...) because instance doesn't exist");
+    error("Error: couldn't perform method(...) because instance doesn't exist", true);
 }

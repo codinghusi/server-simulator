@@ -199,8 +199,6 @@ global.selected_component = id;
             <kind>1</kind>
             <string>/// Init: Threads
 
-show_debug_message("initialized: " + string(data_get("initialized")));
-
 var size = data_get("slots_available");
 threads = array_create(size);
 for(var i = 0; i &lt; size; i++) {
@@ -340,8 +338,6 @@ method(self, component_method.inbox, map(
 if (!data_get("initialized")) {
     exit;
 }
-
-show_debug_message("initialized!");
 </string>
           </argument>
         </arguments>

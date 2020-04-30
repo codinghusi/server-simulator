@@ -2,6 +2,9 @@
 
 var packet = argument0;
 var task = map_get(packet, "task");
+
+show_debug_message("task: " + string(task));
+
 var packet_task = map_get(global.packet_tasks, task);
 var reputation = map_get(packet_task, "reputation");
 
