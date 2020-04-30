@@ -22,7 +22,7 @@ for (var i = 1; i < argument_count - 1; ++i) {
         }
     }
     
-    context = data_get(instance, key);
+    context = data_get(context, key);
     
     if (path != "") {
         path += " > ";

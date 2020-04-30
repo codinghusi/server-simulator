@@ -11,6 +11,7 @@ if (argument_count > 0) {
 }
 
 if (!instance_exists(instance)) {
+    show_debug_message(instance)
     error("Given instance doesn't exist", true);
 }
 

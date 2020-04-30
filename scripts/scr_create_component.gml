@@ -69,7 +69,7 @@ data_init(instance, component);
 if (connection && root) {
     scr_position_components(root);
 }
-
+show_debug_message(instance)
 // Init
 data_set(instance, "initialized", true);
 

@@ -7,16 +7,18 @@ assert_packet(packet);
 
 var instance = instance_create(0, 0, obj_packet);
 
-if (map_get(packet, "outgoing")) {
-    data_set(instance, "position", 1); // start at the end
-}
-
 // Init
-data_set(instance, map(
+data_init(instance, packet);
+data_init(instance, map(
     kv("initialized", true),
     kv("connection", connection)
 ));
-data_init(instance, packet);
+
+if (map_get(packet, "outgoing")) {
+    data_set(instance, "position", 1); // start at the end
+} else {
+    data_set(instance, "position", 0); // start at the beginning
+}
 
 method(instance, component_method.init, map());
 

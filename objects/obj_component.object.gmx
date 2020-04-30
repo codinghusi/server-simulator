@@ -276,12 +276,12 @@ image_index = data_get("subimage");
             <kind>1</kind>
             <string>/// Inbox
 
-var inbox = method_param("inbox");
+var inbox = method_params;
 var uplink = data_get("uplink");
-var outgoing = map_get(inbox, "outgoing");
+var outgoing = method_param("outgoing");
 var available = data_get("available");
 var useless_check = data_get("useless_check");
-var useless = map_get(inbox, "useless");
+var useless = method_param("useless");
 var process_time = 1;
 
 if (outgoing) {

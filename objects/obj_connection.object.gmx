@@ -26,11 +26,12 @@
           <argument>
             <kind>1</kind>
             <string>/// Structure Variables
-
+/*
 uplink = noone;
 downlink = noone;
 bandwidth = 1;
 root = noone;
+*/
 </string>
           </argument>
         </arguments>
