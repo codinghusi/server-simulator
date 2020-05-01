@@ -17,4 +17,4 @@ switch (argument_count) {
         value = argument[1];
 }
 
-map_set(data(instance), kv(key, value));
+map_set(data(instance), key, value);

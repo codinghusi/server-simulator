@@ -157,7 +157,6 @@ for(var i = 0; i &lt; length; i++){
     var thread = threads[@ i];
     if (thread != noone) {
         map_decrease(thread, "remaining_time", 1 / data_get("process_time"));
-        show_debug_message("thread processing: " + string(map_get(thread, "remaining_time")));
         if (map_get(thread, "remaining_time") &lt;= 0) {
             data_decrease("slots_used", 1);
             var packet = map_get(thread, "packet");

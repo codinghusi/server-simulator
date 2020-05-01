@@ -317,7 +317,7 @@ if (global.selected_component != noone) {
                 var time;
                  if (thread) {
                     remaining_time = map_get(thread, "remaining_time");
-                    time = map_get(thread, "time");
+                    time = map_get(thread, "process_time");
                 } else {
                     remaining_time = 0;
                     time = 1;

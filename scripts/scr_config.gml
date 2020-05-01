@@ -2,7 +2,7 @@
 
 
 global.selected_component = noone;
-global.process_time = room_speed * 1;
+global.process_time = room_speed * 0.1;
 global.travel_time = room_speed;
 global.power_multiplicator = 0.5;
 
