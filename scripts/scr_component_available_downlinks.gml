@@ -14,5 +14,6 @@ for (var i = 0; i < length; ++i) {
     }
     ds_list_add(availables, downlink_connection);
 }
+ds_list_destroy(downlinks) //Lars jagt Memoryleaks
 
 return availables;

@@ -23,3 +23,5 @@ for (var i = 0; i < length; ++i) {
     scr_position_components(downlink_component);
     xx += component_width * 2;
 }
+
+ds_list_destroy(downlinks) //Lars jagt Memoryleaks

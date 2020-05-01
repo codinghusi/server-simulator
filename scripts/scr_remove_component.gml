@@ -8,6 +8,7 @@ var used_downlinks = scr_component_used_downlinks(component);
 var used_count = ds_list_size(used_downlinks);
 
 if (used_count > 1) {
+    ds_list_destroy(used_downlinks) //Lars jagt Memoryleaks
     return false;
 }
 
@@ -32,6 +33,7 @@ for (var i = 0; i < length; ++i) {
     instance_destroy(downlink_to_remove);
 }
 
+ds_list_destroy(used_downlinks) //Lars jagt Memoryleaks
 instance_destroy(component);
 
 scr_position_components(data_get(uplink, root));

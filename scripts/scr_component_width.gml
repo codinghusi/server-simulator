@@ -11,4 +11,5 @@ for (var i = 0; i < length; ++i) {
     width += scr_component_width(downlink_component);
 }
 
+ds_list_destroy(downlinks) //Lars jagt Memoryleaks
 return max(1, width);

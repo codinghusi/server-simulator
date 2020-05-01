@@ -26,12 +26,15 @@
           <argument>
             <kind>1</kind>
             <string>/// Update Available (call from a downlink)
+var downlinks = scr_component_available_downlinks(self);
 
-if (ds_list_size(scr_component_available_downlinks(self)) == 0) {
+if (ds_list_size(downlinks) == 0) {
     data_set("available", false);
 } else {
     data_set("available", true);
 }
+
+ds_list_destroy(downlinks) //Lars jagt Memoryleaks
 </string>
           </argument>
         </arguments>
@@ -116,6 +119,7 @@ for (var i = 0; i &lt; length; ++i) {
         );
     }
 }
+ds_list_destroy(used) //Lars jagt Memoryleaks
 </string>
           </argument>
         </arguments>
