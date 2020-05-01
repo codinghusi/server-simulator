@@ -158,6 +158,7 @@ data_set("max_process_time", 1);
 
 var inbox = method_param("inbox");
 
+//TODO memory leak? scr_thread
 scr_component_process(self, scr_thread(inbox, 1));
 </string>
           </argument>

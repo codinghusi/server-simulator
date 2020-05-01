@@ -27,9 +27,7 @@
             <kind>1</kind>
             <string>/// Structure Variables
 
-data_init(map(
-    kv("component", noone)
-));
+data_set("component", noone)
 </string>
           </argument>
         </arguments>
@@ -55,10 +53,8 @@ data_init(map(
             <string>/// Reset connection dropable
 
 with (obj_connection) {
-    data_init(map(
-        kv("dropable", false),
-        kv("dropping_instance", noone)
-    ));
+    data_set("dropable", false)
+    data_set("dropping_instance", noone)
 }
 </string>
           </argument>

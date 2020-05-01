@@ -47,6 +47,29 @@ data_set("queue", ds_queue_create())
         </arguments>
       </action>
     </event>
+    <event eventtype="1" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>ds_queue_destroy(data_get("queue"))
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="2" enumb="1">
       <action>
         <libid>1</libid>
@@ -227,12 +250,13 @@ data_set("capacity", data_get("slots_available"));
           <argument>
             <kind>1</kind>
             <string>///Enqueue incoming packet
+var inbox = method_param("inbox")
 
 if (ds_queue_size(data_get("queue")) &lt; data_get("capacity")) {
-    ds_queue_enqueue(data_get("queue"), method_param("inbox"))
+    ds_queue_enqueue(data_get("queue"), inbox)
 }
 else {
-    scr_burn_packet(x, y, method_param("inbox"))
+    scr_burn_packet(x, y, inbox)
 }
 </string>
           </argument>

@@ -61,6 +61,7 @@ data_init(map(
             <kind>1</kind>
             <string>var downlinks = data_get("downlinks"); // TODO: so geht das ja leider nicht, data wird bereits meinen, dieses objekt existiert nicht
 ds_list_destroy(downlinks) //Lars jagt Memoryleaks
+ds_map_destroy(data()) //Lars jagt Memoryleaks
 </string>
           </argument>
         </arguments>
@@ -118,7 +119,9 @@ if (data_get("slots_used") &gt;= data_get("slots_available")) {
 
 if (data_get("prev_available") != data_get("available")) {
     if (data_get("uplink")) {
-        method(data_get("uplink"), component_method.update, map());
+        var args = map()
+        method(data_get("uplink"), component_method.update, args);
+        ds_map_destroy(args) //Lars jagt Memoryleaks
     }
     data_set("prev_available", data_get("available"));
 }
@@ -165,9 +168,11 @@ for(var i = 0; i &lt; length; i++){
             if (data_get("useless_check") &amp;&amp; map_get(packet, "useless")) {
                 scr_burn_packet(x, y, packet);
             } else {
-                method(self, component_method.thread_finish, map(
+                var args = map(
                     kv("packet", packet)
-                ));
+                )
+                method(self, component_method.thread_finish, args);
+                ds_map_destroy(args) //Lars jagt Memoryleaks
             }
         }
     }
@@ -314,9 +319,11 @@ if (outgoing) {
     } else {
         // We are in obj_component_internet
         // TODO: move into obj_component_internet and handle it there
-        method(self, component_method.inbox, map(
+        var args = map(
             kv("inbox", inbox)
-        ));
+        )
+        method(self, component_method.inbox, args);
+        ds_map_destroy(args) //Lars jagt Memoryleaks
     }
     exit;
 }
@@ -331,10 +338,11 @@ if (useless_check &amp;&amp; useless) {
     scr_component_process(self, scr_thread(inbox, process_time));
     exit;
 }
-
-method(self, component_method.inbox, map(
+var args = map(
     kv("inbox", inbox)
-));
+)
+method(self, component_method.inbox, args);
+ds_map_destroy(args) //Lars jagt Memoryleaks
 </string>
           </argument>
         </arguments>

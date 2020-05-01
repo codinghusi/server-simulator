@@ -40,9 +40,7 @@
           <argument>
             <kind>1</kind>
             <string>/// Init
-data_init(map(
-    kv("useless_check", true)
-));
+data_set("useless_check", true)
 </string>
           </argument>
         </arguments>
@@ -82,10 +80,8 @@ data_init(map(
             <string>/// Clear dropable in connections
 
 with (obj_connection) {
-    data_init(map(
-        kv("dropable", false),
-        kv("dropping_instance", noone)
-    ));
+    data_set("dropable", false)
+    data_set("dropping_instance", noone)
 }
 </string>
           </argument>
