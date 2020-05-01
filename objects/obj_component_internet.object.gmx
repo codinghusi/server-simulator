@@ -214,16 +214,21 @@ var packets = data_get("packets");
 var downlinks = data_get("downlinks");
 
 data_increase("last_id", 1);
-var timeout = irandom_range(1000 * 40, 1000 * 60);
+// var timeout = irandom_range(1000 * 40, 1000 * 60);
+var timeout = 5 * room_speed;
 
 var ddos_packet = false;
 if (ddos) {
     ddos_packet = random(1) &lt; 0.90;
 }
 
-var packet_ = scr_packet(
+var tasks = map_kvs(global.packet_tasks);
+
+var task = kv_value(tasks[irandom(array_length_1d(tasks) - 1)]);
+
+var packet = scr_packet(
     false,
-    irandom(1),
+    task,
     false,
     current_time,
     timeout,
@@ -232,7 +237,7 @@ var packet_ = scr_packet(
 );
 
 if (!ddos_packet) {
-    ds_list_add(packets, packet_);
+    ds_list_add(packets, packet);
 }
 
 var probability = critical * max(0.1, global.user_reputation * 10) * clamp(current_time / 1000 / 20, 1, 10);
@@ -244,7 +249,7 @@ if (!ddos) {
 }
 
 scr_create_packet(
-    packet_,
+    packet,
     downlinks[| 0]
 );
 </string>

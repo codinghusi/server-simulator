@@ -2,11 +2,13 @@
 
 var map_ = ds_map_create();
 
-for (var i = 0; i < argument_count; ++i) {
-    var keyvalue = argument[i];
-    var key = kv_key(keyvalue);
-    var value = kv_value(keyvalue);
-    ds_map_replace(map_, key, value);
+if (argument_count) {
+    var kvs;
+    for (var i = argument_count - 1; i >= 0; --i) {
+        kvs[i] = argument[i];
+    }
+    
+    map_add_kvs(map_, kvs);
 }
 
 return map_;

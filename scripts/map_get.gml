@@ -11,6 +11,8 @@ var value;
 
 if (map_has(map_, key)) {
     value = ds_map_find_value(map_, key);
+} else if (argument_count > 2) {
+    error("Map has no key '" + string(key) + "'", true);
 } else {
     value = def;
 }

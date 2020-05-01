@@ -2,7 +2,7 @@
 
 return map(
     kv("outgoing", argument0),
-    kv("task", argument1),
+    kv("task", argument1, data_type.object),
     kv("useless", argument2),
     kv("send_time", argument3),
     kv("timeout", argument4),

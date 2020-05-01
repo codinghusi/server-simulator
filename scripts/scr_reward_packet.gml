@@ -2,11 +2,7 @@
 
 var packet = argument0;
 var task = map_get(packet, "task");
-
-show_debug_message("task: " + string(task));
-
-var packet_task = map_get(global.packet_tasks, task);
-var reputation = map_get(packet_task, "reputation");
+var reputation = map_get(task, "reputation");
 
 reputation *=  clamp(1 - global.user_reputation, 0.2, 1);
 

@@ -121,6 +121,7 @@
       <script>scripts\map_kvs.gml</script>
       <script>scripts\kv_key.gml</script>
       <script>scripts\kv_value.gml</script>
+      <script>scripts\kv_type.gml</script>
     </scripts>
     <scripts name="Instances">
       <script>scripts\check_instances.gml</script>

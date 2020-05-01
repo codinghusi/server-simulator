@@ -24,7 +24,7 @@ switch (argument_count) {
 var value = map_get(data(instance), key, def);
 
 if (is_undefined(value)) {
-    error("Instance " + string(object_get_name(instance.object_index)) + " has no key " + key, true);   
+    error("Instance " + string(object_get_name(instance.object_index)) + " has no key '" + string(key) + "'", true);   
 }
 
 return value;

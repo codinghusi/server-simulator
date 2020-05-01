@@ -16,10 +16,9 @@ global.start_time = current_time;
 
 
 global.packet_tasks = map(
-    kv("ping", scr_task("ping", 3, 0.2, 0.2)),
-    kv("webpage", scr_task("webpage", 10, 0.8, 3))
+    kv("ping", scr_task("ping", 3, 0.2, 0.2), data_type.object),
+    kv("webpage", scr_task("webpage", 10, 0.8, 3), data_type.object)
 );
-
 
 global.components_firewall = array(
     scr_component(

@@ -184,11 +184,7 @@ data_set("max_process_time", map_get(packet_task, "process_time"));
 
 var inbox = method_param("inbox");
 var task = map_get(inbox, "task");
-//var task_info = map_get(global.packet_tasks, task);
-
-//var time = map_get(task_info, "process_time");
-show_debug_message("TODO: packet task duration")
-var time = 10;
+var time = map_get(task, "process_time");
 
 scr_component_process(
     self,
