@@ -24,7 +24,7 @@ for (var i = 1; i < argument_count - 3; ++i) {
         }
     }
     
-    context = data_get(instance, key);
+    context = data_get(context, key);
     
     if (path != "") {
         path += " > ";
@@ -33,7 +33,7 @@ for (var i = 1; i < argument_count - 3; ++i) {
     
     lastkey = key;
 }
-
+key = argument[i];
 data_set(context, key, value);
 
 return context;

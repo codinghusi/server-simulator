@@ -72,7 +72,7 @@ var packet = method_param("packet");
 
 var length = ds_list_size(availables);
 
-ds_list_destroy(availabless) //Lars jagt Memoryleaks
+ds_list_destroy(availables) //Lars jagt Memoryleaks
 for (var i = 0; i &lt; length; ++i) {
     data_increase("last_out_index", 1);
     

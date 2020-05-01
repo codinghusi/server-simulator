@@ -36,4 +36,4 @@ for (var i = 0; i < length; ++i) {
 ds_list_destroy(used_downlinks) //Lars jagt Memoryleaks
 instance_destroy(component);
 
-scr_position_components(data_get(uplink, root));
+scr_position_components(data_get(uplink, "root"));

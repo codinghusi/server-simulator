@@ -132,7 +132,7 @@ if (mouse_check_button_pressed(mb_left)) {
         if (type == shop_type.category) {
             ds_stack_push(routes, scr_shop_route(
                 shop_type.component,
-                scr_components_to_items(data_get("components"))
+                scr_components_to_items(map_get(additional_data, "components"))
             ));
         }
         else if (type == shop_type.component) {

@@ -320,7 +320,7 @@ var packets = data_get("packets");
 var length = ds_list_size(packets);
 for (var i = 0; i &lt; length; ++i) {
     var packet = packets[| i];
-    if (map_get(packet, "id") == map_get("packet", id)) {
+    if (map_get(packet, "id") == map_get(method_param("inbox"), "id")) {
         scr_reward_packet(packet);
         ds_list_delete(packets, i);
         break;

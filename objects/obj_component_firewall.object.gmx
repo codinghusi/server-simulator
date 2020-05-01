@@ -72,7 +72,8 @@ var packet = method_param("packet");
 
 var uplink = data_get("uplink");
 var downlinks = data_get("downlinks");
-var smart = data_get("additional_data");
+//var smart = data_get("additional_data");
+var smart = true; //TODO: nicht alle firewalls sind smart
 
 var ddos_packet = map_get(packet, "ddos");
 var task = map_get(packet, "task");
