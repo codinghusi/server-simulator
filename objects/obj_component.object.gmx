@@ -154,13 +154,14 @@ var threads = data_get("threads");
 
 var length = array_length_1d(threads);
 for(var i = 0; i &lt; length; i++){
-    var thread = threads[i]
-    if (is_array(thread)) {
-        map_decrease(thread, kv("remaining_time", 1 / data_get("process_time")));
+    var thread = threads[@ i];
+    if (thread != noone) {
+        map_decrease(thread, "remaining_time", 1 / data_get("process_time"));
+        show_debug_message("thread processing: " + string(map_get(thread, "remaining_time")));
         if (map_get(thread, "remaining_time") &lt;= 0) {
             data_decrease("slots_used", 1);
             var packet = map_get(thread, "packet");
-            threads[i] = noone;
+            threads[@ i] = noone;
             
             if (data_get("useless_check") &amp;&amp; map_get(packet, "useless")) {
                 scr_burn_packet(x, y, packet);
@@ -224,9 +225,9 @@ global.selected_component = id;
             <string>/// Init: Threads
 
 var size = data_get("slots_available");
-threads = array_create(size);
+var threads = array_create(size);
 for(var i = 0; i &lt; size; i++) {
-    threads[i] = noone;
+    threads[@ i] = noone;
 }
 
 data_set("threads", threads);

@@ -311,8 +311,8 @@ if (global.selected_component != noone) {
             yy += h;
             
             draw_set_colour(c_black);
-            for (var i = 0; i &lt; array_length_1d(threads); i++){
-                var thread = threads[i];
+            for (var i = 0; i &lt; array_length_1d(threads); i++) {
+                var thread = threads[@ i];
                 var remaining_time;
                 var time;
                  if (thread) {

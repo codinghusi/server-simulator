@@ -126,7 +126,7 @@ if (mouse_check_button_pressed(mb_left)) {
     var item = scr_shop_get_hovered_item(map_get(route, "items"));
     var type = map_get(route, "type");
     
-    if (is_array(item)) {
+    if (item != noone) {
         var additional_data = map_get(item, "additional_data");
         
         if (type == shop_type.category) {

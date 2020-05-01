@@ -38,11 +38,11 @@
       <script>scripts\scr_drag_component.gml</script>
       <script>scripts\scr_component_available_downlinks.gml</script>
       <script>scripts\scr_component_used_downlinks.gml</script>
-      <script>scripts\scr_component_process.gml</script>
       <script>scripts\scr_remove_component.gml</script>
       <script>scripts\scr_find_category.gml</script>
       <scripts name="Thread">
         <script>scripts\scr_thread.gml</script>
+        <script>scripts\scr_component_process.gml</script>
       </scripts>
     </scripts>
     <scripts name="Paket">

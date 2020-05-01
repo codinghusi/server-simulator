@@ -16,7 +16,7 @@ var w = 70;
 var h = 70;
 
 for (var i = 0; i < length; i++){
-    var item = items[i];
+    var item = items[@ i];
     var hovering = item == hovered_item;
     
     if (!scr_can_buy_item(item)) {
