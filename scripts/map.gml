@@ -1,6 +1,20 @@
 ///map(...keyvalues)
 
-var map_ = ds_map_create();
+// Internal: [["__map", size], ["key", "value"], ["key2", "value"]]
+
+// var map_ = array("__map");
+
+timer_start("map()");
+
+var size = 20;
+
+var map_ = array_create(size);
+
+map_[0] = array("__map", 0);
+
+for (var i = 1; i < size; ++i) {
+    map_[i] = undefined;
+}
 
 if (argument_count) {
     var kvs;
@@ -10,5 +24,7 @@ if (argument_count) {
     
     map_add_kvs(map_, kvs);
 }
+
+timer_end("map()");
 
 return map_;

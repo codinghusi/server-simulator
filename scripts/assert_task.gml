@@ -7,5 +7,5 @@ var keys = array("name", "process_time", "probability", "reputation");
 
 assert(
     map_check(task, keys),
-    "Task data is not in correct format: " + json_encode(task)
+    "Task data is not in correct format: " + to_json(task)
 );

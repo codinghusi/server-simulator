@@ -3,4 +3,4 @@
 var map_ = argument0;
 var key = argument1;
 
-return !is_undefined(ds_map_find_value(map_, key));
+return !is_undefined(map_get_kv(map_, key));

@@ -1,7 +1,7 @@
 ///scr_shop_draw_items(route)
 
 var route = argument0;
-assert_shop_route(route, true);
+// assert_shop_route(route, true);
 
 var type = map_get(route, "type");
 var items = map_get(route, "items");

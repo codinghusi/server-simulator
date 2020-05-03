@@ -25,6 +25,63 @@
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>/// Timer
+
+global.timers_start = ds_map_create();
+global.timers = ds_map_create();
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// TEST
+
+var m = map(
+    kv("foo", "bar"),
+    kv("asdf", "bla")
+);
+
+var foo = map_get(m, "foo");
+var asdf = map_get(m, "asdf");
+
+show_debug_message("foo: " + string(foo));
+show_debug_message("asdf: " + string(asdf));
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>///Config
 
 scr_config()
@@ -315,7 +372,7 @@ if (global.selected_component != noone) {
                 var thread = threads[@ i];
                 var remaining_time;
                 var time;
-                 if (thread) {
+                 if (thread != noone) {
                     remaining_time = map_get(thread, "remaining_time");
                     time = map_get(thread, "process_time");
                 } else {
@@ -402,6 +459,68 @@ if (global.selected_component) {
         scr_remove_component(component);
         global.selected_component = noone;
     }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// FPS
+
+
+draw_text(10, 10, "FPS: " + string(fps));
+draw_text(10, 30, "Real FPS: " + string(fps_real));
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Timer
+
+var percent = timer_get_average("get") / timer_get_average("set");
+
+draw_text(10, 45, "get vs. set: " + string(percent));
+
+var size = ds_map_size(global.timers);
+var key = ds_map_find_first(global.timers);
+var yy = 60;
+for (var i = 0; i &lt; size; ++i) {
+    draw_text(10, yy, key + ": " );
+    draw_text(150, yy, string(timer_get_average(key)) + "us, ");
+    draw_text(300, yy, string((timer_get_second_average(key) div 1000) * (room_speed / fps) ) + "ms, ");
+    draw_text(450, yy, string(timer_get_count(key)) + "x");
+    yy += 15;
+    key = ds_map_find_next(global.timers, key);
 }
 </string>
           </argument>

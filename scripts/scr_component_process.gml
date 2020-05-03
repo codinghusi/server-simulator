@@ -9,7 +9,6 @@ for(var i = 0; i < length; i++) {
     var thread = threads[@ i]
     if (thread == noone) {
         threads[@ i] = new_thread;
-        show_debug_message("new thread for component " + string(threads));
         data_increase(component, "slots_used", 1);
         break;
     }

@@ -8,8 +8,7 @@ for (var i = 0; i < length; ++i) {
     var keyvalue = keyvalues[i];
     var key = kv_key(keyvalue);
     var value = kv_value(keyvalue);
-    var type = kv_type(keyvalue);
-    map_set(map_, key, value, type);
+    map_set(map_, key, value);
 }
 
 return map_;

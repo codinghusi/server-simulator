@@ -1,5 +1,7 @@
 ///kv(key, value, [type])
 
+// TODO: remove type
+
 assert_argument_count(kv, argument_count, 2, 3);
 
 enum data_type {

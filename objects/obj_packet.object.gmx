@@ -163,7 +163,7 @@ if (outgoing) {
             method(uplink, component_method.internal_inbox, data());
         } else {
             show_debug_message("TODO: hier ist ein Paket aus der Leitung gefallen, das sollte nicht passieren!")
-            scr_burn_packet(x, y, data);
+            scr_burn_packet(x, y, data());
         }
         instance_destroy();
     }
@@ -175,7 +175,7 @@ if (outgoing) {
             method(downlink, component_method.internal_inbox, data());
         } else {
             show_debug_message("TODO: hier ist ein Paket aus der Leitung gefallen, das sollte nicht passieren!")
-            scr_burn_packet(x, y, data);
+            scr_burn_packet(x, y, data());
         }
         instance_destroy();
     }

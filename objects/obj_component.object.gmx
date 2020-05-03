@@ -61,7 +61,7 @@ data_init(map(
             <kind>1</kind>
             <string>var downlinks = data_get("downlinks"); // TODO: so geht das ja leider nicht, data wird bereits meinen, dieses objekt existiert nicht
 ds_list_destroy(downlinks) //Lars jagt Memoryleaks
-ds_map_destroy(data()) //Lars jagt Memoryleaks
+// ds_map_destroy(data()) //Lars jagt Memoryleaks
 </string>
           </argument>
         </arguments>
@@ -121,7 +121,7 @@ if (data_get("prev_available") != data_get("available")) {
     if (data_get("uplink")) {
         var args = map()
         method(data_get("uplink"), component_method.update, args);
-        ds_map_destroy(args) //Lars jagt Memoryleaks
+        // ds_map_destroy(args) //Lars jagt Memoryleaks
     }
     data_set("prev_available", data_get("available"));
 }
@@ -172,7 +172,7 @@ for(var i = 0; i &lt; length; i++){
                     kv("packet", packet)
                 )
                 method(self, component_method.thread_finish, args);
-                ds_map_destroy(args) //Lars jagt Memoryleaks
+                // ds_map_destroy(args) //Lars jagt Memoryleaks
             }
         }
     }
@@ -323,7 +323,7 @@ if (outgoing) {
             kv("inbox", inbox)
         )
         method(self, component_method.inbox, args);
-        ds_map_destroy(args) //Lars jagt Memoryleaks
+        // ds_map_destroy(args) //Lars jagt Memoryleaks
     }
     exit;
 }
@@ -342,7 +342,7 @@ var args = map(
     kv("inbox", inbox)
 )
 method(self, component_method.inbox, args);
-ds_map_destroy(args) //Lars jagt Memoryleaks
+// ds_map_destroy(args) //Lars jagt Memoryleaks
 </string>
           </argument>
         </arguments>

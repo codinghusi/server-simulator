@@ -12,7 +12,7 @@ switch (argument_count) {
         key = argument[1];
         value = argument[2];
         break;
-    default:
+    case 2:
         key = argument[0];
         value = argument[1];
 }

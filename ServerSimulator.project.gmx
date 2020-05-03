@@ -116,12 +116,23 @@
       <script>scripts\map_increase.gml</script>
       <script>scripts\map_decrease.gml</script>
       <script>scripts\map_get.gml</script>
+      <script>scripts\map_get_kv.gml</script>
       <script>scripts\map_check.gml</script>
       <script>scripts\map_has.gml</script>
       <script>scripts\map_kvs.gml</script>
       <script>scripts\kv_key.gml</script>
       <script>scripts\kv_value.gml</script>
       <script>scripts\kv_type.gml</script>
+      <script>scripts\map_size.gml</script>
+      <script>scripts\is_map.gml</script>
+      <scripts name="JSON">
+        <script>scripts\to_json.gml</script>
+        <script>scripts\string_encode.gml</script>
+        <script>scripts\array_encode.gml</script>
+        <script>scripts\map_encode.gml</script>
+      </scripts>
+      <script>scripts\map_add_kv.gml</script>
+      <script>scripts\map_hash.gml</script>
     </scripts>
     <scripts name="Instances">
       <script>scripts\check_instances.gml</script>
@@ -147,6 +158,7 @@
       <script>scripts\error.gml</script>
       <script>scripts\assert.gml</script>
       <script>scripts\assert_component.gml</script>
+      <script>scripts\assert_map.gml</script>
       <script>scripts\assert_category.gml</script>
       <script>scripts\assert_thread.gml</script>
       <script>scripts\assert_packet.gml</script>
@@ -154,6 +166,14 @@
       <script>scripts\assert_shop_route.gml</script>
       <script>scripts\assert_shop_item.gml</script>
       <script>scripts\assert_argument_count.gml</script>
+    </scripts>
+    <scripts name="Timer">
+      <script>scripts\timer_start.gml</script>
+      <script>scripts\timer_end.gml</script>
+      <script>scripts\timer_get.gml</script>
+      <script>scripts\timer_get_average.gml</script>
+      <script>scripts\timer_get_count.gml</script>
+      <script>scripts\timer_get_second_average.gml</script>
     </scripts>
   </scripts>
   <objects name="objects">

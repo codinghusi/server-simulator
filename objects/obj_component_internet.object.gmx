@@ -70,6 +70,8 @@ data_init(map(
     kv("packets", ds_list_create()),
     kv("last_id", 0)
 ));
+
+show_debug_message("packets: " + string(data_get("packets")));
 </string>
           </argument>
         </arguments>
@@ -142,8 +144,14 @@ alarm[2] = room_speed * 5;
             <kind>1</kind>
             <string>/// DDos
 
-if (alarm[1] &lt;= 0) {
+var debug = mouse_check_button(mb_right);
+
+if (alarm[1] &lt;= 0 || debug) {
     var strength = irandom(1000) * global.user_reputation
+    
+    if (debug) {
+        strength = 1000;
+    }
     
     if (strength &gt; 600) {
         data_set("ddos", true);
@@ -211,8 +219,7 @@ var packets = data_get("packets");
 var downlinks = data_get("downlinks");
 
 data_increase("last_id", 1);
-// var timeout = irandom_range(1000 * 40, 1000 * 60);
-var timeout = 5 * room_speed;
+var timeout = irandom_range(1000 * 40, 1000 * 60);
 
 var ddos_packet = false;
 if (ddos) {
@@ -286,6 +293,33 @@ for (var i = 0; i &lt; length; ++i) {
     }
 }
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="6" enumb="51">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// DEBUG
+
+if (alarm[0] &gt; 1) {
+    alarm[0] = 1;
+}
 </string>
           </argument>
         </arguments>

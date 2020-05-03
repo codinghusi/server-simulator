@@ -7,6 +7,6 @@ var keys = array("name", "sprite", "subimage", "quick_info", "price", "additiona
 
 assert(
     map_check(item, keys),
-    "Item data is not in correct format: " + json_encode(item)
+    "Item data is not in correct format: " + to_json(item)
 );
 

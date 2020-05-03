@@ -7,6 +7,6 @@ var keys = array("type", "items");
 
 assert(
     map_check(route, keys),
-    "Route data is not in correct format: " + json_encode(route)
+    "Route data is not in correct format: " + to_json(route)
 );
 

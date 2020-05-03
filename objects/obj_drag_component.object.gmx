@@ -85,7 +85,7 @@ y = mouse_y;
 
 // set sprite
 var component = data_get("component");
-if (component) {
+if (is_map(component)) {
     var sprite = object_get_sprite(map_get(component, "object"));
     var index = map_get(component, "subimage");
     

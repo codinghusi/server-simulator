@@ -7,6 +7,6 @@ var keys = array("name", "description", "object", "subimage", "downlink_count", 
 
 assert(
     map_check(component, keys),
-    "Component data is not in correct format: " + json_encode(component)
+    "Component data is not in correct format: " + to_json(component)
 );
 

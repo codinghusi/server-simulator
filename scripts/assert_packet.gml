@@ -6,5 +6,5 @@ var keys = array("outgoing", "task", "useless", "send_time", "timeout", "id", "d
 
 assert(
     map_check(packet, keys),
-    "Packet data is not in correct format: " + json_encode(packet)
+    "Packet data is not in correct format: " + to_json(packet)
 );
